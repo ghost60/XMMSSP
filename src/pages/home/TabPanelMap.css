@@ -1,0 +1,8 @@
+.map-pt{
+    position: absolute;cursor: pointer
+}
+.map-pt::before{
+    content: '';
+    display: block;
+    width: 6px;height: 6px;border-radius: 50%;background-color: orangered;margin: 0 auto
+}

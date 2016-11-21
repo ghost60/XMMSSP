@@ -1,0 +1,71 @@
+.hykp-title {
+    width: 100%;
+    height: 76px;
+    background-image: url(/images/title-hykp.png);
+    background-repeat: no-repeat
+}
+
+.hykp__left {
+    float: left;
+    margin: 9px 0
+}
+
+.hykp__right {
+    float: right;
+    margin: 9px 0
+}
+
+.hykp-imgBg {
+    padding: 70px 20px 0 20px;
+    background-image: url("/images/Rings.png");
+    height: 500px;
+    margin-top: -18px;
+    position: relative;
+    background-repeat: no-repeat
+}
+
+.hykp-img {
+    width: 100%;
+    height: auto
+}
+
+.hykp-img--div {
+    position: absolute;
+    display: block;
+    text-align: center;
+    line-height: 26px;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    bottom: 20px
+}
+
+.hykp-img--span {
+    line-height: 26px;
+    color: #fff;
+    width: 100%;
+}
+
+.hykp--imgContainer {
+    position: relative;
+    width: 225px;
+    border: 5px solid #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px 0px #666;
+}
+
+.hykp-class {
+    float: left;
+    margin: 10px 21px 10px;
+}
+
+.hykp-icon {
+    position: absolute;
+    width: 20px;
+    height: auto;
+    top: 8px;
+    left: 8px;
+}
+
+.hykp-class--container {
+    clear: both;
+}

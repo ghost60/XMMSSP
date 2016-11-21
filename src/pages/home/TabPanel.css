@@ -1,0 +1,187 @@
+.c {
+            zoom: 1;
+            /*background: gray;*/
+        }
+        
+        .c::after {
+            content: 'ss';
+            display: block;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+            height: 0
+        }
+        
+        .tab-panel--left {
+            /*min-width: 300px;*/
+            float: left;
+            /*height: 100px;*/
+            /*padding: 20px;*/
+        }
+        
+        .tab-panel--right {
+            width: 605px;
+            float: right;
+            /*padding: 20px;*/
+            color: #fff
+        }
+        
+        .tab-panel--right::before {
+            content: 'ss';
+            display: block;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+            height: 0
+        }
+        
+        .tab-right--title {
+            box-sizing: border-box;
+            height: 56px;
+            background-color: darkorange;
+            border-radius: 3px;
+        }
+        
+        .tab-right--title::after {
+            content: 'ss';
+            display: block;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+            height: 0
+        }
+        
+        .tab-right--title--left {
+           float: left;
+            padding: 14px;
+            height: 56px;
+            box-sizing: border-box;
+            font-size: 22px;
+        }
+        
+        .tab-right--title--right {
+            float: right;
+            padding: 8px;
+            text-align: center;
+            padding-right: 20px;
+            height: 56px;
+            box-sizing: border-box;
+        }
+        .tab-right--title--right-span1{
+            font-size: 18px
+        }
+        .tab-right--title--right-span2{
+
+
+        }
+        .tab-panel-info {
+            height: 200px;
+            color: #666;
+            background-color: #fff
+        }
+        
+        .tab-panel-info::after {
+            content: 'ss';
+            display: block;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+            height: 0
+        }
+        
+        .tab-panel-info--left {
+            float: left;
+            width: 50%;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        
+        .tab-panel-info--left span {
+            display: block
+        }
+        
+        .tab-panel-info--span1 {
+            font-size: 25px
+        }
+        
+        .tab-panel-info--span2 {
+            font-size: 28px;
+            color: orange;
+            margin-top: 5px
+        }
+        
+        .tab-panel-info--right {
+            float: right;
+            width: 50%;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        
+        .tab-panel-info--right span {
+            display: block
+        }
+       
+        .tab-panel--tips {
+            clear: both;
+            height: 60px;
+            background-color: #F5F5F5;
+            padding: 13px 10px;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+        .tab-panel--tips div{
+            float: left;box-sizing: border-box;font-size: 14px;padding:0 7px;height: 100%
+        }
+
+        .tab-panel--map {
+           position: relative
+        }
+        .map1{
+           width: 276px;height: auto
+        }
+        .tab-panel-info--container{
+            display: block;
+            clear: both;
+        }
+         .tab-panel-info--container::after {
+            content: 'ss';
+            display: block;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+            height: 0
+        }
+
+
+.tab-panel--datePicker{
+    display: table-cell;
+    color: #666;
+    border: 1px solid #E0E0E0;
+    width: 65px;
+    text-align: center;
+    cursor: pointer
+}
+.tab-panel--datePicker:first-child{
+    border-radius: 25px 0 0 25px;
+}
+.tab-panel--datePicker:last-child{
+    border-radius: 0 25px 25px 0;
+}
+.tab-panel--datePicker__active{
+    background-color: #03A9F4;
+    border:none;
+    color: #fff;
+}
+
+.tab-panel-info--thead{
+    width: 100%;font-size: 19px;
+}
+.tab-panel-info--thead td{
+    width: 33%;
+}
+.tab-panel-info--tbody{
+    color: orange;font-size: 17px
+}
+.tab-panel-info--tbody td{
+    padding: 5px;vertical-align: initial;
+}
