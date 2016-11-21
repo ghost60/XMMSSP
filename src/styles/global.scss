@@ -1,0 +1,21 @@
+body{
+	min-width:1210px;
+	font-size: 13px;
+	background:url(../images/backbody.png);
+	background-repeat: round;
+}
+a{
+	text-decoration:none;
+	&:link{
+		text-decoration:none;
+	}
+	&:visited{
+		text-decoration:none;
+	}
+	&:hover{
+		text-decoration:none;
+	}
+	&:active{
+		text-decoration:none;
+	}
+}
