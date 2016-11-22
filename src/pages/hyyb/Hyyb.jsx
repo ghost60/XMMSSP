@@ -1,6 +1,6 @@
 //主面板
 import React from 'react';
-import {Row,Col} from 'react-bootstrap';
+import {Row,Col} from '../../components/grid/Grid';
 import Aside from '../../components/aside/Aside';
 
 class hyyb extends React.Component{
@@ -9,14 +9,14 @@ class hyyb extends React.Component{
       this.state=({name:'',link:''});
   }
   render() {
-      return  <div>
-              <Col md={2}>
-                <Aside id={3} parent={"hyyb"}/>
-              </Col>
-              <Col md={10}>
-                {this.props.children}
-              </Col>
-              </div>
+      return  <Row>
+                <Col width={[1,6]}>
+                  <Aside id={3} parent={"hyyb"}/>
+                </Col>
+                <Col width={[5,6]}>
+                  {this.props.children}
+                </Col>
+              </Row>
       }
 };
 export default hyyb;

@@ -1,7 +1,7 @@
 //主面板
 import React from 'react';
-import {Row,Col} from 'react-bootstrap';
-import Card from '../../components/card/Card';
+import {Col} from '../../components/grid/Grid';
+import Session from '../../components/session/Session';
 
 class hyyb extends React.Component{
   constructor(props) {
@@ -9,13 +9,11 @@ class hyyb extends React.Component{
       this.state=({name:'',link:''});
   }
   render() {
-      return  <div>
-              <Col md={12}>
-              <Card title={'航线预报'} mborder_content={{minHeight:"568px"}}>
+      return  <Col>
+              <Session name={'航线预报'}>
                   {this.props.children}
-              </Card>
+              </Session>
               </Col>
-              </div>
       }
 };
 export default hyyb;

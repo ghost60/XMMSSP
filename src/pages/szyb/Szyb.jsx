@@ -1,6 +1,6 @@
 //主面板
 import React from 'react';
-import {Row,Col} from 'react-bootstrap';
+import {Row,Col} from '../../components/grid/Grid';
 import Aside from '../../components/aside/Aside';
 
 class szyb extends React.Component{
@@ -9,14 +9,14 @@ class szyb extends React.Component{
       this.state=({name:'',link:''});
   }
   render() {
-      return  <div>
-              <Col md={2}>
+      return  <Row>
+              <Col width={[1,6]}>
                 <Aside id={5} parent={"szyb"}/>
               </Col>
-              <Col md={10}>
+              <Col width={[5,6]}>
                 {this.props.children}
               </Col>
-              </div>
+              </Row>
       }
 };
 export default szyb;

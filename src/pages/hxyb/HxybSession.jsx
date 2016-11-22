@@ -40,7 +40,7 @@ class Hyybsession extends React.Component{
         }
       );
       return  <div>
-                <select ref="select" id="hz-select" onChange={this.selectChange.bind(this)}>
+                <select ref="select" id="hz-select" onChange={this.selectChange.bind(this)}  style={{position:"absolute",zIndex:1000,right:"10px"}}>
                   {option}
                 </select>
                 <Lmap data={this.state.data} name={this.state.name}/>

@@ -1,8 +1,8 @@
 import React from 'react';
-import {Row,Col} from 'react-bootstrap';
-import Aside from '../../components/aside/Aside';
 import Mlist from '../../components/list/Mlist';
 import Card from '../../components/card/Card';
+import Session from '../../components/session/Session';
+import {Col} from '../../components/grid/Grid';
 
 const LIST_DATA=[
   {
@@ -36,13 +36,11 @@ class dwgk extends React.Component{
       super(props);
   }
   render() {
-      return  <div>
-              <Col md={12}>
-                <Card title={'工作动态'} card_content={{minHeight:"568px"}}>
+      return  <Col>
+                <Session name={'工作动态'}>
                   <Mlist list={LIST_DATA} />
-                </Card>
+                </Session>
               </Col>
-              </div>
       }
 };
 export default dwgk;
