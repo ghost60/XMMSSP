@@ -17,6 +17,7 @@ body{
     padding-left: 15px; */
     margin-right: auto;
     margin-left: auto;
+    width: 1092px;
     &:after {
 	    clear: both;
 	}
@@ -26,8 +27,6 @@ body{
 	}
 }
 .Row{
-    margin-left: auto;
-    margin-right: auto;
 	position: relative;
     /* margin-right: -15px;
     margin-left: -15px; */

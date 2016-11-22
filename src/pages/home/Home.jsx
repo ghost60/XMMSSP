@@ -1,6 +1,5 @@
 //主页
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Slider from '../../components/slider/Slider';
 import Card from '../../components/card/Card';
@@ -9,13 +8,13 @@ import Tabs from '../../components/tabs/Tabs';
 import { TabsPanel1, TabsPanel2, TabsPanel3, TabsPanel4 } from './TabPanel';
 import Dtjs from './Dtjs.jsx'
 import Hykp from './Hykp'
-import Footer from '../footer/Footer';
+import './Home.css'
+
+
 import {Grid,Row,Col} from '../../components/grid/Grid';
 import SZYBImgList from './SZYBImgList';
 import YJBDList from './YJBDList';
 import GZDTList from './GZDTList';
-
-import './Home.css';
 
 const IMAGE_DATA_1 = [
   {
@@ -42,7 +41,7 @@ const IMAGE_DATA_2 = [
   }
 ];
 
-class Home extends React.Component {
+class home extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -53,13 +52,14 @@ class Home extends React.Component {
                     <Slider items={IMAGE_DATA_2} speed={1.2} delay={2.1} pause={true} autoplay={true} dots={true} arrows={false} istext={true} height={"300px"}/>
                   </Col>
                   <Col width={[1,2]}>
-                    <Card title={'工作动态'} card_body={{marginTop:"12px"}} icon_url={require('./images/gzdt_icon.png')} more_img={require('./images/more.png')} card_title={{background:"#4b9bd7",height:"32px",lineHeight:"32px"}}>
+                    <Card title={'工作动态'} card_body={{marginTop:"48px"}} icon_url={require('./images/gzdt_icon.png')} more_img={require('./images/more.png')} card_title={{background:"#4b9bd7",height:"32px",lineHeight:"32px"}}>
                       <GZDTList />
                     </Card>
                   </Col>
                 </Row>
                 <Row>
                   <Panel>
+                    <Row>
                     <Col>
                      <Tabs>
                         <div name="海区预报" imgSrc="./images/icon1">
@@ -72,6 +72,8 @@ class Home extends React.Component {
                         <div name="浴场度假区预报" imgSrc="./images/icon4"><TabsPanel4 /></div>
                     </Tabs>
                     </Col>
+                    </Row>
+                    <Row style={{marginTop:18}}>
                     <Col width={[18,30]}>
                       <Card title={'数值预报'} icon_url={require('./images/szyb_icon.png')} more_img={require('./images/more.png')} card_title={{background:"#1ea0ff",height:"58px",lineHeight:"58px"}}>
                         <SZYBImgList />
@@ -82,8 +84,9 @@ class Home extends React.Component {
                         <YJBDList />
                       </Card>
                     </Col>
+                    </Row>
                    </Panel>
-                </Row>
+                </Row>                
                 <Row>
                   <Col>
                     <Slider
@@ -99,16 +102,16 @@ class Home extends React.Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Panel panel_body={{ minHeight: "400px",clear:"both" }}>
-                    <div className="dtjs">
-                      <Dtjs />
-                    </div>
-                    <div className="hykp">
-                      <Hykp />
-                    </div>
-                  </Panel>
+                <Panel panel_body={{ minHeight: "400px",clear:"both" }}>
+                  <div className="dtjs">
+                    <Dtjs />
+                  </div>
+                  <div className="hykp">
+                    <Hykp />
+                  </div>
+                </Panel>
                 </Row>
               </Row>
       }
 };
-export default Home;
+export default home;
