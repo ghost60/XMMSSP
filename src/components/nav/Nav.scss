@@ -6,7 +6,7 @@
     width: 100%;
 }
 .nav_li{
-    width: 105px;
+    width: 120px;
     display: inline-block;
     font-size: 18px;
     font-weight: bolder;
@@ -18,16 +18,16 @@
     a{
         color: #474747;
         &:hover{
-            background-color: rgba(68, 174, 241, 0.75);
+            background-color: rgba(31, 168, 254, 0.75);
+            padding: 14px 10px;
             color: #fff;
-            padding: 3px 10px;
             border-radius: 8px;
             cursor: pointer;
         }
         &.active{
-            background-color: rgba(68, 174, 241, 0.75);
+            background-color: rgba(31, 168, 254, 0.75);
+            padding: 14px 10px;
             color: #fff;
-            padding: 3px 10px;
             border-radius: 8px;
         }
     }

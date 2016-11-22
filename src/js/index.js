@@ -6,9 +6,6 @@ import withBasename from '../components/basename/basename';
 import {Grid,Row,Col} from '../components/grid/Grid';
 import Nav from '../components/nav/Nav';
 import Title from '../components/title/Title';
-import Clock from '../components/clock/Clock';
-import Footer from '../components/footer/Footer';
-import Aside from '../components/aside/Aside';
 
 import home from '../pages/home/Home';
 import dwgk from '../pages/dwgk/Dwgk';
@@ -36,9 +33,11 @@ import szybsession from '../pages/szyb/SzybSession';
 
 import * as menudata from '../pages/menudata/menudata';
 
+import Footer from '../pages/footer/Footer';
+
 class App extends React.Component{
     render() {
-      return  <Grid>
+      return  <Grid cw={1092}>
                 <Row>
                   <Col>
                     <Title backimg={'../images/titleback.png'}/>
@@ -50,14 +49,11 @@ class App extends React.Component{
                  </Col>
                 </Row>
                   {this.props.children}
-                <Row>
-                  <Col>
-                    <Footer />
-                  </Col>
-                </Row>
               </Grid>
       }
 };
+
+ReactDOM.render((<Footer />), document.getElementById('foot'));
 
 // 配置路由
 ReactDOM.render((
