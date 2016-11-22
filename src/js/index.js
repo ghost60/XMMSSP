@@ -49,11 +49,9 @@ class App extends React.Component {
           <Nav navlist={menudata.navlist} />
         </Col>
       </Row>
-      {this.props.children}
+      <Row><div style={{height:20}}></div></Row>
       <Row>
-        <Col>
-          <Footer />
-        </Col>
+        {this.props.children}
       </Row>
     </Grid></div>
   }

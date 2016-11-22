@@ -1,48 +1,37 @@
 .aside_li{
     display: inline-block;
-    color: #fff;
     width: 100%;
-    font-weight: bold;
     text-align: center;
-    border-bottom: 1px solid #fff;
     line-height: 24px;
-    background: #878d93;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-    -o-text-overflow:ellipsis;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
     overflow: hidden;
-    margin: -5px 0;
-    margin-top: 1px;
-    &:hover{
-        background:  #565656;
-    }
+    font-size: 15px;
+    margin: 5px 0;
     a{
-        color: #fff;
+        color: #595959;
         &:hover{
             cursor: pointer;
+            color: #19be91;
         }
     }
     .active{
-        background:  #565656;
-        display: inline-block;
-        width: 100%;
+        color: #19be91;
     }
 }
-.aside_lu{
-    overflow: hidden;
-}
 .aside_title{
-    height: 26px;
+    height: 56px;
+    line-height: 56px;
     display: inline-block;
     color: #fff;
     width: 100%;
-    font-weight: bold;
+    font-size: 18px;
     text-align: center;
-    border-bottom: 1px solid #fff;
-    line-height: 24px;
-    background: #47a1fe;
-     &:hover{
-        cursor: pointer;
-        background: #1c87f5;
-    }
+    background: #19be91;
+    border-radius: 6px 6px 0 0;
+}
+.aside_list{
+    background: #fff;
+    border-radius: 0 0 6px 6px;
 }
