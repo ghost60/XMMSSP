@@ -6,9 +6,7 @@ import withBasename from '../components/basename/basename';
 import { Grid, Row, Col } from '../components/grid/Grid';
 import Nav from '../components/nav/Nav';
 import Title from '../components/title/Title';
-import Clock from '../components/clock/Clock';
-import Footer from '../components/footer/Footer';
-import Aside from '../components/aside/Aside';
+
 import Header from '../components/header/Header';
 import home from '../pages/home/Home';
 import dwgk from '../pages/dwgk/Dwgk';
