@@ -38,7 +38,9 @@
     width: 100%;
     bottom: 20px
 }
-
+.hykp-img--div__hover{
+    background-color: rgba(13, 105, 218, 0.7)
+}
 .hykp-img--span {
     line-height: 26px;
     color: #fff;

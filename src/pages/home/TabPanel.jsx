@@ -17,12 +17,12 @@ export class TabsPanel1 extends React.Component {
             waterTemp: "速度速度算得上的"
         }
         this.mapCfg = [
-            { x: 2, y: 145, title: "漳州沿海" },
-            { x: 32, y: 113, title: "厦门沿海" },
-            { x: 69, y: 88, title: "泉州沿海" },
-            { x: 94, y: 52, title: "莆田沿海" },
-            { x: 165, y: 74, title: "台湾海峡北部" },
-            { x: 103, y: 145, title: "台湾海峡南部" },
+            { x: 11, y: 185, title: "漳州沿海" },
+            { x: 57, y: 140, title: "厦门沿海" },
+            { x: 101, y: 106, title: "泉州沿海" },
+            { x: 128, y: 62, title: "莆田沿海" },
+            { x: 200, y: 92, title: "台湾海峡北部" },
+            { x: 118, y: 182, title: "台湾海峡南部" },
         ]
         this.handlerMapCilck(0)
     }
@@ -78,10 +78,10 @@ export class TabsPanel2 extends React.Component {
         super(props)
         _this = this;
         this.mapCfg = [
-            { x: 53, y: 186, title: "东山" },
-            { x: 109, y: 126, title: "厦门" },
-            { x: 180, y: 69, title: "崇武" },
-            { x: 238, y: 31, title: "平潭" },
+            { x: 69, y: 242, title: "东山" },
+            { x: 146, y: 165, title: "厦门" },
+            { x: 238, y: 87, title: "崇武" },
+            { x: 314, y: 39, title: "平潭" },
         ]
         this.state = {
             title: this.mapCfg[0]['title'],
@@ -172,13 +172,13 @@ export class TabsPanel3 extends React.Component {
             waterTemp: "-"
         }
         this.mapCfg = [
-            { x: 140, y: 139, title: "厦门大嶝海域" },
-            { x: 181, y: 118, title: "厦门小嶝海域" },
-            { x: 69, y: 84, title: "厦门同安湾" },
-            { x: 16, y: 120, title: "厦门西海域" },
-            { x: 83, y: 166, title: "厦门东部海域" },
-            { x: 1, y: 187, title: "厦门九龙江口" },
-            { x: 57, y: 210, title: "厦门南部海域" },
+            { x: 178, y: 181, title: "厦门大嶝海域" },
+            { x: 233, y: 156, title: "厦门小嶝海域" },
+            { x: 97, y: 106, title: "厦门同安湾" },
+            { x: 36, y: 154, title: "厦门西海域" },
+            { x: 135, y: 215, title: "厦门东部海域" },
+            { x: 9, y: 240, title: "厦门九龙江口" },
+            { x: 95, y: 271, title: "厦门南部海域" },
         ]
         this.handlerMapCilck(0)
     }
@@ -240,12 +240,12 @@ export class TabsPanel4 extends React.Component {
 
         }
         this.mapCfg = [
-            { x: 188, y: 120, title: "观音山" },
-            { x: 173, y: 161, title: "黄厝" },
-            { x: 75, y: 194, title: "曾厝垵" },
-            { x: 42, y: 171, title: "港仔后" },
-            { x: 26, y: 149, title: "大德记" },
-            { x: 145, y: 180, title: "太阳湾" },
+            { x: 250, y: 148, title: "观音山" },
+            { x: 222, y: 210, title: "黄厝" },
+            { x: 108, y: 253, title: "曾厝垵" },
+            { x: 56, y: 228, title: "港仔后" },
+            { x: 53, y: 194, title: "大德记" },
+            { x: 186, y: 234, title: "太阳湾" },
 
         ]
         this.handlerMapCilck(0)

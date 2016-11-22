@@ -1,12 +1,15 @@
 //主面板
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, hashHistory, browserHistory, IndexRoute, Redirect, IndexLink} from 'react-router'
+import { Router, Route, Link, hashHistory, browserHistory, IndexRoute, Redirect, IndexLink } from 'react-router'
 import withBasename from '../components/basename/basename';
-import {Grid,Row,Col} from '../components/grid/Grid';
+import { Grid, Row, Col } from '../components/grid/Grid';
 import Nav from '../components/nav/Nav';
 import Title from '../components/title/Title';
-
+import Clock from '../components/clock/Clock';
+import Footer from '../components/footer/Footer';
+import Aside from '../components/aside/Aside';
+import Header from '../components/header/Header';
 import home from '../pages/home/Home';
 import dwgk from '../pages/dwgk/Dwgk';
 import dwgksession from '../pages/dwgk/DwgkSession';
@@ -33,73 +36,74 @@ import szybsession from '../pages/szyb/SzybSession';
 
 import * as menudata from '../pages/menudata/menudata';
 
-import Footer from '../pages/footer/Footer';
-
-class App extends React.Component{
-    render() {
-      return  <Grid cw={1092}>
-                <Row>
-                  <Col>
-                    <Title backimg={'../images/titleback.png'}/>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <Nav navlist={menudata.navlist} />
-                 </Col>
-                </Row>
-                  {this.props.children}
-              </Grid>
-      }
+class App extends React.Component {
+  render() {
+    return <div> <Header /><Grid>
+      <Row>
+        <Col>
+          <Title backimg={'../images/titleback.png'} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Nav navlist={menudata.navlist} />
+        </Col>
+      </Row>
+      {this.props.children}
+      <Row>
+        <Col>
+          <Footer />
+        </Col>
+      </Row>
+    </Grid></div>
+  }
 };
-
-ReactDOM.render((<Footer />), document.getElementById('foot'));
 
 // 配置路由
 ReactDOM.render((
-    <Router history={hashHistory} >
-        <Route path="/" component={App}>
-            <IndexRoute path="" component={home} />
+  <Router history={hashHistory} >
+    <Route path="/" component={App}>
+      <IndexRoute path="" component={home} />
 
-            <Route path="dwgk" component={dwgk}>
-              <Route path="dwgksession/:id" component={dwgksession} />
-              <IndexRoute path="" component={dwgksession} />
-            </Route>
+      <Route path="dwgk" component={dwgk}>
+        <Route path="dwgksession/:id" component={dwgksession} />
+        <IndexRoute path="" component={dwgksession} />
+      </Route>
 
-            <Route path="gzdt" component={gzdt}>
-            </Route>
+      <Route path="gzdt" component={gzdt}>
+      </Route>
 
-            <Route path="hyyb" component={hyyb}>
-              <Route path="hyybsession/:id" component={hyybsession} />
-              <IndexRoute path="" component={hyybsession} />
-            </Route>
+      <Route path="hyyb" component={hyyb}>
+        <Route path="hyybsession/:id" component={hyybsession} />
+        <IndexRoute path="" component={hyybsession} />
+      </Route>
 
-            <Route path="hxyb" component={hxyb}>
-              <Route path="hxybsession" component={hxybsession} />
-              <IndexRoute path="" component={hxybsession} />
-            </Route>
+      <Route path="hxyb" component={hxyb}>
+        <Route path="hxybsession" component={hxybsession} />
+        <IndexRoute path="" component={hxybsession} />
+      </Route>
 
-            <Route path="szyb" component={szyb}>
-              <Route path="szybsession/:id" component={szybsession} />
-              <IndexRoute path="" component={szybsession} />
-            </Route>
+      <Route path="szyb" component={szyb}>
+        <Route path="szybsession/:id" component={szybsession} />
+        <IndexRoute path="" component={szybsession} />
+      </Route>
 
-            <Route path="hyjc" component={hyjc}>
-              <Route path="hyjcsession/:id" component={hyjcsession} />
-              <IndexRoute path="" component={hyjcsession} />
-            </Route>
+      <Route path="hyjc" component={hyjc}>
+        <Route path="hyjcsession/:id" component={hyjcsession} />
+        <IndexRoute path="" component={hyjcsession} />
+      </Route>
 
-            <Route path="hygc" component={hygc}>
-              <Route path="hygcsession/:id" component={hygcsession} />
-              <IndexRoute path="" component={hygcsession} />
-            </Route>
+      <Route path="hygc" component={hygc}>
+        <Route path="hygcsession/:id" component={hygcsession} />
+        <IndexRoute path="" component={hygcsession} />
+      </Route>
 
-            <Route path="hyfw" component={hyfw}>
-              <Route path="hyfwsession/:id" component={hyfwsession} />
-              <IndexRoute path="" component={hyfwsession} />
-            </Route>
+      <Route path="hyfw" component={hyfw}>
+        <Route path="hyfwsession/:id" component={hyfwsession} />
+        <IndexRoute path="" component={hyfwsession} />
+      </Route>
 
-        </Route>
-    </Router>
+    </Route>
+  </Router>
 ), document.getElementById('react-content'));
 

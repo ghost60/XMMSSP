@@ -2,18 +2,10 @@ import React,{Component,PropTypes} from 'react';
 import './Grid.scss';
 
 var pd='15px';
-var cw='100%';
 
 export class Grid extends Component{
   render(){
-    var width='100%';
-    if (this.props.gw && this.props.gw != 'fluid') {
-      width=this.props.gw+'px';
-    }
-    if (this.props.cw) {
-      cw=this.props.cw+'px';
-    }
-    return <div className="Grid" style={{width:width}}>
+    return <div className="Grid">
             {this.props.children}
            </div>
     }
@@ -21,7 +13,7 @@ export class Grid extends Component{
 
 export class Row extends Component{
   render(){
-    return <div className="Row" style={{width:cw}}>
+    return <div className="Row" style={this.props.style}>
             {this.props.children}
            </div>
     }
