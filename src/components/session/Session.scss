@@ -1,15 +1,14 @@
 .session_title{
-	background: #47a1fe;
-    margin-left: 4px;
+    background: #47a1fe;
+    height: 84px;
     padding-top: 0;
     padding-bottom: 0;
-    line-height: 30px;
+    line-height: 84px;
     border-radius: 8px 8px 0 0;
     &>span{
 	    color: #fff;
-	    font-weight: bold;
-	    padding-left: 14px;
-        font-size: 14px;
+        padding-left: 14px;
+        font-size: 26px;
     }
 }
 .session_content{
@@ -20,4 +19,7 @@
     font-size: 14px;
     background: #ebf5f4;
     border-radius: 0 0 8px 8px;
+}
+.session_body{
+    margin-bottom: 120px;
 }
