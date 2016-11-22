@@ -8,7 +8,6 @@ class Nav extends React.Component{
         super(props);
     }
     render() {
-        debugger
         const list = this.props.navlist.map( (list,i) => {
             if (list.id==0) {
                 return  <div className="nav_li" key={list.id}>

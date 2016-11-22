@@ -46,7 +46,6 @@ class dwgksession extends React.Component{
   render() {
       var content = '';
       var path=[];
-      debugger
       if (this.state.data.type=="text") {
         content=<div>{this.state.data.content}</div>
       }else if (this.state.data.type=="img") {

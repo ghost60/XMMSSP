@@ -9,6 +9,8 @@ import Title from '../components/title/Title';
 
 import Header from '../components/header/Header';
 import home from '../pages/home/Home';
+import Footer from '../pages/footer/Footer';
+
 import dwgk from '../pages/dwgk/Dwgk';
 import dwgksession from '../pages/dwgk/DwgkSession';
 
@@ -54,6 +56,8 @@ class App extends React.Component {
     </Grid></div>
   }
 };
+
+ReactDOM.render((<Footer/>), document.getElementById('foot'));
 
 // 配置路由
 ReactDOM.render((
