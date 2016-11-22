@@ -1,4 +1,1 @@
-*{
-	font-family: "Helvetica Neue",Arial,STHeiti,"Microsoft YaHei",sans-serif,Helvetica,"DroidSansFallback",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3"
-}
-body{min-width:1210px;font-size:13px;background-color:rgba(110,235,253,.87)}a,a:active,a:hover,a:link,a:visited{text-decoration:none}.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.row{padding:0}
+body{font-size:13px;background:url(../images/backbody.png) round;font-family:"Helvetica Neue",Arial,STHeiti,"Microsoft YaHei",sans-serif,Helvetica,DroidSansFallback,FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3"}a,a:active,a:hover,a:link,a:visited{text-decoration:none}
