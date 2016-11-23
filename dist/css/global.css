@@ -1,1 +1,12 @@
-body{min-width:1210px;font-size:13px;background:url(../images/backbody.png) round;font-family:"Helvetica Neue",Arial,STHeiti,"Microsoft YaHei",sans-serif,Helvetica,DroidSansFallback,FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3"}a,a:active,a:hover,a:link,a:visited{text-decoration:none}
+body {
+    min-width: 1210px;
+    font-size: 13px;
+    background: url(../images/backbody.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Helvetica Neue", Arial, STHeiti, "Microsoft YaHei", sans-serif, Helvetica, DroidSansFallback, FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3";
+}
+
+a, a:active, a:hover, a:link, a:visited {
+    text-decoration: none
+}
