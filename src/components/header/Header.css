@@ -9,4 +9,28 @@
     width: 1141px;
     margin: 0 auto;
     margin-top: -22px;
+    font-size: 15px;
+    color: #fff;
+    display: table;
+}
+
+.header-date {
+    display: table-cell;
+    padding: 5px 52px;
+}
+
+.header-right {
+    display: table-cell;
+    text-align: center;
+}
+.header-right--split{
+    border-left: 1px solid #fff
+}
+.header-right--btn {
+    padding: 0 10px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Helvetica Neue", Arial, STHeiti, "Microsoft YaHei", sans-serif, Helvetica, DroidSansFallback, FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3";
 }
