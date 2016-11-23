@@ -56,7 +56,7 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/,
-                loader: 'url?limit=8024&name=images/[name].[ext]'
+                loader: 'url-loader?limit=10000&name=images/[name].[ext]'
             },
             {
                 test: /\.(woff2?|otf|eot|svg|ttf)$/i,
