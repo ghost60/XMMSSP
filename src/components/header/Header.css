@@ -4,7 +4,7 @@
 }
 
 .header-bg2 {
-    background-image: url(/images/header2.png);
+    background-image: url(../../images/header2.png);
     height: 49px;
     width: 1141px;
     margin: 0 auto;
@@ -27,6 +27,7 @@
     border-left: 1px solid #fff
 }
 .header-right--btn {
+    cursor: pointer;
     padding: 0 10px;
     background-color: transparent;
     border: none;

@@ -27,18 +27,30 @@ export class TabsPanel1 extends React.Component {
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
-        $.when($.post("http://localhost:3000/forcast", { type: "haiqu", name: this.mapCfg[i]['title'] })).done(function (data) {
-            console.log(data)
-            this.setState({
-                title: this.mapCfg[i]['title'],
-                pubTime: data.pubTime,
-                forcastInfo: data.forcastInfo,
-                lgInfo: data.lgInfo,
-                waterTemp: data.waterTemp
-            })
-        }.bind(this)).fail(function (data) {
-            alert("连接失败，轻检查网络或向管理员报告")
-        })
+        ajax({
+            type: "post",
+            url: "http://localhost:3000/forcast", //添加自己的接口链接
+            timeOut: 5000,
+            data: { type: "haiqu", name: this.mapCfg[i]['title'] },
+            before: function () {
+                console.log("before");
+            },
+            success: function (data) {
+                var data = JSON.parse(data)
+                console.log(data)
+                this.setState({
+                    title: this.mapCfg[i]['title'],
+                    pubTime: data.pubTime,
+                    forcastInfo: data.forcastInfo,
+                    lgInfo: data.lgInfo,
+                    waterTemp: data.waterTemp
+                })
+            }.bind(this),
+            error: function () {
+                console.log("error");
+            }
+        });
+      
     }
     render() {
 
@@ -95,20 +107,29 @@ export class TabsPanel2 extends React.Component {
 
     }
     handlerMapCilck(i) {
-
-        $.when($.post("http://localhost:3000/forcast", { type: "chaoxi", name: this.mapCfg[i]['title'] })).done(function (data) {
-            console.log(data)
-            var forcastTime = [data[0]["month"] + "/" + data[0]["day"], data[1]["month"] + "/" + data[1]["day"]]
-            this.setState({
-                title: this.mapCfg[i]['title'],
-                forcastTime: forcastTime,
-                data: [data[0]["data"], data[1]["data"]],
-            })
-            console.log("mapClick")
-            this.handlerDatePickerClick(0)
-        }.bind(this)).fail(function (data) {
-            alert("连接失败，轻检查网络或向管理员报告")
-        })
+        ajax({
+            type: "post",
+            url: "http://localhost:3000/forcast", //添加自己的接口链接
+            timeOut: 5000,
+            data: { type: "chaoxi", name: this.mapCfg[i]['title'] },
+            before: function () {
+                console.log("before");
+            },
+            success: function (data) {
+                var data = JSON.parse(data)
+                var forcastTime = [data[0]["month"] + "/" + data[0]["day"], data[1]["month"] + "/" + data[1]["day"]]
+                this.setState({
+                    title: this.mapCfg[i]['title'],
+                    forcastTime: forcastTime,
+                    data: [data[0]["data"], data[1]["data"]],
+                })
+                this.handlerDatePickerClick(0)
+            }.bind(this),
+            error: function () {
+                console.log("error");
+            }
+        });
+       
     }
     handlerDatePickerClick(i) {
         console.log("datePicker")
@@ -143,8 +164,7 @@ export class TabsPanel2 extends React.Component {
                                     )
                                 })
                             }
-                            {/*   <div onClick={this.handlerDatePickerClick.bind(this, 0)} className="tab-panel--datePicker  tab-panel--datePicker__active">{this.state.forcastTime[0]}</div>
-                            <div onClick={this.handlerDatePickerClick.bind(this, 1)} className="tab-panel--datePicker ">{this.state.forcastTime[1]}</div>*/}
+                           
                         </div>
                         <LineChart config={{
                             "series": this.state.chartData, xAxis: {
@@ -183,17 +203,29 @@ export class TabsPanel3 extends React.Component {
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
-        $.when($.post("http://localhost:3000/forcast", { type: "xmhaiyu", name: this.mapCfg[i]['title'] })).done(function (data) {
-            console.log(data)
-            this.setState({
-                title: this.mapCfg[i]['title'],
-                pubTime: data.pubTime,
-                forcastInfo: data.forcastInfo,
-                lgInfo: data.lgInfo,
-            })
-        }.bind(this)).fail(function (data) {
-            alert("连接失败，轻检查网络或向管理员报告")
-        })
+        ajax({
+            type: "post",
+            url: "http://localhost:3000/forcast", //添加自己的接口链接
+            timeOut: 5000,
+            data: { type: "xmhaiyu", name: this.mapCfg[i]['title'] },
+            before: function () {
+                console.log("before");
+            },
+            success: function (data) {
+                var data = JSON.parse(data)
+                console.log(data)
+                this.setState({
+                    title: this.mapCfg[i]['title'],
+                    pubTime: data.pubTime,
+                    forcastInfo: data.forcastInfo,
+                    lgInfo: data.lgInfo,
+                })
+            }.bind(this),
+            error: function () {
+                console.log("error");
+            }
+        });
+       
     }
     render() {
 
@@ -251,22 +283,34 @@ export class TabsPanel4 extends React.Component {
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
-        $.when($.post("http://localhost:3000/forcast", { type: "yuchang", name: this.mapCfg[i]['title'] })).done(function (data) {
-            console.log(data)
-            this.setState({
-                title: this.mapCfg[i]['title'],
-                pubTime: data.pubTime,
-                forcastInfo: data.forcastInfo,
-                lgInfo: data.lgInfo,
-                waterTemp: data.waterTemp,
-                "dysyd": data.dysyd,
-                "zjdysj": data.zjdysj,
-                "stylzs": data.stylzs,
-                "jsymsd": data.jsymsd
-            })
-        }.bind(this)).fail(function (data) {
-            alert("连接失败，轻检查网络或向管理员报告")
-        })
+        ajax({
+            type: "post",
+            url: "http://localhost:3000/forcast", //添加自己的接口链接
+            timeOut: 5000,
+            data: { type: "yuchang", name: this.mapCfg[i]['title'] },
+            before: function () {
+                console.log("before");
+            },
+            success: function (data) {
+                var data = JSON.parse(data)
+                console.log(data)
+                this.setState({
+                    title: this.mapCfg[i]['title'],
+                    pubTime: data.pubTime,
+                    forcastInfo: data.forcastInfo,
+                    lgInfo: data.lgInfo,
+                    waterTemp: data.waterTemp,
+                    "dysyd": data.dysyd,
+                    "zjdysj": data.zjdysj,
+                    "stylzs": data.stylzs,
+                    "jsymsd": data.jsymsd
+                })
+            }.bind(this),
+            error: function () {
+                console.log("error");
+            }
+        });
+      
     }
     render() {
 

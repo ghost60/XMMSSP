@@ -8,7 +8,7 @@ class Title extends React.Component{
   render() {
       const backimg=this.props.backimg;
       const backurl='url('+backimg+') no-repeat';
-      return  <div className="title_body" style={{background:backurl}}>
+      return  <div className="title_body" style={{background:backurl,marginTop:10}}>
                 <span>{this.props.text}</span>
               </div>
       }
