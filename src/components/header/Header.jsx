@@ -15,7 +15,7 @@ export default class Header extends React.Component {
 
         ajax({
             type: "get",
-            url: "http://localhost:3000/getLunarInfo", //添加自己的接口链接
+            url: "http://chukui0202.xicp.net/getLunarInfo", //添加自己的接口链接
             timeOut: 5000,
             before: function () {
                 console.log("before");
