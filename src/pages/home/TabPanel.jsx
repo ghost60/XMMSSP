@@ -29,7 +29,7 @@ export class TabsPanel1 extends React.Component {
     handlerMapCilck(i) {
         ajax({
             type: "post",
-            url: "http://localhost:3000/forcast", //添加自己的接口链接
+            url: "http://chukui0202.xicp.net/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "haiqu", name: this.mapCfg[i]['title'] },
             before: function () {
@@ -109,7 +109,7 @@ export class TabsPanel2 extends React.Component {
     handlerMapCilck(i) {
         ajax({
             type: "post",
-            url: "http://localhost:3000/forcast", //添加自己的接口链接
+            url: "http://chukui0202.xicp.net/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "chaoxi", name: this.mapCfg[i]['title'] },
             before: function () {
@@ -205,7 +205,7 @@ export class TabsPanel3 extends React.Component {
     handlerMapCilck(i) {
         ajax({
             type: "post",
-            url: "http://localhost:3000/forcast", //添加自己的接口链接
+            url: "http://chukui0202.xicp.net/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "xmhaiyu", name: this.mapCfg[i]['title'] },
             before: function () {
@@ -285,7 +285,7 @@ export class TabsPanel4 extends React.Component {
     handlerMapCilck(i) {
         ajax({
             type: "post",
-            url: "http://localhost:3000/forcast", //添加自己的接口链接
+            url: "http://chukui0202.xicp.net/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "yuchang", name: this.mapCfg[i]['title'] },
             before: function () {

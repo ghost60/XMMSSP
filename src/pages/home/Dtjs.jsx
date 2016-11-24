@@ -13,7 +13,7 @@ export default class Dtjs extends React.Component {
         }
          ajax({
             type: "post",
-            url: "http://localhost:3000/dtjs", //添加自己的接口链接
+            url: "http://chukui0202.xicp.net/dtjs", //添加自己的接口链接
             timeOut: 5000,
             before: function () {
                 console.log("before");

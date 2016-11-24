@@ -9,10 +9,7 @@ class dwgk extends React.Component{
   render() {
       if (true) {}
       return  <div>
-              <Col width={[1,6]} style={{marginTop:30}}>
-                <Aside id={1} parent={"dwgk"}/>
-              </Col>
-              <Col width={[5,6]}>
+              <Col >
                 {this.props.children}
               </Col>
               </div>

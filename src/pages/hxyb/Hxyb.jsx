@@ -3,7 +3,7 @@ import React from 'react';
 import {Col} from '../../components/grid/Grid';
 import Session from '../../components/session/Session';
 
-class hyyb extends React.Component{
+class hxyb extends React.Component{
   constructor(props) {
       super(props);
       this.state=({name:'',link:''});
@@ -16,4 +16,4 @@ class hyyb extends React.Component{
               </Col>
       }
 };
-export default hyyb;
+export default hxyb;
