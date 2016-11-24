@@ -3,8 +3,8 @@ import './Tabs.css'
 
 //tab主体
 class Tabs extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             currentIndex: 0
         }
@@ -17,15 +17,15 @@ class Tabs extends React.Component {
     getControlTabClass(index) {
         return this.state.currentIndex === index ? "tab-li tab-li__active" : "tab-li";
     }
-    getControlTabImg(index,element) {
+    getControlTabImg(index, element) {
         return this.state.currentIndex === index ? element.props.imgSrc + "_on.png" : element.props.imgSrc + "_off.png";
     }
     getPanelClass(index) {
         return this.state.currentIndex === index ? "tab-panel tab-panel__active tab-panel__in" : "tab-panel";
     }
-    setImg(index,element) {
-        if(element.props.imgSrc){
-          return <img src={this.getControlTabImg(index,element)} style={{"height":"20px"}}/>
+    setImg(index, element) {
+        if (element.props.imgSrc) {
+            return <img src={this.getControlTabImg(index, element)} style={{ "height": "20px" }} />
         }
     }
     render() {
@@ -36,7 +36,7 @@ class Tabs extends React.Component {
                     {
                         React.Children.map(this.props.children, (element, index) => {
                             return <li className={this.getControlTabClass(index)} id={index}>
-                                {this.setImg(index,element)}
+                                {this.setImg(index, element)}
                                 {element.props.name}
                             </li>
                         })
@@ -55,4 +55,16 @@ class Tabs extends React.Component {
     }
 }
 
+export class TabContent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                {this.props.children}
+            </div>
+        )
+    }
+}
 export default Tabs;

@@ -6,25 +6,18 @@ var nav_li = [];
 class Nav extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
-            currentIndex:-1,
-            childUlClass:"nav-child--ul"
+        this.state = {
+            currentIndex: -1,
+            childUlClass: "nav-child--ul"
         }
+    }
+    removeCurrentIndex() {
+        this.setState({ currentIndex: -1 })
+    }
+    componentWillMount1() {
+        debugger
         var navlist = this.props.navlist;
         var key_num = -1;
-       
-       
-    }
-    getChildUlClass(index) {
-        return this.state.currentIndex === index ? "nav-child--ul ul-active":"nav-child--ul"
-    } 
-    setCurrentIndex(index) {
-        this.setState({currentIndex:index})
-    }
-    render() {
-        var navlist = this.props.navlist;
-        var key_num = -1;
-        var nav_li = [];
         for (var key in navlist) {
             key_num++;
             var child_li = [];
@@ -36,7 +29,7 @@ class Nav extends React.Component {
                 child_ul = <ul className={this.getChildUlClass(key_num)}>{child_li}</ul>;
             }
             if (key_num === 0) {
-                nav_li.push(<div className="nav_li" onMouseLeave={this.setState({currentIndex:-1})} onMouseEnter={this.setCurrentIndex.bind(this,key_num)} key={key_num}>
+                nav_li.push(<div className="nav_li" key={key_num}>
                     <span>
                         <IndexLink to="/" activeClassName="active">
                             {navlist[key].name}
@@ -46,15 +39,13 @@ class Nav extends React.Component {
                 </div>)
             }
             else {
-
-                nav_li.push(<div className="nav_li"  onMouseLeave={this.setState({currentIndex:-1})} onMouseEnter={this.setCurrentIndex.bind(this,key_num)} key={key_num}>
+                nav_li.push(<div className="nav_li" onMouseLeave={this.removeCurrentIndex.bind(this)} onMouseEnter={this.setCurrentIndex.bind(this, key_num)} key={key_num}>
                     <span>
                         {
                             child_li.length > 0 ? (<a>{navlist[key].name}</a>) : (<Link to={key} activeClassName="active">
-                                    {navlist[key].name}
-                                </Link>)
+                                {navlist[key].name}
+                            </Link>)
                         }
-
                     </span>
                     {child_ul}
                 </div>)
@@ -62,10 +53,69 @@ class Nav extends React.Component {
             child_li = null;
             child_ul = null;
         }
-        return <div className="nav_body">{nav_li}</div>
+    }
+    renderTemple() {
+        nav_li.length = 0;
+        var navlist = this.props.navlist;
+        var key_num = -1;
+        for (var item_key in navlist) {
+            key_num++;
+            var child_li = [];
+            var child_ul;
+            var child_li_key = 0;
+            for (var child_key in navlist[item_key].children) {
+                child_li.push(<li key={child_li_key}><Link to={child_key}>{navlist[item_key].children[child_key].name}</Link></li>)
+                child_li_key++;
+            }
+            if (child_li.length > 0) {
+                child_ul = <ul className={this.getChildUlClass(key_num)}>{child_li}</ul>;
+            }
+            if (key_num === 0) {
+                nav_li.push(<div key={item_key} className="nav_li" >
+                    <span>
+                        <IndexLink to="/" activeClassName="active">
+                            {navlist[item_key].name}
+                        </IndexLink>
+                    </span>
+                    {child_ul}
+                </div>)
+            }
+            else {
+                nav_li.push(<div key={item_key} className="nav_li" onMouseLeave={this.removeCurrentIndex.bind(this)} onMouseEnter={this.setCurrentIndex.bind(this, key_num)}>
+                    <span >
+                        {
+                            child_li.length > 0 ? (<a>{navlist[item_key].name}</a>) : (<Link to={item_key} activeClassName="active">
+                                {navlist[item_key].name}
+                            </Link>)
+                        }
+                    </span>
+                    {child_ul}
+                </div>)
+            }
+            child_li = null;
+            child_ul = null;
+        }
+        return nav_li
+    }
+    getChildUlClass(index) {
+        return this.state.currentIndex === index ? "nav-child--ul ul-active" : "nav-child--ul"
+    }
+    setCurrentIndex(index) {
+        this.setState({ currentIndex: index })
+    }
+    render() {
+        return <div className="nav_body">{this.renderTemple()}</div>
     };
 }
 export default Nav;
+/*
+onMouseLeave={this.removeCurrentIndex.bind(this)} onMouseEnter={this.setCurrentIndex.bind(this, key_num)}
+
+
+
+*/
+
+
   // <Link to={key} activeClassName="active">
                         //     {navlist[key].name}
                         // </Link>

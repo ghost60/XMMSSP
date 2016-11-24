@@ -4,7 +4,7 @@ import React from 'react';
 import Slider from '../../components/slider/Slider';
 import Card from '../../components/card/Card';
 import Panel from '../../components/panel/Panel';
-import Tabs from '../../components/tabs/Tabs';
+import Tabs,{TabContent} from '../../components/tabs/Tabs';
 import { TabsPanel1, TabsPanel2, TabsPanel3, TabsPanel4 } from './TabPanel';
 import Dtjs from './Dtjs.jsx'
 import Hykp from './Hykp'
@@ -62,14 +62,14 @@ class home extends React.Component {
                     <Row>
                     <Col>
                      <Tabs>
-                        <div name="海区预报" imgSrc="./images/icon1">
+                        <TabContent name="海区预报" imgSrc="./images/icon1">
                           <TabsPanel1 />
-                        </div>
-                        <div name="潮汐预报" imgSrc="./images/icon2">
+                        </TabContent>
+                        <TabContent name="潮汐预报" imgSrc="./images/icon2">
                           <TabsPanel2 />
-                        </div>
-                        <div name="厦门海域预报" imgSrc="./images/icon3"><TabsPanel3 /></div>
-                        <div name="浴场度假区预报" imgSrc="./images/icon4"><TabsPanel4 /></div>
+                        </TabContent>
+                        <TabContent name="厦门海域预报" imgSrc="./images/icon3"><TabsPanel3 /></TabContent>
+                        <TabContent name="浴场度假区预报" imgSrc="./images/icon4"><TabsPanel4 /></TabContent>
                     </Tabs>
                     </Col>
                     </Row>
