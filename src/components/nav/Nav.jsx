@@ -2,13 +2,24 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import './Nav.scss';
-
+var nav_li = [];
 class Nav extends React.Component {
     constructor(props) {
         super(props);
+        this.state={
+            currentIndex:-1,
+            childUlClass:"nav-child--ul"
+        }
+        var navlist = this.props.navlist;
+        var key_num = -1;
+       
+       
     }
-    getChildLi() {
-
+    getChildUlClass(index) {
+        return this.state.currentIndex === index ? "nav-child--ul ul-active":"nav-child--ul"
+    } 
+    setCurrentIndex(index) {
+        this.setState({currentIndex:index})
     }
     render() {
         var navlist = this.props.navlist;
@@ -22,10 +33,10 @@ class Nav extends React.Component {
                 child_li.push(<li><Link to={child_key}>{navlist[key].children[child_key].name}</Link></li>)
             }
             if (child_li.length > 0) {
-                child_ul = <ul className="nav-child--ul">{child_li}</ul>;
+                child_ul = <ul className={this.getChildUlClass(key_num)}>{child_li}</ul>;
             }
             if (key_num === 0) {
-                nav_li.push(<div className="nav_li" key={key_num}>
+                nav_li.push(<div className="nav_li" onMouseLeave={this.setState({currentIndex:-1})} onMouseEnter={this.setCurrentIndex.bind(this,key_num)} key={key_num}>
                     <span>
                         <IndexLink to="/" activeClassName="active">
                             {navlist[key].name}
@@ -36,7 +47,7 @@ class Nav extends React.Component {
             }
             else {
 
-                nav_li.push(<div className="nav_li" key={key_num}>
+                nav_li.push(<div className="nav_li"  onMouseLeave={this.setState({currentIndex:-1})} onMouseEnter={this.setCurrentIndex.bind(this,key_num)} key={key_num}>
                     <span>
                         {
                             child_li.length > 0 ? (<a>{navlist[key].name}</a>) : (<Link to={key} activeClassName="active">
