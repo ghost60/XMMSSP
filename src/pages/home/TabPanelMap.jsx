@@ -4,9 +4,19 @@ import './TabPanelMap.css';
 class TabPanelMap extends React.Component {
     constructor(props) {
         super(props)
-
+        this.state={
+            currentIndex:-1,
+            mapPointClass:"map-pt"
+        }
+    }
+    getMapPointClass(index){
+        return this.state.currentIndex === index ? "map-pt map-pt__active":"map-pt"
+    }
+    removeMapPointClass(){
+        this.setState({currentIndex:-1})
     }
     handlerMapClick(index){
+        this.setState({currentIndex:index})
         this.props.clickCall(index)
     }
     render() {
@@ -19,7 +29,7 @@ class TabPanelMap extends React.Component {
                     <div>
                         {
                             this.props.points.map(function (item, index) {
-                                return (<div id={index} onClick={this.handlerMapClick.bind(this,index)} key={index} className="map-pt" style={{ left: item.x, top: item.y }}>{item.title}</div>)
+                                return (<div id={index} onClick={this.handlerMapClick.bind(this,index)} key={index} className={this.getMapPointClass(index)} style={{ left: item.x, top: item.y }}>{item.title}</div>)
                             }.bind(this))
                         }
                     </div>
