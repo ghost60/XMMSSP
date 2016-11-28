@@ -12,7 +12,6 @@ import home from '../pages/home/Home';
 import Footer from '../pages/footer/Footer';
 
 import dwgk from '../pages/dwgk/Dwgk';
-import dwgksession from '../pages/dwgk/DwgkSession';
 
 import hyfw from '../pages/hyfw/Hyfw';
 import hyfwsession from '../pages/hyfw/HyfwSession';
@@ -23,7 +22,6 @@ import hygcsession from '../pages/hygc/HygcSession';
 import gzdt from '../pages/gzdt/Gzdt';
 
 import hyjc from '../pages/hyjc/Hyjc';
-import hyjcsession from '../pages/hyjc/HyjcSession';
 
 import hyyb from '../pages/hyyb/Hyyb';
 import hyybsession from '../pages/hyyb/HyybSession';
@@ -65,16 +63,12 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute path="" component={home} />
 
-      <Route path="dwgk" component={dwgk}>
-        <Route path="dwgksession/:id" component={dwgksession} />
-        <IndexRoute path="" component={dwgksession} />
-      </Route>
+      <Route path="dwgk/:id" component={dwgk} />
 
-      <Route path="gzdt" component={gzdt}>
-      </Route>
+      <Route path="gzdt" component={gzdt} />
 
-      <Route path="hyyb" component={hyyb}>
-        <Route path="hyybsession/:id" component={hyybsession} />
+      <Route path="hyyb/:id" component={hyyb}>
+        <Route path="hyybsession/:cid" component={hyybsession} />
         <IndexRoute path="" component={hyybsession} />
       </Route>
 
@@ -83,15 +77,12 @@ ReactDOM.render((
         <IndexRoute path="" component={hxybsession} />
       </Route>
 
-      <Route path="szyb" component={szyb}>
+      <Route path="szyb/:id" component={szyb}>
         <Route path="szybsession/:id" component={szybsession} />
         <IndexRoute path="" component={szybsession} />
       </Route>
 
-      <Route path="hyjc" component={hyjc}>
-        <Route path="hyjcsession/:id" component={hyjcsession} />
-        <IndexRoute path="" component={hyjcsession} />
-      </Route>
+      <Route path="hyjc/:id" component={hyjc} />
 
       <Route path="hygc" component={hygc}>
         <Route path="hygcsession/:id" component={hygcsession} />

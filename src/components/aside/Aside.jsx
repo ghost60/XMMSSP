@@ -3,35 +3,39 @@ import React from 'react';
 import { Link } from 'react-router'
 import * as menudata from '../../pages/menudata/menudata';
 import './Aside.scss';
-var list_item = [];
+
 class aside extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { list: [] };
+        this.state={name:'',list_item:[]};
     }
-    componentWillMount() {
-        var product = menudata.navlist[this.props.link];
-        this.setState({ list: product.children, name: product.name });
-        var list = this.state.list;
-
-        var key_num = -1;
-        for (var key in list) {
-            key_num++;
+    updateaside(tprops){
+        var list_item=[];
+        var product = menudata.navlist[tprops.parent];
+        var list=product.children[tprops.link].list;
+        var name=product.children[tprops.link].name;
+        list.map((li,i)=>{
             list_item.push(
-                <span className="aside_li" key={key_num}>
-                    <Link to={this.props.link + '/' + this.props.link + 'session/' + key} activeClassName="active" key={key_num}>
-                        {list[key][name]}
+                <span className="aside_li" key={i}>
+                    <Link to={tprops.parent + '/' + tprops.link + '/' + tprops.parent + 'session/' + li.ename} activeClassName="active" key={i}>
+                        {li.name}
                     </Link>
                 </span>
             )
-        }
+        })
+        this.setState({name:name,list_item:list_item});
+    }
+    componentWillMount() {
+        this.updateaside(this.props);
+    }
+    componentWillReceiveProps(nextProps) {
+        this.updateaside(nextProps);
     }
     render() {
-
         return <div>
             <div className="aside_title">{this.state.name}</div>
             <div className="aside_list">
-                {list_item}
+                {this.state.list_item}
             </div>
         </div>
     }

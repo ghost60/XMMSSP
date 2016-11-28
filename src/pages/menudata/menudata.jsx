@@ -140,13 +140,13 @@
 //       name: "海洋服务",
 //       children: []
 //     }
-//   }, 
+//   },
 //   {
 //     yjya: {
 //       name: "应急预案",
 //       children: []
 //     }
-//   }, 
+//   },
 //   {
 //     hykp: {
 //       name: "海洋科普",
@@ -164,7 +164,7 @@ export const navlist = {
   },
   dwgk: {
     name: "单位概况",
-    children: 
+    children:
       {
         dwjs: {
           name: "单位介绍",
@@ -190,7 +190,7 @@ export const navlist = {
   },
   hygc: {
     name: "海洋观测",
-    children: 
+    children:
       {
         hlgc: { name: "海浪观测", children: {} },
         cxgc: { name: "潮汐观测", children: {} },
@@ -199,16 +199,16 @@ export const navlist = {
   },
   hyyb: {
     name: "海洋预报",
-    children: 
+    children:
       {
-        rcyb: { name: "日常预报", children: {} },
-        szyb: { name: "数值预报", children: {} },
-        hxyb: { name: "航线预报", children: {} }
+        rcyb: { name: "日常预报", list:[{ename:'hlsw',name:'海浪水温预报'},{ename:'hlyb',name:'海浪预报图'},{ename:'cxyb',name:'潮汐预报'},{ename:'qzhy',name:'泉州海洋预报'},{ename:'xmhy',name:'厦门海洋预报'},{ename:'bhly',name:'滨海旅游区预报'}]},
+        szyb: { name: "数值预报", list:[{ename:'aa',name:'aa'}]},
+        hxyb: { name: "航线预报", list:[]}
       }
   },
   hyjc: {
     name: "海洋监测",
-    children: 
+    children:
       {
         jcjs: { name: "监测介绍", children: {} },
         gjkh: { name: "各级考核", children: {} },

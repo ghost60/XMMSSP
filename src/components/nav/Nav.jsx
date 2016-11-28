@@ -14,46 +14,6 @@ class Nav extends React.Component {
     removeCurrentIndex() {
         this.setState({ currentIndex: -1 })
     }
-    componentWillMount1() {
-        debugger
-        var navlist = this.props.navlist;
-        var key_num = -1;
-        for (var key in navlist) {
-            key_num++;
-            var child_li = [];
-            var child_ul;
-            for (var child_key in navlist[key].children) {
-                child_li.push(<li><Link to={child_key}>{navlist[key].children[child_key].name}</Link></li>)
-            }
-            if (child_li.length > 0) {
-                child_ul = <ul className={this.getChildUlClass(key_num)}>{child_li}</ul>;
-            }
-            if (key_num === 0) {
-                nav_li.push(<div className="nav_li" key={key_num}>
-                    <span>
-                        <IndexLink to="/" activeClassName="active">
-                            {navlist[key].name}
-                        </IndexLink>
-                    </span>
-                    {child_ul}
-                </div>)
-            }
-            else {
-                nav_li.push(<div className="nav_li" onMouseLeave={this.removeCurrentIndex.bind(this)} onMouseEnter={this.setCurrentIndex.bind(this, key_num)} key={key_num}>
-                    <span>
-                        {
-                            child_li.length > 0 ? (<a>{navlist[key].name}</a>) : (<Link to={key} activeClassName="active">
-                                {navlist[key].name}
-                            </Link>)
-                        }
-                    </span>
-                    {child_ul}
-                </div>)
-            }
-            child_li = null;
-            child_ul = null;
-        }
-    }
     renderTemple() {
         nav_li.length = 0;
         var navlist = this.props.navlist;
@@ -64,7 +24,7 @@ class Nav extends React.Component {
             var child_ul;
             var child_li_key = 0;
             for (var child_key in navlist[item_key].children) {
-                child_li.push(<li key={child_li_key}><Link to={child_key}>{navlist[item_key].children[child_key].name}</Link></li>)
+                child_li.push(<li key={child_li_key}><Link to={item_key+'/'+child_key}>{navlist[item_key].children[child_key].name}</Link></li>)
                 child_li_key++;
             }
             if (child_li.length > 0) {

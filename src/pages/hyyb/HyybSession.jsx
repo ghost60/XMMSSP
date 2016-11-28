@@ -2,52 +2,45 @@ import React from 'react';
 import {Row,Col} from 'react-bootstrap';
 import LineChart from '../../components/highcharts/LineChart';
 import Session from '../../components/session/Session';
-// import './DwgkSession.scss';
+import * as menudata from '../../pages/menudata/menudata';
 
 class Hyybsession extends React.Component{
   constructor(props) {
       super(props);
-      // this.state={name:'',data:''};
+      this.state={data:''};
+      debugger
   }
   componentDidMount(){
-      // $.ajax({
-      //     url: './data/dwgk.json',
-      //     dataType: 'json',
-      //     type: 'get',
-      //     async: true,
-      //     success: function(data) {
-      //       cdata=data;
-      //       if (!this.props.params.id) {
-      //         this.setState({name:data[0]["name"],data:data[0]});
-      //       }
-      //       for (var i = 0; i < data.length; i++) {
-      //           if (data[i]["name"]==this.props.params.id) {
-      //             this.setState({name:'',data:data[i]});
-      //             break;
-      //           }
-      //       }
-      //     }.bind(this),
-      //     error: function(xhr, status, err) {
-      //         console.error(this.props.url, status, err.toString());
-      //     }.bind(this)
-      // });
+    debugger
+    var rood = menudata.navlist.hyyb.children[this.props.params.id];
+    var tname='';
+    for (var i = rood.list.length - 1; i >= 0; i--) {
+      if(rood.list[i].ename==this.props.params.cid){
+        tname=rood.list[i].name;
+        break;
+      }
+    }
+    this.setState({sname:rood.name,tname:tname});
   }
   componentWillReceiveProps(nextProps) {
-    // if(cdata=='')return;
-    // for (var i = 0; i < cdata.length; i++) {
-    //     if (cdata[i]["name"]==this.props.params.id) {
-    //       this.setState({data:cdata[i],name:this.props.params.id});
-    //       break;
-    //     }
-    //   }
+    debugger
+    var rood = menudata.navlist.hyyb.children[this.props.params.id];
+    var tname='';
+    for (var i = rood.list.length - 1; i >= 0; i--) {
+      if(rood.list[i].ename==this.props.params.cid){
+        tname=rood.list[i].name;
+        break;
+      }
+    }
+    this.setState({sname:rood.name,tname:tname});
   }
   render() {
-      // var content = '';
-      // if (this.state.data.type=="text") {
-      //   content=<div>{this.state.data.content}</div>;
-      // }
-      return  <Session name="图表">
-                <LineChart />
+    var content='';
+    if (this.state.tname=='航线预报') {
+
+    }
+      return  <Session name={`海洋预报/${this.state.sname}/${this.state.tname}`}>
+                {this.state.tname}
               </Session>
       }
 };
