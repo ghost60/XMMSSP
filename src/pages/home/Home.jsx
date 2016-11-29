@@ -45,6 +45,24 @@ class home extends React.Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount(){
+    $.ajax({
+            type: "get",
+            url: "http://168.192.19.124:8080/XMMSSP/getIndexImage", //添加自己的接口链接
+            timeOut: 5000,
+            before: function () {
+                console.log("before");
+            },
+            success: function (data) {
+                var data = JSON.parse(data)
+                console.log(data)
+                this.setState({})
+            }.bind(this),
+            error: function () {
+                console.log("error");
+            }
+        });
+  }
   render() {
       return  <Row style={{minHeight:"604px",marginTop:"20px"}}>
                 <Row>
@@ -52,7 +70,7 @@ class home extends React.Component {
                     <Slider items={IMAGE_DATA_2} speed={1.2} delay={2.1} pause={true} autoplay={true} dots={true} arrows={false} istext={true} height={"300px"}/>
                   </Col>
                   <Col width={[1,2]}>
-                    <Card title={'工作动态'} card_body={{marginTop:"48px"}} icon_url={require('./images/gzdt_icon.png')} more_img={require('./images/more.png')} card_title={{background:"#4b9bd7",height:"32px",lineHeight:"32px"}}>
+                    <Card title={'工作动态'} card_body={{marginTop:"12px"}} card_content={{minHeight:"267px"}} icon_url={require('./images/gzdt_icon.png')} more_img={require('./images/more.png')} card_title={{background:"#4b9bd7",height:"32px",lineHeight:"32px"}}>
                       <GZDTList />
                     </Card>
                   </Col>

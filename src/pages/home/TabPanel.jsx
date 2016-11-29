@@ -27,7 +27,7 @@ export class TabsPanel1 extends React.Component {
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
-        ajax({
+        $.ajax({
             type: "post",
             url: "http://chukui0202.xicp.net/forcast", //添加自己的接口链接
             timeOut: 5000,
@@ -50,7 +50,6 @@ export class TabsPanel1 extends React.Component {
                 console.log("error");
             }
         });
-      
     }
     render() {
 
@@ -107,7 +106,7 @@ export class TabsPanel2 extends React.Component {
 
     }
     handlerMapCilck(i) {
-        ajax({
+        $.ajax({
             type: "post",
             url: "http://chukui0202.xicp.net/forcast", //添加自己的接口链接
             timeOut: 5000,
@@ -129,7 +128,6 @@ export class TabsPanel2 extends React.Component {
                 console.log("error");
             }
         });
-       
     }
     handlerDatePickerClick(i) {
         console.log("datePicker")
@@ -164,7 +162,6 @@ export class TabsPanel2 extends React.Component {
                                     )
                                 })
                             }
-                           
                         </div>
                         <LineChart config={{
                             "series": this.state.chartData, xAxis: {
@@ -203,7 +200,7 @@ export class TabsPanel3 extends React.Component {
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
-        ajax({
+        $.ajax({
             type: "post",
             url: "http://chukui0202.xicp.net/forcast", //添加自己的接口链接
             timeOut: 5000,
@@ -225,7 +222,6 @@ export class TabsPanel3 extends React.Component {
                 console.log("error");
             }
         });
-       
     }
     render() {
 
@@ -283,7 +279,7 @@ export class TabsPanel4 extends React.Component {
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
-        ajax({
+        $.ajax({
             type: "post",
             url: "http://chukui0202.xicp.net/forcast", //添加自己的接口链接
             timeOut: 5000,
@@ -310,7 +306,6 @@ export class TabsPanel4 extends React.Component {
                 console.log("error");
             }
         });
-      
     }
     render() {
 

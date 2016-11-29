@@ -13,7 +13,7 @@ export default class Header extends React.Component {
             lunarDayName: ""
         }
 
-        ajax({
+        $.ajax({
             type: "get",
             url: "http://chukui0202.xicp.net/getLunarInfo", //添加自己的接口链接
             timeOut: 5000,

@@ -15,6 +15,10 @@
     font-weight: bold;
     width: 248px;
     display: inline-block;
+    &:hover{
+        color: #e64f3c;
+        cursor: pointer;
+    }
 }
 .yjbd_time{
     color: #797979;

@@ -10,6 +10,11 @@
     -o-text-overflow: ellipsis;
     overflow: hidden;
     width: 360px;
+    vertical-align: bottom;
+    &:hover{
+        color: #e64f3c;
+        cursor: pointer;
+    }
 }
 .gzdt_time{
     color: #797979;

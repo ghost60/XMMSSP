@@ -1,0 +1,60 @@
+.admin{
+    float: left;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 50px;
+    min-height: 600px;
+}
+.admin-title{
+    background: #1ea0ff;
+    color: #fff;
+    font-size: 24px;
+    border-radius: 8px 8px 0 0;
+    padding: 10px;
+}
+.navlist{
+    background: #fff;
+    font-size: 15px;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+.navli{
+	padding: 6px 0;
+	border-left: 1px solid #c7c5c5;
+	border-right: 1px solid #c7c5c5;
+	border-top: 1px solid #c7c5c5;
+    &:last-child{
+    	border-bottom: 1px solid #c7c5c5;
+    	border-radius: 0 0 6px 6px;
+    }
+    &:first-child{
+	    border-radius: 6px 6px 0 0;
+    }
+    &:hover{
+    	cursor: pointer;
+    }
+}
+.form-group{
+	padding:10px;
+	lable{
+		padding-right:10px;
+	}
+	input{
+	    border: 1px solid #c7c7c7;
+	    padding: 5px;
+	    border-radius: 6px;
+        width: 250px;
+	}
+	.submit{
+	    width: 60px;
+	    background: #2db7f5;
+	    color: #fff;
+	    border: none;
+	    height: 30px;
+	    font-size: 15px;
+	    margin-left: 250px;
+	    cursor: pointer;
+	}
+}

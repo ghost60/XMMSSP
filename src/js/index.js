@@ -36,25 +36,26 @@ import * as menudata from '../pages/menudata/menudata';
 
 class App extends React.Component {
   render() {
-    return <div> <Header /><Grid>
-      <Row>
-        <Col>
-          <Title backimg={'../images/titleback.png'} />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Nav navlist={menudata.navlist} />
-        </Col>
-      </Row>
-      <Row><div style={{height:20}}></div></Row>
-      <Row>
-        {this.props.children}
-      </Row>
-    </Grid></div>
+    return  <Grid>
+              <Row>
+                <Col>
+                  <Title backimg={'../images/titleback.png'} />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Nav navlist={menudata.navlist} />
+                </Col>
+              </Row>
+              <Row><div style={{height:20}}></div></Row>
+              <Row>
+                {this.props.children}
+              </Row>
+            </Grid>
   }
 };
 
+ReactDOM.render((<Header/>), document.getElementById('head'));
 ReactDOM.render((<Footer/>), document.getElementById('foot'));
 
 // 配置路由
@@ -96,5 +97,5 @@ ReactDOM.render((
 
     </Route>
   </Router>
-), document.getElementById('react-content'));
+), document.getElementById('content'));
 

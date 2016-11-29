@@ -11,7 +11,7 @@ export default class Dtjs extends React.Component {
             summary: {},
             newsLists: []
         }
-         ajax({
+         $.ajax({
             type: "post",
             url: "http://chukui0202.xicp.net/dtjs", //添加自己的接口链接
             timeOut: 5000,

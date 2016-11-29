@@ -8,6 +8,10 @@
     margin: 50px 85px;
     width: 114px;
     text-align: center;
+    &:hover{
+        background: #1ea0ff;
+        cursor: pointer;
+    }
 }
 .szybimg-li{
 	display:inline-block;
