@@ -91,7 +91,6 @@ class Upload extends React.Component{
           }.bind(this)
       });
   }
-  }
   querydata() {
     $.ajax({
           url: './data/gzdt.json',
