@@ -18,6 +18,7 @@ import home from '../pages/home/Home';
 import Footer from '../pages/footer/Footer';
 
 import dwgk from '../pages/dwgk/Dwgk';
+import dwgksession from '../pages/dwgk/DwgkSession';
 
 import hyfw from '../pages/hyfw/Hyfw';
 import hyfwsession from '../pages/hyfw/HyfwSession';
@@ -70,7 +71,10 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute path="" component={home} />
 
-      <Route path="dwgk" component={dwgk} />
+      <Route path="dwgk" component={dwgk}>
+        <Route path="dwgksession/:cid" component={dwgksession} />
+        <IndexRoute path="" component={dwgksession} />
+      </Route>
 
       <Route path="gzdt" component={gzdt} />
 
