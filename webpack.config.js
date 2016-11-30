@@ -91,8 +91,8 @@ module.exports = {
 	// devtool: isProduction()?null:'source-map',
 	devServer: {
 		contentBase: './dist',
-		host: 'localhost',
-		port: 8188, //端口
+		host: '0.0.0.0',
+		port: 80, //端口
 		inline: true,
 		hot: false,
 	}
