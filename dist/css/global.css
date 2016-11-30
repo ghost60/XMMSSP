@@ -4,7 +4,6 @@ body {
     background: url(../images/backbody.png);
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: "Helvetica Neue", Arial, STHeiti, "Microsoft YaHei", sans-serif, Helvetica, DroidSansFallback, FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3";
 }
 
 a, a:active, a:hover, a:link, a:visited {
