@@ -1,0 +1,45 @@
+.login-body{
+	padding:0;
+	margin:auto;
+	width:400px;
+	height:250px;
+	margin-top:100px;
+	box-shadow:0 0 10px #ccc;
+	border-radius:4px;
+	h1{
+		text-align:center;
+		padding-top:15px;
+	}
+}
+
+
+.login-info{
+	margin-top:25px;
+	margin-left:40px;
+
+	.login-name{
+		margin:auto;
+		width:200px;
+		line-height:25px;
+		margin-left:25px;
+	}
+	
+	.login-pwd{
+		margin:auto;
+		width:200px;
+		line-height:25px;
+		margin-left:27px;
+	}
+}
+
+
+.login-btn{
+	width:150px;
+	height:35px;
+	margin-top:30px;
+	margin-left:125px;
+	border:none;
+	background-color:#1EA0FF;
+	color:#fff;
+	cursor:pointer;
+}
