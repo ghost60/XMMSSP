@@ -10,6 +10,7 @@ class aside extends React.Component {
         this.state={name:'',list_item:[]};
     }
     updateaside(tprops){
+        debugger
         var list_item=[];
         var product = menudata.navlist[tprops.parent];
         var list=product.children[tprops.link].list;
