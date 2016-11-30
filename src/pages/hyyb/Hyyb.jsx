@@ -13,7 +13,7 @@ class hyyb extends React.Component{
                 <Col width={[1,6]}>
                   <Aside parent={"hyyb"} link={this.props.params.id}/>
                 </Col>
-                <Col width={[5,6]}>
+                <Col >
                   {this.props.children}
                 </Col>
               </Row>

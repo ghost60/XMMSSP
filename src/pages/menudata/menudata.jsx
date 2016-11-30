@@ -168,19 +168,23 @@ export const navlist = {
     [
       {
         name: "单位介绍",
-        aside: {}
+        aside: [
+          { name: "海浪观测", aside: {} },
+          { name: "潮汐观测", aside: {} },
+          { name: "气象观测", aside: {} }
+        ]
       },
       {
         name: "组织机构",
-        aside: {}
+        aside: []
       },
       {
         name: "资质证书",
-        aside: {}
+        aside: []
       },
       {
         name: "下属台站",
-        aside: {}
+        aside: []
       }
     ]
   },
