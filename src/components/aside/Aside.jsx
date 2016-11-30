@@ -30,15 +30,6 @@ class aside extends React.Component {
             }
         }
         ul_item.push(<ul className="aside-ul aside-parent-ul" key={'aside_ul'}>{list_item}</ul>)
-        // list.map((li, i) => {
-        //     list_item.push(
-        //         <span className="aside_li" key={i}>
-        //             <Link to={tprops.parent + '/' + tprops.link + '/' + tprops.parent + 'session/' + li.ename} activeClassName="active" key={i}>
-        //                 {li.name}
-        //             </Link>
-        //         </span>
-        //     )
-        // })
         this.setState({ name: name,  ul_item:  ul_item });
     }
     componentWillMount() {
