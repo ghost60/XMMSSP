@@ -20,21 +20,17 @@ import Footer from '../pages/footer/Footer';
 import dwgk from '../pages/dwgk/Dwgk';
 import dwgksession from '../pages/dwgk/DwgkSession';
 
-import hyfw from '../pages/hyfw/Hyfw';
-import hyfwsession from '../pages/hyfw/HyfwSession';
-
 import hygc from '../pages/hygc/Hygc';
 import hygcsession from '../pages/hygc/HygcSession';
 
 import gzdt from '../pages/gzdt/Gzdt';
 
-import hyjc from '../pages/hyjc/Hyjc';
-
 import hyyb from '../pages/hyyb/Hyyb';
-import hyybsession from '../pages/hyyb/HyybSession';
+
+import rcyb from '../pages/rcyb/Rcyb';
+import rcybsession from '../pages/rcyb/RcybSession';
 
 import hxyb from '../pages/hxyb/Hxyb';
-import hxybsession from '../pages/hxyb/HxybSession';
 
 import szyb from '../pages/szyb/Szyb';
 import szybsession from '../pages/szyb/SzybSession';
@@ -76,33 +72,17 @@ ReactDOM.render((
         <IndexRoute path="" component={dwgksession} />
       </Route>
 
-      <Route path="gzdt" component={gzdt} />
-
-      <Route path="hyyb/:id" component={hyyb}>
-        <Route path="hyybsession/:cid" component={hyybsession} />
-        <IndexRoute path="" component={hyybsession} />
+      <Route path="gzdt" component={gzdt}>
       </Route>
 
-      <Route path="hxyb" component={hxyb}>
-        <Route path="hxybsession" component={hxybsession} />
-        <IndexRoute path="" component={hxybsession} />
-      </Route>
-
-      <Route path="szyb/:id" component={szyb}>
-        <Route path="szybsession/:id" component={szybsession} />
-        <IndexRoute path="" component={szybsession} />
-      </Route>
-
-      <Route path="hyjc/:id" component={hyjc} />
-
-      <Route path="hygc" component={hygc}>
-        <Route path="hygcsession/:id" component={hygcsession} />
-        <IndexRoute path="" component={hygcsession} />
-      </Route>
-
-      <Route path="hyfw" component={hyfw}>
-        <Route path="hyfwsession/:id" component={hyfwsession} />
-        <IndexRoute path="" component={hyfwsession} />
+      <Route path="hyyb" component={hyyb}>
+        <Route path="rcyb" component={rcyb}>
+          <Route path="rcybsession/:cid" component={rcybsession} />
+        </Route>
+        <Route path="szyb" component={szyb}>
+          <Route path="szybsession/:id" component={szybsession} />
+        </Route>
+        <Route path="hxyb" component={hxyb} />
       </Route>
 
     </Route>

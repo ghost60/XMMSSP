@@ -7,7 +7,7 @@ import 'rc-pagination/assets/index.css';
 import Table from 'rc-table';
 import 'rc-table/assets/index.css';
 import  './Admin.scss';
-import Login from './Login.jsx';
+// import Login from './Login.jsx';
 
 class Admin extends React.Component{
   constructor(props) {
@@ -23,7 +23,7 @@ class Admin extends React.Component{
       return  <Row>
                 <div className="admin">
                   <div className="admin-title">管理系统</div>
-                  <Login />
+                  <Upload />
                 </div>
               </Row>
       }
@@ -63,8 +63,8 @@ class Upload extends React.Component{
   formyz(){
     debugger
       var file = document.getElementById("file");
-      var filename = document.getElementById("filename");
-      if(file.files.length<1 || filename.value==""){
+      var title = document.getElementById("title");
+      if(file.files.length<1 || title.value==""){
           alert("上传文件不能为空");
           return false;
       }
@@ -74,7 +74,7 @@ class Upload extends React.Component{
     var form=document.getElementById("upload");
     var formdata=new FormData(form);
     $.ajax({
-          url: './data/gzdt.json',
+          url: 'http://192.168.19.124:8080/XMMSSP/admin/formupload',
           dataType: 'json',
           type: 'post',
           async: true,
@@ -132,10 +132,10 @@ class Upload extends React.Component{
       var sdata=this.state.data.slice((this.state.current-1)*4,(this.state.current-1)*4+4);
       return  <Row>
                 <Col offset={[1,6]} width={[4,6]}>
-                  <form id="upload" encType ="multipart/form-data" action="http://192.168.19.124:8080/XMMSSP/lyb/formupload" method="post" onSubmit={this.formyz}>
+                  <form id="upload" encType ="multipart/form-data" action="http://192.168.19.124:8080/XMMSSP/admin/formupload" method="post" onSubmit={this.formyz}>
                     <div className="form-group"><lable>文件选择</lable><FileInput name="file" accept="application/msword" onChange={this.handleChange} /></div>
-                    <div className="form-group"><lable>文件标题</lable><input id="filename" name="filename" type="input"/></div>
-                    <div className="form-group"><input className="submit" type="submit" value="上传"/></div>
+                    <div className="form-group"><lable>文件标题</lable><input id="title" name="title" type="input"/></div>
+                    <div className="form-group"><button className="submit" onClick={this.upload.bind(this)}>上传</button></div>
                   </form>
                 </Col>
                 <Col offset={[1,6]} width={[4,6]}>

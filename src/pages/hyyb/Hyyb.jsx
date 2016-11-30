@@ -1,7 +1,7 @@
 //主面板
 import React from 'react';
 import {Row,Col} from '../../components/grid/Grid';
-import Aside from '../../components/aside/Aside';
+import Hxyb from '../hxyb/Hxyb';
 
 class hyyb extends React.Component{
   constructor(props) {
@@ -10,12 +10,7 @@ class hyyb extends React.Component{
   }
   render() {
       return  <Row>
-                <Col width={[1,6]}>
-                  <Aside parent={"hyyb"} link={this.props.params.id}/>
-                </Col>
-                <Col >
-                  {this.props.children}
-                </Col>
+                {this.props.children||(<Hxyb/>)}
               </Row>
       }
 };

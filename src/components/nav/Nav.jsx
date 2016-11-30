@@ -42,12 +42,10 @@ class Nav extends React.Component {
             }
             else {
                 nav_li.push(<div key={item_key} className="nav_li" onMouseLeave={this.removeCurrentIndex.bind(this)} onMouseEnter={this.setCurrentIndex.bind(this, key_num)}>
-                    <span >
-                        {
-                            child_li.length > 0 ? (<a>{navlist[item_key].name}</a>) : (<Link to={item_key} activeClassName="active">
-                                {navlist[item_key].name}
-                            </Link>)
-                        }
+                    <span >                        
+                        <Link to={item_key} activeClassName="active">
+                            {navlist[item_key].name}
+                        </Link>
                     </span>
                     {child_ul}
                 </div>)
