@@ -14,14 +14,11 @@ import Nav from '../components/nav/Nav';
 import Title from '../components/title/Title';
 
 import Header from '../components/header/Header';
-import home from '../pages/home/Home';
+import Home from '../pages/home/Home';
 import Footer from '../pages/footer/Footer';
 
 import dwgk from '../pages/dwgk/Dwgk';
 import dwgksession from '../pages/dwgk/DwgkSession';
-
-import hygc from '../pages/hygc/Hygc';
-import hygcsession from '../pages/hygc/HygcSession';
 
 import gzdt from '../pages/gzdt/Gzdt';
 
@@ -52,7 +49,7 @@ class App extends React.Component {
               </Row>
               <Row><div style={{height:20}}></div></Row>
               <Row>
-                {this.props.children}
+                {this.props.children||(<Home/>)}
               </Row>
             </Grid>
   }
@@ -65,7 +62,6 @@ ReactDOM.render((<Footer/>), document.getElementById('foot'));
 ReactDOM.render((
   <Router history={hashHistory} >
     <Route path="/" component={App}>
-      <IndexRoute path="" component={home} />
 
       <Route path="dwgk" component={dwgk}>
         <Route path="dwgksession/:cid" component={dwgksession} />
@@ -80,7 +76,7 @@ ReactDOM.render((
           <Route path="rcybsession/:cid" component={rcybsession} />
         </Route>
         <Route path="szyb" component={szyb}>
-          <Route path="szybsession/:id" component={szybsession} />
+          <Route path="szybsession/:cid" component={szybsession} />
         </Route>
         <Route path="hxyb" component={hxyb} />
       </Route>
