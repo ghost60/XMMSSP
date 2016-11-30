@@ -38,6 +38,56 @@
 }
 
 .aside-ul{
+    display: inline-block;
+    width: 100%;
     list-style: none;
-    
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    & li{
+        // margin: 0;
+        // margin-top: 7px;
+        // padding: 0;
+        margin-top: 5px;
+        cursor:pointer
+    }
+    & li a{
+        color: #666;display: block
+    }
+}
+.aside-parent-title{
+    height: 30px;
+    line-height: 30px;
+    background-color: #eeeeee; 
+    padding: 0 15px 0 15px;
+    border-radius: 5px;    
+    &:hover{
+        background-color: #e8f8f4;
+        a:hover{
+         color: #2dcc9b
+        }
+    }
+    & a{
+        display: block
+    }
+    &:active{
+        background-color: #e8f8f4;
+    }
+}
+.aside-parent-li{
+    padding-left: 10px;
+}
+.aside-child-li{
+    list-style-type: initial;
+    color: #666;
+    &:hover{
+        a{
+             color: #2dcc9b;
+        }
+         color: #2dcc9b;
+    }
+}
+.aside-child-ul{
+    padding-left: 20px;
+    margin-left: 45px;
 }
