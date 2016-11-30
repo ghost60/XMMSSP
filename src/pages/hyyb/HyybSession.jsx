@@ -8,31 +8,31 @@ class Hyybsession extends React.Component{
   constructor(props) {
       super(props);
       this.state={data:''};
-      debugger
+      //debugger
   }
   componentDidMount(){
-    debugger
+    //debugger
     var rood = menudata.navlist.hyyb.children[this.props.params.id];
     var tname='';
-    for (var i = rood.list.length - 1; i >= 0; i--) {
-      if(rood.list[i].ename==this.props.params.cid){
-        tname=rood.list[i].name;
+    for (var i = rood.aside.length - 1; i >= 0; i--) {
+      if(rood.aside[i].ename==this.props.params.cid){
+        tname=rood.aside[i].name;
         break;
       }
     }
     this.setState({sname:rood.name,tname:tname});
   }
   componentWillReceiveProps(nextProps) {
-    debugger
-    var rood = menudata.navlist.hyyb.children[this.props.params.id];
-    var tname='';
-    for (var i = rood.list.length - 1; i >= 0; i--) {
-      if(rood.list[i].ename==this.props.params.cid){
-        tname=rood.list[i].name;
-        break;
-      }
-    }
-    this.setState({sname:rood.name,tname:tname});
+    // debugger
+    // var rood = menudata.navlist.hyyb.children[this.props.params.id];
+    // var tname='';
+    // for (var i = rood.aside.length - 1; i >= 0; i--) {
+    //   if(rood.aside[i].ename==this.props.params.cid){
+    //     tname=rood.aside[i].name;
+    //     break;
+    //   }
+    // }
+    // this.setState({sname:rood.name,tname:tname});
   }
   render() {
     var content='';

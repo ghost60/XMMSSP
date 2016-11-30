@@ -155,7 +155,7 @@
 //   }
 // ]
 
-
+// dwgk/dwgkSession/单位简介/答案为
 export const navlist = {
   home: {
     link: "home",
@@ -165,69 +165,77 @@ export const navlist = {
   dwgk: {
     name: "单位概况",
     aside:
+    [
       {
-        dwjs: {
-          name: "单位介绍",
-          aside: {}
-        },
-        zzjg: {
-          name: "组织机构",
-          aside: {}
-        },
-        zzzs: {
-          name: "资质证书",
-          aside: {}
-        },
-        xstz: {
-          name: "下属台站",
-          aside: {}
-        }
+        name: "单位介绍",
+        aside: {}
+      },
+      {
+        name: "组织机构",
+        aside: {}
+      },
+      {
+        name: "资质证书",
+        aside: {}
+      },
+      {
+        name: "下属台站",
+        aside: {}
       }
+    ]
   },
   gzdt: {
     name: "工作动态",
-    aside: {}
+    aside: []
   },
   hygc: {
     name: "海洋观测",
     aside:
-      {
-        hlgc: { name: "海浪观测", aside: {} },
-        cxgc: { name: "潮汐观测", aside: {} },
-        qxgc: { name: "气象观测", aside: {} }
-      }
+    [
+      { name: "海浪观测", aside: {} },
+      { name: "潮汐观测", aside: {} },
+      { name: "气象观测", aside: {} }
+    ]
   },
   hyyb: {
     name: "海洋预报",
     children:
-      {
-        rcyb: { name: "日常预报", list:[{ename:'hlsw',name:'海浪水温预报'},{ename:'hlyb',name:'海浪预报图'},{ename:'cxyb',name:'潮汐预报'},{ename:'qzhy',name:'泉州海洋预报'},{ename:'xmhy',name:'厦门海洋预报'},{ename:'bhly',name:'滨海旅游区预报'}]},
-        szyb: { name: "数值预报", list:[{ename:'aa',name:'aa'}]},
-        hxyb: { name: "航线预报", list:[]}
-      }
+    {
+      rcyb: {
+        name: "日常预报", aside: [
+          { ename: 'hlsw', name: '海浪水温预报' },
+          { ename: 'hlyb', name: '海浪预报图' },
+          { ename: 'cxyb', name: '潮汐预报' },
+          { ename: 'qzhy', name: '泉州海洋预报' },
+          { ename: 'xmhy', name: '厦门海洋预报' },
+          { ename: 'bhly', name: '滨海旅游区预报' }]
+      },
+      szyb: { name: "数值预报", aside: [{ ename: 'aa', name: 'aa' }] },
+      hxyb: { name: "航线预报", aside: [] }
+    }
   },
   hyjc: {
     name: "海洋监测",
     aside:
-      {
-        jcjs: { name: "监测介绍", aside: {} },
-        gjkh: { name: "各级考核", aside: {} },
-        ktyj: { name: "课题研究", aside: {} },
-        jcnl: { name: "监测能力", aside: {} },
-        rwyl: { name: "任务一览", aside: {} },
-        jcfc: { name: "监测风采", aside: {} },
-      }
+    [
+      { name: "监测介绍", aside: {} },
+      { name: "各级考核", aside: {} },
+      { name: "课题研究", aside: {} },
+      { name: "监测能力", aside: {} },
+      { name: "任务一览", aside: {} },
+      { name: "监测风采", aside: {} },
+    ]
   },
   hyfw: {
     name: "海洋服务",
-    aside: {}
+    aside: []
   },
   yjya: {
     name: "应急预案",
-    aside: {}
+    aside: []
   },
   hykp: {
     name: "海洋科普",
-    aside: {}
+    aside: []
   }
 }
