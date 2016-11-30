@@ -164,37 +164,37 @@ export const navlist = {
   },
   dwgk: {
     name: "单位概况",
-    children:
+    aside:
       {
         dwjs: {
           name: "单位介绍",
-          children: {}
+          aside: {}
         },
         zzjg: {
           name: "组织机构",
-          children: {}
+          aside: {}
         },
         zzzs: {
           name: "资质证书",
-          children: {}
+          aside: {}
         },
         xstz: {
           name: "下属台站",
-          children: {}
+          aside: {}
         }
       }
   },
   gzdt: {
     name: "工作动态",
-    children: {}
+    aside: {}
   },
   hygc: {
     name: "海洋观测",
-    children:
+    aside:
       {
-        hlgc: { name: "海浪观测", children: {} },
-        cxgc: { name: "潮汐观测", children: {} },
-        qxgc: { name: "气象观测", children: {} }
+        hlgc: { name: "海浪观测", aside: {} },
+        cxgc: { name: "潮汐观测", aside: {} },
+        qxgc: { name: "气象观测", aside: {} }
       }
   },
   hyyb: {
@@ -208,26 +208,26 @@ export const navlist = {
   },
   hyjc: {
     name: "海洋监测",
-    children:
+    aside:
       {
-        jcjs: { name: "监测介绍", children: {} },
-        gjkh: { name: "各级考核", children: {} },
-        ktyj: { name: "课题研究", children: {} },
-        jcnl: { name: "监测能力", children: {} },
-        rwyl: { name: "任务一览", children: {} },
-        jcfc: { name: "监测风采", children: {} },
+        jcjs: { name: "监测介绍", aside: {} },
+        gjkh: { name: "各级考核", aside: {} },
+        ktyj: { name: "课题研究", aside: {} },
+        jcnl: { name: "监测能力", aside: {} },
+        rwyl: { name: "任务一览", aside: {} },
+        jcfc: { name: "监测风采", aside: {} },
       }
   },
   hyfw: {
     name: "海洋服务",
-    children: {}
+    aside: {}
   },
   yjya: {
     name: "应急预案",
-    children: {}
+    aside: {}
   },
   hykp: {
     name: "海洋科普",
-    children: {}
+    aside: {}
   }
 }

@@ -70,7 +70,7 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute path="" component={home} />
 
-      <Route path="dwgk/:id" component={dwgk} />
+      <Route path="dwgk" component={dwgk} />
 
       <Route path="gzdt" component={gzdt} />
 
