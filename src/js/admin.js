@@ -1,7 +1,10 @@
 //主面板
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Grid, Row, Col } from '../components/grid/Grid';
+import {
+  Grid, Row, Col
+}
+from '../components/grid/Grid';
 import Title from '../components/title/Title';
 
 import Header from '../components/header/Header';
@@ -10,7 +13,7 @@ import Admin from '../pages/admin/Admin';
 
 class App extends React.Component {
   render() {
-    return  <Grid>
+    return <Grid>
               <Row>
                 <Col>
                   <Title backimg={'../images/titleback.png'} />
@@ -26,4 +29,3 @@ ReactDOM.render((<Footer/>), document.getElementById('foot'));
 
 // 配置路由
 ReactDOM.render((<App/>), document.getElementById('content'));
-

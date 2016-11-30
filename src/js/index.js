@@ -1,9 +1,15 @@
 //主面板
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, hashHistory, browserHistory, IndexRoute, Redirect, IndexLink } from 'react-router'
+import {
+  Router, Route, Link, hashHistory, browserHistory, IndexRoute, Redirect, IndexLink
+}
+from 'react-router'
 import withBasename from '../components/basename/basename';
-import { Grid, Row, Col } from '../components/grid/Grid';
+import {
+  Grid, Row, Col
+}
+from '../components/grid/Grid';
 import Nav from '../components/nav/Nav';
 import Title from '../components/title/Title';
 
@@ -36,7 +42,7 @@ import * as menudata from '../pages/menudata/menudata';
 
 class App extends React.Component {
   render() {
-    return  <Grid>
+    return <Grid>
               <Row>
                 <Col>
                   <Title backimg={'../images/titleback.png'} />
@@ -98,4 +104,3 @@ ReactDOM.render((
     </Route>
   </Router>
 ), document.getElementById('content'));
-
