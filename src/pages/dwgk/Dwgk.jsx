@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row,Col} from 'react-bootstrap';
+import {Row,Col} from '../../components/grid/Grid';
 import Aside from '../../components/aside/Aside';
 
 class dwgk extends React.Component{

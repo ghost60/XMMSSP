@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row,Col} from 'react-bootstrap';
+
 import LineChart from '../../components/highcharts/LineChart';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';

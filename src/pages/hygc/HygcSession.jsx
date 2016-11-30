@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row,Col} from 'react-bootstrap';
+
 import Aside from '../../components/aside/Aside';
 import Session from '../../components/session/Session';
 // import './DwgkSession.scss';
