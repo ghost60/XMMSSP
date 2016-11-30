@@ -7,6 +7,7 @@ import 'rc-pagination/assets/index.css';
 import Table from 'rc-table';
 import 'rc-table/assets/index.css';
 import  './Admin.scss';
+import Login from './Login.jsx';
 
 class Admin extends React.Component{
   constructor(props) {
@@ -22,12 +23,7 @@ class Admin extends React.Component{
       return  <Row>
                 <div className="admin">
                   <div className="admin-title">管理系统</div>
-                  <Col width={[1,6]}>
-                    <NavList liselect={this.liselect.bind(this)}/>
-                  </Col>
-                  <Col width={[5,6]}>
-                    <this.state.link />
-                  </Col>
+                  <Login />
                 </div>
               </Row>
       }
