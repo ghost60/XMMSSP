@@ -4,15 +4,14 @@ import LineChart from '../../components/highcharts/LineChart';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
 
-class Hyybsession extends React.Component{
+class Rcybsession extends React.Component{
   constructor(props) {
       super(props);
       this.state={data:''};
-      //debugger
   }
   componentDidMount(){
-    //debugger
-    var rood = menudata.navlist.hyyb.children[this.props.params.id];
+    debugger
+    var rood = menudata.navlist.hyyb.children[this.props.params.cid];
     var tname='';
     for (var i = rood.aside.length - 1; i >= 0; i--) {
       if(rood.aside[i].ename==this.props.params.cid){
@@ -44,4 +43,4 @@ class Hyybsession extends React.Component{
               </Session>
       }
 };
-export default Hyybsession;
+export default Rcybsession;
