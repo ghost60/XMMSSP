@@ -1,5 +1,4 @@
 import React from 'react';
-import {Row,Col} from 'react-bootstrap';
 import './Session.scss';
 
 class session extends React.Component{
