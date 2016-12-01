@@ -1,6 +1,7 @@
 import React from 'react';
 import { LayersControl,LayerGroup,Circle,CircleMarker,Map,MultiPolygon,MultiPolyline,Polygon,Polyline,Popup,Rectangle,TileLayer,Marker,GeoJson} from 'react-leaflet';
 import './leaflet.css';
+import ExWMSTileLayer from './ExWMSTileLayer';
 
 const { BaseLayer,Overlay } = LayersControl
 
@@ -23,7 +24,7 @@ class Lmap extends React.Component{
         }else{
           color = '#FF0033';
         }
-        polyline.push(<Polyline color={color} positions={data[i]}><Popup popupContent={<h1>AAA</h1>}/></Polyline>);
+        polyline.push(<Polyline color={color} stroke-width={5} positions={data[i]}><Popup popupContent={<h1>AAA</h1>}/></Polyline>);
       }
 
 
@@ -52,10 +53,7 @@ class Lmap extends React.Component{
       }
     return (
       <Map style={{height:'550px'}} center={position} zoom={10}>
-            <TileLayer
-              attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-            />
+          <ExWMSTileLayer type={'GaoDe.Normal.Map'} options={{maxZoom: 18,minZoom: 5}} />
           {polyline}
           {marker}
       </Map>
