@@ -4,43 +4,52 @@ import LineChart from '../../components/highcharts/LineChart';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
 
-class Rcybsession extends React.Component{
+class rcybsession extends React.Component{
   constructor(props) {
       super(props);
-      this.state={data:''};
+      this.state={name:'',data:{}};
+  }
+  addmenu(mprops){
+    if (!mprops.params) {
+      var menu = menudata.navlist.hyyb.children.rcyb.aside[0];   
+      return menu.name;
+    }else{
+      menu = menudata.navlist.hyyb.children.rcyb[mprops.params.cid];
+      for (var i = menu.aside.length - 1; i >= 0; i--) {
+        if(menu.aside[i].name==mprops.params.cid){
+          return menu.aside[i].name;
+        }
+      }
+    }
+  }
+  querydata(name){
+        $.ajax({
+            url: 'name',
+            dataType: 'json',
+            type: 'get',
+            async: true,
+            success: function(data) {
+              return data;  
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());              
+            }.bind(this)
+        });
   }
   componentDidMount(){
-    debugger
-    var rood = menudata.navlist.hyyb.children[this.props.params.cid];
-    var tname='';
-    for (var i = rood.aside.length - 1; i >= 0; i--) {
-      if(rood.aside[i].ename==this.props.params.cid){
-        tname=rood.aside[i].name;
-        break;
-      }
-    }
-    this.setState({sname:rood.name,tname:tname});
+    let route = this.addmenu(this.props);  
+    let data = this.querydata(route.ename);
+    this.setState({name:route,data:data});
   }
   componentWillReceiveProps(nextProps) {
-    // debugger
-    // var rood = menudata.navlist.hyyb.children[this.props.params.id];
-    // var tname='';
-    // for (var i = rood.aside.length - 1; i >= 0; i--) {
-    //   if(rood.aside[i].ename==this.props.params.cid){
-    //     tname=rood.aside[i].name;
-    //     break;
-    //   }
-    // }
-    // this.setState({sname:rood.name,tname:tname});
+    let route = this.addmenu(nextProps);  
+    let data = this.querydata(route);
+    this.setState({name:route,data:data});
   }
   render() {
-    var content='';
-    if (this.state.tname=='航线预报') {
-
+    return  <Session name={`海洋预报/${this.state.name}`}>
+              {this.state.name}
+            </Session>
     }
-      return  <Session name={`海洋预报/${this.state.sname}/${this.state.tname}`}>
-                {this.state.tname}
-              </Session>
-      }
 };
-export default Rcybsession;
+export default rcybsession;
