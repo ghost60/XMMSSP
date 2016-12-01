@@ -35,11 +35,13 @@
 .aside_list{
     background: #fff;
     border-radius: 0 0 6px 6px;
+    height: 100%;
 }
 
 .aside-ul{
-    display: inline-block;
+    // display: inline-block;
     width: 100%;
+    height: 100%;
     list-style: none;
     color: #fff;
     margin: 0;
@@ -76,6 +78,7 @@
 }
 .aside-parent-li{
     padding-left: 10px;
+    height: 100%;
 }
 .aside-child-li{
     list-style-type: initial;
@@ -91,31 +94,20 @@
     padding-left: 20px;
     margin-left: 45px;
     overflow: hidden;
-}
-.asideAnimate-appear {
     max-height: 0px;
-    transition: all 300ms ease-in;
+    transition: max-height 1.2s ease-out -0.5s;
 }
-.asideAnimate-appear-active {
-    max-height:10000px;
-    transition: all 5000ms ease-in;
-}
-
-.asideAnimate-enter {
-    opacity: 1;
-    transition: all 300ms ease-in;
+.aside-child-ul__active{
+    max-height: 500px;
+    animation:asideAnimate 1s ease-in;
 }
 
-.asideAnimate-enter-active {
-    opacity: 1;
-    transition: all 500ms ease-in;
+@keyframes asideAnimate{
+    from{
+        max-height: 0
+    }
+    to{
+        max-height: 500px;
+        transition: max-height 
+    }
 }
-
-// .asideAnimate-leave {
-//   opacity: 1;
-// }
-
-// .asideAnimate-leave-active {
-//   opacity: 0.01;
-//   transition: opacity 300ms ease-in;
-// }
