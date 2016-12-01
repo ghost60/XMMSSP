@@ -40,6 +40,8 @@
   },
   "dependencies": {
     "extract-text-webpack-plugin": "^1.0.1",
+    "react-addons-css-transition-group": "^15.4.1",
+    "react-addons-transition-group": "^15.4.1",
     "react-dom": "^15.3.1",
     "react-highcharts": "^11.0.0",
     "react-hot-loader": "^3.0.0-beta.4",
