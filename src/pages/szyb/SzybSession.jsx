@@ -4,7 +4,7 @@ import Aside from '../../components/aside/Aside';
 import Session from '../../components/session/Session';
 import Imgplayer from '../../components/imgplayer/Imgplayer';
 // import './DwgkSession.scss';
-
+import * as menudata from '../../pages/menudata/menudata';
 var cdata='';
 
 class szybsession extends React.Component{

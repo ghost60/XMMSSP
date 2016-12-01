@@ -216,26 +216,30 @@ export const navlist = {
       },
       szyb: {
         name: "数值预报", aside: [
-          { 
-            name: '海面风',aside:[
-              {name:"西太平洋"},
-              {name:"台湾海峡"}] 
+          {
+            name: '海面风', aside: [
+              { name: "西太平洋" },
+              { name: "台湾海峡" }]
           },
           {
-            name:"海浪",aside:[
-              {name:"台湾海峡(海浪)"},
-              {name:"夏金海域"},
-              {name:"两马海域"},
+            name: "海浪", aside: [
+              { name: "台湾海峡(海浪)" },
+              { name: "夏金海域" },
+              { name: "两马海域" },
             ]
           },
-          {name:"海流",aside:[
-            {name:"台湾海峡(海流)"},
-            {name:"小区(海流)"}
-          ]},
-          {name:"潮汐",aside:[
-            {name:"台湾海峡(潮汐)"},
-            {name:"小区(潮汐)"}
-          ]}
+          {
+            name: "海流", aside: [
+              { name: "台湾海峡(海流)" },
+              { name: "小区(海流)" }
+            ]
+          },
+          {
+            name: "潮汐", aside: [
+              { name: "台湾海峡(潮汐)" },
+              { name: "小区(潮汐)" }
+            ]
+          }
         ]
       },
       hxyb: { name: "航线预报", aside: [] }
