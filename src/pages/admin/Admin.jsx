@@ -53,9 +53,7 @@ class Upload extends React.Component{
   constructor(props) {
       super(props);
       this.state=({name:'',link:'', data: [], current: 1, total: 1});
-      this.data = [
-          { key: '0', a: '测试', b:'测试', c: '测试'},
-        ]
+      console.log(ctx);
   }
   handleChange(event) {
     console.log('Selected file:', event.target.files[0]);
@@ -74,7 +72,7 @@ class Upload extends React.Component{
     var form=document.getElementById("upload");
     var formdata=new FormData(form);
     $.ajax({
-          url: 'http://192.168.19.124:8080/XMMSSP/admin/formupload',
+          url: ctx + '/admin/formupload',
           dataType: 'json',
           type: 'post',
           async: true,
@@ -89,7 +87,7 @@ class Upload extends React.Component{
   }
   querydata() {
     $.ajax({
-          url: './data/gzdt.json',
+          url: ctx + './data/gzdt.json',
           dataType: 'json',
           type: 'get',
           async: true,
@@ -103,7 +101,7 @@ class Upload extends React.Component{
       });
   }
   componentDidMount() {
-    this.querydata();
+    // this.querydata();
   }
   onChange(page) {
     this.setState({

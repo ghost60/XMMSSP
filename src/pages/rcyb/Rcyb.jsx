@@ -8,12 +8,11 @@ class Rcyb extends React.Component{
   constructor(props) {
       super(props);
       this.state=({name:'',link:''});
-      debugger
   }
   render() {
       return  <Row>
               <Col width={[1,6]}>
-                <Aside parent={"rcyb"}/>
+                <Aside parent={"hyyb"} link={"rcyb"}/>
               </Col>
               <Col width={[5,6]}>
                 {this.props.children}
