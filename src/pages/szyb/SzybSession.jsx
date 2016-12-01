@@ -7,42 +7,47 @@ import Imgplayer from '../../components/imgplayer/Imgplayer';
 
 var cdata='';
 
-class dwgksession extends React.Component{
+class szybsession extends React.Component{
   constructor(props) {
       super(props);
       this.state={name:'',data:{}};
   }
-  componentDidMount(){
+  addmenu(mprops){
+    if (!mprops.params) {
+      var menu = menudata.navlist.hyyb.children.szyb.aside[0];   
+      return menu.name;
+    }else{
+      menu = menudata.navlist.hyyb.children.szyb.[mprops.params.cid];
+      for (var i = menu.aside.length - 1; i >= 0; i--) {
+        if(menu.aside[i].name==mprops.params.cid){
+          return menu.aside[i].name;
+        }
+      }
+    }
+  }
+  querydata(name){
         $.ajax({
-            url: './data/szyb.json',
+            url: 'name',
             dataType: 'json',
             type: 'get',
             async: true,
             success: function(data) {
-              cdata=data;
-              if (!this.props.params.id) {
-                this.setState({name:data[0]["name"],data:data[0]});
-              }
-              for (var i = 0; i < data.length; i++) {
-                  if (data[i]["name"]==this.props.params.id) {
-                    this.setState({name:'',data:data[i]});
-                    break;
-                  }
-              }
+              return data;  
             }.bind(this),
             error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
+                console.error(this.props.url, status, err.toString());              
             }.bind(this)
         });
   }
+  componentDidMount(){
+    let route = this.addmenu(this.props);  
+    let data = this.querydata(route.ename);
+    this.setState({name:route,data:data});
+  }
   componentWillReceiveProps(nextProps) {
-    if(cdata=='')return;
-    for (var i = 0; i < cdata.length; i++) {
-        if (cdata[i]["name"]==this.props.params.id) {
-          this.setState({data:cdata[i],name:this.props.params.id});
-          break;
-        }
-      }
+    let route = this.addmenu(nextProps);  
+    let data = this.querydata(route);
+    this.setState({name:route,data:data});
   }
   render() {
       return  <Session name={this.state.name}>
@@ -50,4 +55,4 @@ class dwgksession extends React.Component{
               </Session>
       }
 };
-export default dwgksession;
+export default szybsession;

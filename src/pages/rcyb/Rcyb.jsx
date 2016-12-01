@@ -2,7 +2,7 @@
 import React from 'react';
 import {Row,Col} from '../../components/grid/Grid';
 import Aside from '../../components/aside/Aside';
-import Hxyb from '../hxyb/Hxyb';
+import RcybSession from './RcybSession';
 
 class Rcyb extends React.Component{
   constructor(props) {
@@ -15,7 +15,7 @@ class Rcyb extends React.Component{
                 <Aside parent={"hyyb"} link={"rcyb"}/>
               </Col>
               <Col width={[5,6]}>
-                {this.props.children}
+                {this.props.children||(<RcybSession/>)}
               </Col>
               </Row>
       }
