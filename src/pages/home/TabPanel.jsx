@@ -36,7 +36,7 @@ export class TabsPanel1 extends React.Component {
                 console.log("before");
             },
             success: function (data) {
-                var data = JSON.parse(data)
+                // var data = JSON.parse(data)
                 console.log(data)
                 this.setState({
                     title: this.mapCfg[i]['title'],
@@ -115,7 +115,7 @@ export class TabsPanel2 extends React.Component {
                 console.log("before");
             },
             success: function (data) {
-                var data = JSON.parse(data)
+                // var data = JSON.parse(data)
                 var forcastTime = [data[0]["month"] + "/" + data[0]["day"], data[1]["month"] + "/" + data[1]["day"]]
                 this.setState({
                     title: this.mapCfg[i]['title'],
@@ -209,7 +209,7 @@ export class TabsPanel3 extends React.Component {
                 console.log("before");
             },
             success: function (data) {
-                var data = JSON.parse(data)
+                // var data = JSON.parse(data)
                 console.log(data)
                 this.setState({
                     title: this.mapCfg[i]['title'],
@@ -288,7 +288,7 @@ export class TabsPanel4 extends React.Component {
                 console.log("before");
             },
             success: function (data) {
-                var data = JSON.parse(data)
+                // var data = JSON.parse(data)
                 console.log(data)
                 this.setState({
                     title: this.mapCfg[i]['title'],
