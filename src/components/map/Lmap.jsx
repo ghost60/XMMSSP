@@ -2,10 +2,43 @@ import React from 'react';
 import {LayerGroup,Map,Polyline,Marker} from 'react-leaflet';
 import './leaflet.css';
 import ExWMSTileLayer from './ExWMSTileLayer';
+import MarkerLayer from './MarkerLayer';
+
+const markers = [{
+    "position": {
+        "lng": 118.1872,
+        "lat": 24.5364
+    },
+    "text": "aa"
+},
+{
+    "position": {
+        "lng": 118.3872,
+        "lat": 24.8364
+    },
+    "text": "bb"
+}];
+
+class ExampleMarkerComponent extends React.Component {
+  render() {
+    const style = {
+      fontSize: '14px',
+      fontWeight: 'bold',
+      marginTop: '-12px',
+      marginLeft: '-12px',
+      width: '24px',
+      height: '24px'
+    };
+    return (
+      <div style={Object.assign({}, this.props.style, style)}>{this.props.text}</div>
+    );
+  }
+}
 
 class Lmap extends React.Component{
   constructor(props) {
       super(props);
+      this.state={markers:markers};
   }
   lineclick(e){
 
@@ -56,6 +89,10 @@ class Lmap extends React.Component{
     return (
       <Map ref='map' style={{height:'550px'}} center={position} zoom={10}>
           <ExWMSTileLayer type={'GaoDe.Normal.Map'} options={{maxZoom: 18,minZoom: 5}} />
+          <MarkerLayer
+            markers={this.state.markers}
+            markerComponent={ExampleMarkerComponent}
+          />
           <LayerGroup>
             {polyline}
           </LayerGroup>
