@@ -11,9 +11,9 @@ const hx=['厦门-金门','泉州-金门','马尾-马祖','基隆-马祖','台�
 class hxyb extends React.Component{
   constructor(props) {
       super(props);
-      this.state={alldata:[],data:{},name:''};
+      this.state={alldata:[],data:{},name:'',tpkey:'lzq'};
   }
-  componentDidMount(){
+  componentWillMount(){
       $.ajax({
           url: './data/hxyb.json',
           dataType: 'json',
@@ -37,6 +37,17 @@ class hxyb extends React.Component{
     }
     this.setState({alldata:this.state.alldata,data:data,name:e.target.innerText});
   }
+  tpselect(e){
+    this.setState({tpkey:e.target.dataset.key});
+
+  }
+  tpactive(key){
+    if(key===this.state.tpkey){
+      return "hxyb-tp active";
+    }else{
+      return "hxyb-tp";
+    }
+  }
   render() {
       const option = hx.map((li,i) => {
         return  <span key={i} onClick={this.selectChange.bind(this)}>{li}</span>
@@ -46,7 +57,7 @@ class hxyb extends React.Component{
               <Session name={'航线预报'}>
                 <Row>
                   <Col width={[1,2]}>
-                    <Lmap data={this.state.data} name={this.state.name}/>
+                    <Lmap data={this.state.data} />
                   </Col>
                   <Col  width={[1,2]}>
                     <div className="hxyb-xz">
@@ -55,13 +66,13 @@ class hxyb extends React.Component{
                     </div>
                     <div className="hxyb-tp">
                       <div className="hxyb-tp-title">
-                          厦门-金门
+                        {this.state.name}
                       </div>
                       <div>
                         <div className="hxyb-tp-xz">
-                            <span className="hxyb-tp-lzq">浪周期</span>
-                            <span className="hxyb-tp-lg">浪高</span>
-                            <span className="hxyb-tp-fs">风速</span>
+                            <span className={this.tpactive("lzq")} data-key="lzq" onClick={this.tpselect.bind(this)}>浪周期</span>
+                            <span className={this.tpactive("lg")} data-key="lg" onClick={this.tpselect.bind(this)}>浪高</span>
+                            <span className={this.tpactive("fs")} data-key="fs" onClick={this.tpselect.bind(this)}>风速</span>
                         </div>
                         <div className="hxyb-tp-tp">
                              <img src="./images/xm-jm_period.png" alt="" />

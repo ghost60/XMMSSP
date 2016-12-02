@@ -9,15 +9,15 @@ class rcybsession extends React.Component{
       this.state={name:'',data:{}};
   }
   addmenu(mprops){
-    debugger
     if (!mprops.params) {
-      var menu = menudata.navlist.hyyb.children.rcyb.aside[0];   
+      var menu = menudata.navlist.hyyb.children.rcyb.children;
+      menu = menu[Object.keys(menu)[0]];   
       return menu.name;
     }else{
-      menu = menudata.navlist.hyyb.children.rcyb;
-      for (var i = menu.aside.length - 1; i >= 0; i--) {
-        if(menu.aside[i].name==mprops.params.cid){
-          return menu.aside[i].name;
+      menu = menudata.navlist.hyyb.children.rcyb.children;
+      for (var key in menu) {
+        if(key==mprops.params.cid){
+          return menu[key].name;
         }
       }
     }

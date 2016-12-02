@@ -1,21 +1,14 @@
 import React from 'react';
-import { LayersControl,LayerGroup,Circle,CircleMarker,Map,MultiPolygon,MultiPolyline,Polygon,Polyline,Popup,Rectangle,TileLayer,Marker,GeoJson} from 'react-leaflet';
+import {LayerGroup,Map,Polyline,Marker} from 'react-leaflet';
 import './leaflet.css';
 import ExWMSTileLayer from './ExWMSTileLayer';
-
-const { BaseLayer,Overlay } = LayersControl
 
 class Lmap extends React.Component{
   constructor(props) {
       super(props);
   }
-  lineclick(lll,e){
-    debugger
-    console.log(e);
-    var nn = lll.getCenter();
-  }
-  getlinebound(e){
-    debugger
+  lineclick(e){
+
   }
   render() {
       var data = this.props.data;
@@ -28,22 +21,20 @@ class Lmap extends React.Component{
         num++;
         nums.push(data[i]);
         if(i%2==1){
-          color='#009966';
+          color='#68BBB5';
         }else{
-          color = '#FF0033';
+          color = '#398BFA';
         }
-        polyline.push(<Polyline getCenter={this.getlinebound} onClick={this.lineclick.bind(this,'a')} color={color} stroke-width={5} positions={data[i]}/>);
-          debugger
+        polyline.push(<Polyline getCenter={this.getlinebound} onClick={this.lineclick.bind(this,'a')} color={color} weight={5} positions={data[i]}/>);
       }
 
-
       var myIcon = L.icon({
-          iconUrl: './images/marker-icon.png',
-          iconSize: [24, 32],
-          iconAnchor: [24, 32],
-          shadowUrl: './images/marker-shadow.png',
-          shadowSize: [24, 32],
-          shadowAnchor: [24, 32]
+          iconUrl: './images/matou.png',
+          iconSize: [24, 24],
+          iconAnchor: [12, 12],
+          // shadowUrl: './images/marker-shadow.png',
+          // shadowSize: [24, 32],
+          // shadowAnchor: [24, 32]
       });
 
       var x=118.1872;
@@ -55,15 +46,19 @@ class Lmap extends React.Component{
         position=nums[parseInt((num-1)/2)][0];
         marker.push(<Marker position={nums[0][0]}  title={'aaa'} alt={'bbb'}/>);
         marker.push(<Marker position={nums[num-1][nums[num-1].length-1]} icon={myIcon} />);
+        this.refs.map.leafletElement.fitBounds([nums[0][0],nums[num-1][nums[num-1].length-1]]);
       }else if(nums.length>0){
         position=nums[0][0];
-        marker.push(<Marker position={nums[0][0]} icon={myIcon}><Popup><span>AAA<br/>BBB</span></Popup></Marker>);
+        marker.push(<Marker ref='m' position={nums[0][0]} icon={myIcon} />);
         marker.push(<Marker position={nums[0][nums[0].length-1]} icon={myIcon} />);
+        this.refs.map.leafletElement.fitBounds([nums[0][0],nums[0][nums[0].length-1]]);
       }
     return (
-      <Map style={{height:'550px'}} center={position} zoom={10}>
+      <Map ref='map' style={{height:'550px'}} center={position} zoom={10}>
           <ExWMSTileLayer type={'GaoDe.Normal.Map'} options={{maxZoom: 18,minZoom: 5}} />
-          {polyline}
+          <LayerGroup>
+            {polyline}
+          </LayerGroup>
           {marker}
       </Map>
     )

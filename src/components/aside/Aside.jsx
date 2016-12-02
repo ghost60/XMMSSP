@@ -17,7 +17,6 @@ class aside extends React.Component {
         return this.state.currentIndex === index ? "aside-ul aside-child-ul aside-child-ul__active" : "aside-ul aside-child-ul";
     }
     updateaside(tprops) {
-
         // debugger aside-child-ul__active
         var list_item = [];
         var ul_item = [];

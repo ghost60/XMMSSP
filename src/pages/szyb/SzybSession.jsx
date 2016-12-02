@@ -2,7 +2,6 @@ import React from 'react';
 import Aside from '../../components/aside/Aside';
 import Session from '../../components/session/Session';
 import Imgplayer from '../../components/imgplayer/Imgplayer';
-// import './DwgkSession.scss';
 import * as menudata from '../../pages/menudata/menudata';
 var cdata='';
 
@@ -14,14 +13,18 @@ class szybsession extends React.Component{
   addmenu(mprops){
     debugger
     if (!mprops.params) {
-      var menu = menudata.navlist.hyyb.children.szyb.aside[0].aside[0];   
+      var menu = menudata.navlist.hyyb.children.szyb.children;   
+      menu = menu[Object.keys(menu)[0]];
+      menu = menu.children;
+      menu = menu[Object.keys(menu)[0]];
       return menu.name;
     }else{
-      menu = menudata.navlist.hyyb.children.szyb;
-      for (var i = menu.aside.length - 1; i >= 0; i--) {
-        for (var j = menu.aside[i].aside.length - 1; j >= 0; j--) {
-          if(menu.aside[i].aside[j].name==mprops.params.cid){
-            return menu.aside[i].aside[j].name;
+      menu = menudata.navlist.hyyb.children.szyb.children;
+      for (var key in menu) {
+
+         for (var skey in menu[key].children) {
+            if(skey==mprops.params.cid){
+            return menu[key].children[skey].name;
           }
         }
       }
@@ -48,7 +51,8 @@ class szybsession extends React.Component{
         });
   }
   componentDidMount(){
-    let route = this.addmenu(this.props);  
+    let route = this.addmenu(this.props); 
+    debugger 
     this.querydata(route);    
   }
   componentWillReceiveProps(nextProps) {
