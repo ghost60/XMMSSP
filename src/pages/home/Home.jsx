@@ -81,13 +81,13 @@ class home extends React.Component {
                     <Col>
                      <Tabs>
                         <TabContent name="海区预报" imgSrc="./images/icon1">
-                          <TabsPanel1 />
+                          <TabsPanel1 mapSrc="./images/map1.png"/>
                         </TabContent>
                         <TabContent name="潮汐预报" imgSrc="./images/icon2">
-                          <TabsPanel2 />
+                          <TabsPanel2 mapSrc="./images/map2.png"/>
                         </TabContent>
-                        <TabContent name="厦门海域预报" imgSrc="./images/icon3"><TabsPanel3 /></TabContent>
-                        <TabContent name="浴场度假区预报" imgSrc="./images/icon4"><TabsPanel4 /></TabContent>
+                        <TabContent name="厦门海域预报" imgSrc="./images/icon3"><TabsPanel3 mapSrc="./images/map3.png"/></TabContent>
+                        <TabContent name="浴场度假区预报" imgSrc="./images/icon4"><TabsPanel4 mapSrc="./images/map4.png"/></TabContent>
                     </Tabs>
                     </Col>
                     </Row>

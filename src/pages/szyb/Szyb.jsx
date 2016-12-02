@@ -12,7 +12,7 @@ class szyb extends React.Component{
   render() {
       return  <Row>
               <Col width={[1,6]}>
-                <Aside parent={"hyyb"} link={"szyb"}/>
+                <Aside cid={this.props.params.cid} parent={"hyyb"} link={"szyb"}/>
               </Col>
               <Col width={[5,6]}>
                 {this.props.children||(<SzybSession/>)}

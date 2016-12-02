@@ -36,7 +36,7 @@ export class TabsPanel1 extends React.Component {
                 console.log("before");
             },
             success: function (data) {
-                var data = JSON.parse(data)
+                // var data = JSON.parse(data)
                 console.log(data)
                 this.setState({
                     title: this.mapCfg[i]['title'],
@@ -55,7 +55,7 @@ export class TabsPanel1 extends React.Component {
 
         return (
             <div className="c">
-                <TabPanelMap mapSrc="./images/map1.png" clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
+                <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
                 <div className="tab-panel--right">
                     <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
                     <div className="tab-panel-info">
@@ -115,7 +115,7 @@ export class TabsPanel2 extends React.Component {
                 console.log("before");
             },
             success: function (data) {
-                var data = JSON.parse(data)
+                // var data = JSON.parse(data)
                 var forcastTime = [data[0]["month"] + "/" + data[0]["day"], data[1]["month"] + "/" + data[1]["day"]]
                 this.setState({
                     title: this.mapCfg[i]['title'],
@@ -149,7 +149,7 @@ export class TabsPanel2 extends React.Component {
         return (
 
             <div className="c">
-                <TabPanelMap mapSrc="./images/map2.png" clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
+                <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
                 <div className="tab-panel--right">
                     <TabPanelTitle2 title={this.state.title} pubTime={"潮汐预报"} forcastInfo={this.state.forcastTime[0] + "-" + this.state.forcastTime[1]} />
                     <div className="tab-panel-info--container">
@@ -209,7 +209,7 @@ export class TabsPanel3 extends React.Component {
                 console.log("before");
             },
             success: function (data) {
-                var data = JSON.parse(data)
+                // var data = JSON.parse(data)
                 console.log(data)
                 this.setState({
                     title: this.mapCfg[i]['title'],
@@ -227,7 +227,7 @@ export class TabsPanel3 extends React.Component {
 
         return (
             <div className="c">
-                <TabPanelMap mapSrc="./images/map3.png" clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
+                <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
                 <div className="tab-panel--right">
                     <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
                     <div className="tab-panel-info">
@@ -288,7 +288,7 @@ export class TabsPanel4 extends React.Component {
                 console.log("before");
             },
             success: function (data) {
-                var data = JSON.parse(data)
+                // var data = JSON.parse(data)
                 console.log(data)
                 this.setState({
                     title: this.mapCfg[i]['title'],
@@ -311,7 +311,7 @@ export class TabsPanel4 extends React.Component {
 
         return (
             <div className="c">
-                <TabPanelMap mapSrc="./images/map4.png" clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
+                <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
                 <div className="tab-panel--right">
                     <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
                     <div className="tab-panel-info">

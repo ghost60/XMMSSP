@@ -8,11 +8,12 @@ class Rcyb extends React.Component{
   constructor(props) {
       super(props);
       this.state=({name:'',link:''});
+      console.log(this.props.params.cid)
   }
   render() {
       return  <Row>
               <Col width={[1,6]}>
-                <Aside parent={"hyyb"} link={"rcyb"}/>
+                <Aside cid={this.props.params.cid} parent={"hyyb"} link={"rcyb"} />
               </Col>
               <Col width={[5,6]}>
                 {this.props.children||(<RcybSession/>)}

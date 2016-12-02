@@ -3,7 +3,7 @@ export const navlist = {
   home: {
     link: "home",
     name: "首页",
-    children: {}
+    // children: {}
   },
   dwgk: {
     name: "单位概况",
@@ -12,38 +12,38 @@ export const navlist = {
       dwjs: {
         id: 0,
         name: "单位介绍",
-        children: {}
+        // children: {}
       },
       zzjg: {
         id: 1,
         name: "组织机构",
-        children: {}
+        // children: {}
       },
       "zzzs": {
         id: 2,
         name: "资质证书",
-        children: {}
+        // children: {}
       },
       xszt: {
         id: 3,
         name: "下属站台",
-        children: {}
+        // children: {}
       }
     }
   },
   gzdt: {
     name: "工作动态",
     children: {
-      gzdt: { id: 0, name: "工作动态" },
-      dtjs: { id: 1, name: "党团建设" }
+      gzdt_gzdt: { id: 0, name: "工作动态" },
+      gzdt_dtjs: { id: 1, name: "党团建设" }
     }
   },
   hygc: {
     name: "海洋观测",
     children: {
-      gjhygcw: { id: 0, name: "国家海洋观测网" },
-      xmhygcw: { id: 1, name: "厦门海洋观测网" },
-      jhhygcw: { id: 2, name: "近海海洋观测网" }
+      hygc_gjhygcw: { id: 0, name: "国家海洋观测网" },
+      hygc_xmhygcw: { id: 1, name: "厦门海洋观测网" },
+      hygc_jhhygcw: { id: 2, name: "近海海洋观测网" }
     }
   },
   hyyb: {
@@ -69,36 +69,36 @@ export const navlist = {
         {
           hmf: {
             id: 0, name: "海面风", children: {
-              xtpy: {name:"西太平洋"},
-              twhx: {name:"台湾海峡"}
+              hmf_xtpy: {name:"西太平洋"},
+              hmf_twhx: {name:"台湾海峡"}
             }
           },
           hailang: {
             id: 1, name: "海浪", children: {
-              twhx: {name:"台湾海峡(海浪)"},
-              xjhy: {name:"夏金海域"},
-              lmhy: {name:"两马海域"},
+              hailang_twhx: {name:"台湾海峡(海浪)"},
+              hailang_xjhy: {name:"夏金海域"},
+              hailang_lmhy: {name:"两马海域"},
             }
           },
           hailiu: {
             id: 2, name: "海流", children: {
-              twhx: {name:"台湾海峡(海流)"},
-              xq: {name:"小区(海流)"}
+              hailiu_twhx: {name:"台湾海峡(海流)"},
+              hailiu_xq: {name:"小区(海流)"}
             }
           },
           chaoxi: {
             id: 3, name: "潮汐", children: {
-              twhx: {name:"台湾海峡(潮汐)"},
-              xq: {name:"小区(潮汐)"}
+              chaoxi_twhx: {name:"台湾海峡(潮汐)"},
+              chaoxi_xq: {name:"小区(潮汐)"}
             }
           },
         }
       },
-      hxyb: { name: "航线预报", children: {} },
+      hxyb: { name: "航线预报" },
       zhyb: {
         name: "灾害预报", children: {
-          yjbd: { id: 0, name: "预警报单" },
-          tfyb: { id: 1, name: "台风预报" }
+          zhyb_yjbd: { id: 0, name: "预警报单" },
+          zhyb_tfyb: { id: 1, name: "台风预报" }
         }
       }
     }
@@ -108,18 +108,18 @@ export const navlist = {
     children:
     {
       jcjs: {
-        id: 0, name: "监测介绍", children: {}
+        id: 0, name: "监测介绍"
       },
       txwj: {
-        id: 0, name: "体系文件", children: {}
+        id: 0, name: "体系文件"
       },
       ktyj: {
-        id: 0, name: "课题研究", children: {}
+        id: 0, name: "课题研究"
       },
       jcrw: {
         id: 0, name: "监测任务", children: {
-          gjzlxjcrw: { name: "国家指令性监测任务" },
-          dwycxjcrw: { name: "对外有偿性监测任务" },
+          hyjc_gjzlxjcrw: { name: "国家指令性监测任务" },
+          hyjc_dwycxjcrw: { name: "对外有偿性监测任务" },
         }
       },
       jcfc: { id: 0, name: "监测风采", children: {} },
@@ -128,23 +128,22 @@ export const navlist = {
   hyfw: {
     name: "海洋服务",
     children: {
-      hyhjdcypj: { id: 0, name: "海洋环境调查与评价" },
-      hysydtjc: { id: 1, name: "海域使用动态监测" },
-      hysylz: { id: 2, name: "海域使用论证" },
-      xcgcyjsfx: { id: 3, name: "现场观测与计算分析" },
-      zxybfw: { id: 4, name: "专项预报服务" },
+      hyfw_hyhjdcypj: { id: 0, name: "海洋环境调查与评价" },
+      hyfw_hysydtjc: { id: 1, name: "海域使用动态监测" },
+      hyfw_hysylz: { id: 2, name: "海域使用论证" },
+      hyfw_xcgcyjsfx: { id: 3, name: "现场观测与计算分析" },
+      hyfw_zxybfw: { id: 4, name: "专项预报服务" },
     }
   },
   yjya: {
     name: "应急预案",
     children: {
-      gjhyjyjya: { id: 0, name: "国家海洋局应急预案" },
-      dhqyjya: { id: 0, name: "东海区应急预案" },
-      xmzxzyjya: { id: 0, name: "厦门中心站应急预案" },
+      yjya_gjhyjyjya: { id: 0, name: "国家海洋局应急预案" },
+      yjya_dhqyjya: { id: 0, name: "东海区应急预案" },
+      yjya_xmzxzyjya: { id: 0, name: "厦门中心站应急预案" },
     }
   },
   hykp: {
-    name: "海洋科普",
-    children: {}
+    name: "海洋科普"
   }
 }

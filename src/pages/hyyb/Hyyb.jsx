@@ -9,13 +9,8 @@ class hyyb extends React.Component{
       this.state=({name:'',link:''});
   }
   render() {
-      return  <Row>
-            
-               
+      return  <Row>      
                 {this.props.children||(<Rcyb/>)}
-            
-            
-                    
               </Row>
       }
 };

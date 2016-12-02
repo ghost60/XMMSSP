@@ -2,7 +2,7 @@ import React from 'react';
 import LineChart from '../../components/highcharts/LineChart';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
-
+import { TabsPanel1, TabsPanel2, TabsPanel3, TabsPanel4 } from '../home/TabPanel';
 class rcybsession extends React.Component{
   constructor(props) {
       super(props);
@@ -46,9 +46,21 @@ class rcybsession extends React.Component{
     let data = this.querydata(route);
     this.setState({name:route,data:data});
   }
+  renderContent(type){
+    if(type==="hlswyb"){
+      return <TabsPanel1 mapSrc="./images/map1.png"/>
+    }else if(type==="cxyb"){
+      return <TabsPanel2 mapSrc="./images/map2.png"/>
+    }else if(type==="xmhlyb"){
+      return <TabsPanel3 mapSrc="./images/map3.png"/>
+    }else if(type==="xmycyb"){
+      return <TabsPanel4 mapSrc="./images/map4.png"/>
+    }
+    
+  }
   render() {
-    return  <Session name={`海洋预报/${this.state.name}`}>
-              {this.state.name}
+    return  <Session name={`海洋预报/日常预报/${this.state.name}`}>
+              {this.renderContent(this.props.params.cid)}
             </Session>
     }
 };

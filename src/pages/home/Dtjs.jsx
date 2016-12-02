@@ -19,7 +19,7 @@ export default class Dtjs extends React.Component {
                 console.log("before");
             },
             success: function (data) {
-                var data = JSON.parse(data)
+                // var data = JSON.parse(data)
                 console.log(data)
                 this.setState(
                     {

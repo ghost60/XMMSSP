@@ -39,7 +39,7 @@ class Hyybsession extends React.Component{
     if (this.state.tname=='航线预报') {
 
     }
-      return  <Session name={`海洋预报/${this.state.sname}/${this.state.tname}`}>
+      return  <Session name={`海洋预报/航线预报/${this.state.sname}/${this.state.tname}`}>
                 {this.state.tname}
               </Session>
       }

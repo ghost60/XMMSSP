@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import {
   Router, Route, Link, hashHistory, browserHistory, IndexRoute, Redirect, IndexLink
 }
-from 'react-router'
+  from 'react-router'
 import withBasename from '../components/basename/basename';
 import {
   Grid, Row, Col
 }
-from '../components/grid/Grid';
+  from '../components/grid/Grid';
 import Nav from '../components/nav/Nav';
 import Title from '../components/title/Title';
 
@@ -37,42 +37,47 @@ import * as menudata from '../pages/menudata/menudata';
 class App extends React.Component {
   render() {
     return <Grid>
-              <Row>
-                <Col>
-                  <Title backimg={'../images/titleback.png'} />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Nav navlist={menudata.navlist} />
-                </Col>
-              </Row>
-              <Row><div style={{height:20}}></div></Row>
-              <Row>
-                {this.props.children||(<Home/>)}
-              </Row>
-            </Grid>
+      <Row>
+        <Col>
+          <Title backimg={'../images/titleback.png'} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Nav navlist={menudata.navlist} />
+        </Col>
+      </Row>
+      <Row><div style={{ height: 20 }}></div></Row>
+      <Row>
+        {this.props.children || (<Home />)}
+      </Row>
+    </Grid>
   }
 };
 
-ReactDOM.render((<Header/>), document.getElementById('head'));
-ReactDOM.render((<Footer/>), document.getElementById('foot'));
+ReactDOM.render((<Header />), document.getElementById('head'));
+ReactDOM.render((<Footer />), document.getElementById('foot'));
 
 // 配置路由
 ReactDOM.render((
   <Router history={hashHistory} >
     <Route path="/" component={App}>
-
+      <Redirect from="/hyyb" to="/hyyb/rcyb/rcybsession/hlswyb" />
+      <Redirect from="/hyyb/rcyb" to="/hyyb/rcyb/rcybsession/hlswyb" />
+      <Redirect from="/hyyb/szyb" to="/hyyb/szyb/szybsession/hmf_xtpy" />
       <Route path="dwgk" component={dwgk}>
         <Route path="dwgksession/:cid" component={dwgksession} />
         <IndexRoute path="" component={dwgksession} />
       </Route>
 
       <Route path="gzdt" component={gzdt}>
-      </Route>
 
+      </Route>
+      
       <Route path="hyyb" component={hyyb}>
+
         <Route path="rcyb" component={rcyb}>
+
           <Route path="rcybsession/:cid" component={rcybsession} />
         </Route>
         <Route path="szyb" component={szyb}>
