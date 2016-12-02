@@ -9,7 +9,7 @@ var cdata='';
 class szybsession extends React.Component{
   constructor(props) {
       super(props);
-      this.state={name:'',data:{}};
+      this.state={name:'',data:''};
   }
   addmenu(mprops){
     debugger
@@ -28,32 +28,38 @@ class szybsession extends React.Component{
     }
   }
   querydata(name){
-        $.ajax({
-            url: 'name',
+     $.ajax({
+            url: './data/szyb.json',
             dataType: 'json',
             type: 'get',
             async: true,
             success: function(data) {
-              return data;  
+              debugger
+              for (var i = 0; i < data.length; i++) {
+                  if (data[i]["name"]==name) {
+                    this.setState({name:name,data:data[i]});
+                    break;
+                  }
+              }
             }.bind(this),
             error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());              
+                console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
   }
   componentDidMount(){
     let route = this.addmenu(this.props);  
-    let data = this.querydata(route);
-    this.setState({name:route,data:data});
+    this.querydata(route);    
   }
   componentWillReceiveProps(nextProps) {
     let route = this.addmenu(nextProps);  
-    let data = this.querydata(route);
-    this.setState({name:route,data:data});
+    this.querydata(route);
   }
   render() {
+    var img = '';
+    if(this.state.data!=='') img = <Imgplayer list={this.state.data}/>
       return  <Session name={`海洋预报/${this.state.name}`}>
-                <Imgplayer list={this.state.data}/>
+                {img}
               </Session>
       }
 };

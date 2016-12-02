@@ -9,6 +9,14 @@ class Lmap extends React.Component{
   constructor(props) {
       super(props);
   }
+  lineclick(lll,e){
+    debugger
+    console.log(e);
+    var nn = lll.getCenter();
+  }
+  getlinebound(e){
+    debugger
+  }
   render() {
       var data = this.props.data;
       var polyline = [];
@@ -24,7 +32,8 @@ class Lmap extends React.Component{
         }else{
           color = '#FF0033';
         }
-        polyline.push(<Polyline color={color} stroke-width={5} positions={data[i]}><Popup popupContent={<h1>AAA</h1>}/></Polyline>);
+        polyline.push(<Polyline getCenter={this.getlinebound} onClick={this.lineclick.bind(this,'a')} color={color} stroke-width={5} positions={data[i]}/>);
+          debugger
       }
 
 
@@ -44,7 +53,7 @@ class Lmap extends React.Component{
 
       if (nums.length>1) {
         position=nums[parseInt((num-1)/2)][0];
-        marker.push(<Marker position={nums[0][0]} icon={myIcon} />);
+        marker.push(<Marker position={nums[0][0]}  title={'aaa'} alt={'bbb'}/>);
         marker.push(<Marker position={nums[num-1][nums[num-1].length-1]} icon={myIcon} />);
       }else if(nums.length>0){
         position=nums[0][0];
