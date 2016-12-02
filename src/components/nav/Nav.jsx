@@ -24,7 +24,8 @@ class Nav extends React.Component {
             var child_ul;
             var child_li_key = 0;
             for (var child_key in navlist[item_key].children) {
-                child_li.push(<li key={child_li_key}><Link to={item_key+'/'+child_key}>{navlist[item_key].children[child_key].name}</Link></li>)
+                var child_link = item_key + "/" + (!navlist[item_key].secFloor ? item_key + "Session/" :   "" ) + child_key;
+                child_li.push(<li key={child_li_key}><Link to={child_link}>{navlist[item_key].children[child_key].name}</Link></li>)
                 child_li_key++;
             }
             if (child_li.length > 0) {
@@ -42,7 +43,7 @@ class Nav extends React.Component {
             }
             else {
                 nav_li.push(<div key={item_key} className="nav_li" onMouseLeave={this.removeCurrentIndex.bind(this)} onMouseEnter={this.setCurrentIndex.bind(this, key_num)}>
-                    <span >                        
+                    <span >
                         <Link to={item_key} activeClassName="nav__active">
                             {navlist[item_key].name}
                         </Link>
