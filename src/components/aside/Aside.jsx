@@ -22,26 +22,40 @@ class aside extends React.Component {
         var list_item = [];
         var ul_item = [];
         var product = menudata.navlist[tprops.parent];
-        var list = product.aside || product.children[tprops.link].aside;//子项目
-
+        var list = product.secFloor ? product.children[tprops.link] : product.children;//子项目
         var list_child_item = [];
         var child_link = "";
-        for (var i = 0; i < list.length; ++i) {
-            //侧边栏二级子路由
-            if (list[i].aside && list[i].aside.length > 0) {
-                for (var j = 0; j < list[i].aside.length; ++j) {
-                    child_link = tprops.parent + "/" + (product.aside ? tprops.parent + "Session/" : tprops.link + "/" + tprops.link + "Session/") + list[i].aside[j].name;
-                    list_child_item.push(<li className="aside-child-li" key={"child_" + i + "_" + j}><Link to={child_link} activeClassName="active">{list[i].aside[j].name}</Link></li>);
+        for(var item_key in list){
+             if (list[item_key].children) {
+                for (var item_child_key in list[item_key].children) {
+                    child_link = tprops.parent + "/" + (!product.secFloor ? tprops.parent + "Session/" : tprops.link + "/" + tprops.link + "Session/") +item_child_key;
+                    list_child_item.push(<li className="aside-child-li" key={"child_" + item_key + "_" + item_child_key}><Link to={child_link} activeClassName="aside__active">{list[item_key].children[item_child_key].name}</Link></li>);
                 }
-                list_item.push(<li key={i} className="aside-parent-li"><div className="aside-parent-title" onClick={this.asideParentTitleClick.bind(this, i)}><Link>{list[i].name}</Link></div><ul className={this.getAsideChildUlCls(i)}>{list_child_item}</ul></li>);
+                list_item.push(<li key={item_key} className="aside-parent-li"><div className="aside-parent-title" onClick={this.asideParentTitleClick.bind(this, list[item_key].id)}><Link activeClassName="aside__active">{list[item_key].name}</Link></div><ul className={this.getAsideChildUlCls(list[item_key].id)}>{list_child_item}</ul></li>);
                 list_child_item = [];
             }
             else {
                 //侧边栏一级路由
-                child_link = tprops.parent + "/" + (product.aside ? tprops.parent + "Session/" : tprops.link + "/" + tprops.link + "Session/") + list[i].name;
-                list_item.push(<li key={i} className="aside-parent-li"><div className="aside-parent-title"><Link to={child_link}>{list[i].name}</Link></div></li>)
+                child_link = tprops.parent + "/" + (!product.secFloor ? tprops.parent + "Session/" : tprops.link + "/" + tprops.link + "Session/") + item_key;
+                list_item.push(<li key={item_key} className="aside-parent-li"><div className="aside-parent-title"><Link to={child_link}>{list[item_key].name}</Link></div></li>)
             }
         }
+        // for (var i = 0; i < list.length; ++i) {
+        //     //侧边栏二级子路由
+        //     if (list[i].aside && list[i].aside.length > 0) {
+        //         for (var j = 0; j < list[i].aside.length; ++j) {
+        //             child_link = tprops.parent + "/" + (product.aside ? tprops.parent + "Session/" : tprops.link + "/" + tprops.link + "Session/") + list[i].aside[j].name;
+        //             list_child_item.push(<li className="aside-child-li" key={"child_" + i + "_" + j}><Link to={child_link} activeClassName="aside__active">{list[i].aside[j].name}</Link></li>);
+        //         }
+        //         list_item.push(<li key={i} className="aside-parent-li"><div className="aside-parent-title" onClick={this.asideParentTitleClick.bind(this, i)}><Link activeClassName="aside__active">{list[i].name}</Link></div><ul className={this.getAsideChildUlCls(i)}>{list_child_item}</ul></li>);
+        //         list_child_item = [];
+        //     }
+        //     else {
+        //         //侧边栏一级路由
+        //         child_link = tprops.parent + "/" + (product.aside ? tprops.parent + "Session/" : tprops.link + "/" + tprops.link + "Session/") + list[i].name;
+        //         list_item.push(<li key={i} className="aside-parent-li"><div className="aside-parent-title"><Link to={child_link}>{list[i].name}</Link></div></li>)
+        //     }
+        // }
         ul_item.push(<ul className="aside-ul aside-parent-ul" key={'aside_ul'}>{list_item}</ul>)
         list_item = null;
         return  ul_item 

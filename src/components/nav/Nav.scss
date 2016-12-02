@@ -40,11 +40,14 @@
             display: block;
             height: 100%;
         }
+         & a{
+        display: block;height: 100%
+    }
 }
 .nav-child--ul{
  background: #fff;
     position: absolute;
-    z-index: 2;
+    z-index: 9999;
     list-style: none;
     padding: 0;
     line-height: 1.5;
@@ -62,6 +65,7 @@
     & li:last-child{
         border-bottom: none
     }
+   
     & li a:hover{
         color: rgb(30,160,254)
     }
@@ -88,4 +92,8 @@
 }
 .ul-active{
      display: block;
+}
+.nav__active{
+    background-color: rgb(68, 174, 241);
+    color: #fff !important;
 }

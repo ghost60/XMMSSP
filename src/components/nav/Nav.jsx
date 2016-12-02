@@ -33,7 +33,7 @@ class Nav extends React.Component {
             if (key_num === 0) {
                 nav_li.push(<div key={item_key} className="nav_li" >
                     <span>
-                        <IndexLink to="/" activeClassName="active">
+                        <IndexLink to="/" activeClassName="nav__active">
                             {navlist[item_key].name}
                         </IndexLink>
                     </span>
@@ -43,7 +43,7 @@ class Nav extends React.Component {
             else {
                 nav_li.push(<div key={item_key} className="nav_li" onMouseLeave={this.removeCurrentIndex.bind(this)} onMouseEnter={this.setCurrentIndex.bind(this, key_num)}>
                     <span >                        
-                        <Link to={item_key} activeClassName="active">
+                        <Link to={item_key} activeClassName="nav__active">
                             {navlist[item_key].name}
                         </Link>
                     </span>

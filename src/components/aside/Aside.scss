@@ -37,7 +37,9 @@
     border-radius: 0 0 6px 6px;
     height: 100%;
 }
-
+.aside-parent-ul{
+    display: inline-block
+}
 .aside-ul{
     // display: inline-block;
     width: 100%;
@@ -110,4 +112,7 @@
         max-height: 500px;
         transition: max-height 
     }
+}
+.aside__active{
+     color: #2dcc9b !important
 }
