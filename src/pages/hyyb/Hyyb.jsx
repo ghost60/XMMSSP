@@ -10,11 +10,11 @@ class hyyb extends React.Component{
   }
   render() {
       return  <Row>
-                {
-              /* 
+            
+               
                 {this.props.children||(<Rcyb/>)}
-            */ 
-            } 
+            
+            
                     
               </Row>
       }

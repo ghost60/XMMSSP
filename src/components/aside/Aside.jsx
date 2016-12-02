@@ -22,7 +22,7 @@ class aside extends React.Component {
         var list_item = [];
         var ul_item = [];
         var product = menudata.navlist[tprops.parent];
-        var list = product.secFloor ? product.children[tprops.link] : product.children;//子项目
+        var list = product.secFloor ? product.children[tprops.link].children : product.children;//子项目
         var list_child_item = [];
         var child_link = "";
         for(var item_key in list){

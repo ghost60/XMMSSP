@@ -69,27 +69,27 @@ export const navlist = {
         {
           hmf: {
             id: 0, name: "海面风", children: {
-              "西太平洋": {},
-              "台湾海峡": {}
+              xtpy: {name:"西太平洋"},
+              twhx: {name:"台湾海峡"}
             }
           },
           hailang: {
             id: 1, name: "海浪", children: {
-              "台湾海峡(海浪)": {},
-              "夏金海域": {},
-              "两马海域": {},
+              twhx: {name:"台湾海峡(海浪)"},
+              xjhy: {name:"夏金海域"},
+              lmhy: {name:"两马海域"},
             }
           },
           hailiu: {
             id: 2, name: "海流", children: {
-              "台湾海峡(海流)": {},
-              "小区(海流)": {}
+              twhx: {name:"台湾海峡(海流)"},
+              xq: {name:"小区(海流)"}
             }
           },
           chaoxi: {
             id: 3, name: "潮汐", children: {
-              "台湾海峡(潮汐)": {},
-              "小区(潮汐)": {}
+              twhx: {name:"台湾海峡(潮汐)"},
+              xq: {name:"小区(潮汐)"}
             }
           },
         }
