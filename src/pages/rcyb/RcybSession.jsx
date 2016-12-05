@@ -86,7 +86,7 @@ class rcybsession extends React.Component {
       return <img src="http://xmhyxxs.e34.163ns.cn/XMMSSP/upload/img/HLYB/20161204_18_24厦门海洋预报台海浪预报图.jpg"/>
   }
   render() {
-    return <Session name={`海洋预报/日常预报/${this.state.name}`}>
+    return <Session lastname={this.state.name} name={"/海洋预报/日常预报"}>
       {this.renderContent(this.props.params.cid)}
     </Session>
   }

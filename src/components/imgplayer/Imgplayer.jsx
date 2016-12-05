@@ -8,7 +8,7 @@ var now=0;
 class imgplayer extends React.Component{ 
     constructor(props) {
         super(props);
-        this.state=({imgurl:'',data:this.props.list,play:'播放'});
+        this.state=({imgurl:'',data:this.props.list,play:'播放',likey:'li0'});
     } 
     componentDidMount(){
         if (!!this.props.list.content && this.props.list.content.length>0) {
@@ -24,14 +24,14 @@ class imgplayer extends React.Component{
     }
     liClick(e){
         let url = this.props.list.url + e.target.dataset.liname;
-        this.setState({imgurl:url});
+        this.setState({imgurl:url,likey:e.target.dataset.likey}); 
     }
     playClick(){
         if (this.state.play==='播放') {
             length = this.state.data.content.length;        
             c = setInterval(() => {
                 this.play();
-            }, 2000); 
+            }, 1500); 
         }else{
             window.clearInterval(c);
             this.setState({play:'播放'});
@@ -43,7 +43,7 @@ class imgplayer extends React.Component{
             now=0;
         }
         let url = this.state.data.url + this.state.data.content[now];
-        this.setState({imgurl:url,play:'暂停'});
+        this.setState({imgurl:url,play:'暂停',likey:'li'+now});
     }
     componentWillUnmount(){
         window.clearInterval(c);
@@ -54,7 +54,7 @@ class imgplayer extends React.Component{
                         <Col>
                             <Imgshow url={this.state.imgurl}/>
                         </Col>
-                        <Imglist play={this.state.play} list={this.props.list.content} callback={this.liClick.bind(this)} playClick={this.playClick.bind(this)}/>
+                        <Imglist likey={this.state.likey} play={this.state.play} list={this.props.list.content} callback={this.liClick.bind(this)} playClick={this.playClick.bind(this)}/>
                     </Row>
         }else{
             return <div><span>无数据</span></div>;
@@ -63,17 +63,24 @@ class imgplayer extends React.Component{
 };
 
 class Imglist extends React.Component{ 
-  constructor(props) {
+    constructor(props) {
         super(props);
     }    
+    liactive(key){
+        if(key===this.props.likey){
+          return "Imglist_li active";
+        }else{
+          return "Imglist_li";
+        }
+    }
     render() { 
         const list = this.props.list.map((li,i) => {
                 var lin=li.split('_');
                 var lina=lin[lin.length-1];
                 var linam=lina.split('.');
                 var liname=linam[0];
-                return  <li className="Imglist_li" key={i}>
-                            <span data-liname={li} onClick={this.props.callback}>{liname}</span>
+                return  <li className="Imglist_li" className={this.liactive('li'+i)} key={i} data-likey={'li'+i} data-liname={li} onClick={this.props.callback}>
+                            {liname}
                         </li>
                     }
         );

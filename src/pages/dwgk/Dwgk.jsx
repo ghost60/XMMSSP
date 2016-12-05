@@ -1,6 +1,7 @@
 import React from 'react';
 import {Row,Col} from '../../components/grid/Grid';
 import Aside from '../../components/aside/Aside';
+import DwgkSession from './DwgkSession';
 
 class dwgk extends React.Component{
   constructor(props) {
@@ -13,7 +14,7 @@ class dwgk extends React.Component{
                 <Aside cid={this.props.params.cid} parent={"dwgk"}/>
               </Col>
               <Col width={[5,6]}>
-                {this.props.children}
+                {this.props.children||(<DwgkSession/>)}
               </Col>
               </div>
       }

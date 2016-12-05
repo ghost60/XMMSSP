@@ -31,25 +31,13 @@ class szybsession extends React.Component {
   }
   querydata(name) {
     $.ajax({
-      url: './data/szyb.json',
+      url: ctx+'/szyb?name='+name,
       dataType: 'json',
       type: 'get',
       async: true,
       success: function (data) {
-        // var cidSplit = [];
-        // var _name = "";
-        // if (this.props.params.cid) {
-        //   cidSplit = this.props.params.cid.split("_");
-        // }
-        // if (cidSplit.length > 1) {
-        //   _name = menudata.navlist.hyyb.children.szyb.children[cidSplit[0]].name;
-        // }
-        for (var i = 0; i < data.length; i++) {
-          if (data[i]["name"] == name) {
-            this.setState({ name: name, data: data[i] });
-            break;
-          }
-        }
+        debugger
+          this.setState({ name: name, data: data[i] });
       }.bind(this),
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -65,9 +53,10 @@ class szybsession extends React.Component {
     this.querydata(route);
   }
   render() {
+    debugger
     var img = '';
     if (this.state.data !== '') img = <Imgplayer list={this.state.data} />
-    return <Session name={`海洋预报/数值预报/${this.state.name}`}>
+    return <Session lastname={this.state.name} name={"/海洋预报/数值预报"}>
       {img}
     </Session>
   }

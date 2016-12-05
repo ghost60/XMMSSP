@@ -17,7 +17,6 @@ class aside extends React.Component {
         if (cidSplit.length > 1) {
             cid = menudata.navlist[this.props.parent].children[this.props.link].children[cidSplit[0]].id;
         }
-        debugger
         this.state = { name: '', currentIndex: cid };
     }
     asideParentTitleClick(index, name) {

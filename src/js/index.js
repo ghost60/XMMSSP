@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import {
   Router, Route, Link, hashHistory, browserHistory, IndexRoute, Redirect, IndexLink
 }
-  from 'react-router'
+from 'react-router'
 import withBasename from '../components/basename/basename';
 import {
   Grid, Row, Col
 }
-  from '../components/grid/Grid';
+from '../components/grid/Grid';
 import Nav from '../components/nav/Nav';
 import Title from '../components/title/Title';
 
@@ -65,9 +65,10 @@ ReactDOM.render((
       <Redirect from="/hyyb" to="/hyyb/rcyb/rcybsession/hlswyb" />
       <Redirect from="/hyyb/rcyb" to="/hyyb/rcyb/rcybsession/hlswyb" />
       <Redirect from="/hyyb/szyb" to="/hyyb/szyb/szybsession/hmf_xtpy" />
+
+
       <Route path="dwgk" component={dwgk}>
         <Route path="dwgksession/:cid" component={dwgksession} />
-        <IndexRoute path="" component={dwgksession} />
       </Route>
 
       <Route path="gzdt" component={gzdt}>

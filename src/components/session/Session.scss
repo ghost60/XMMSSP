@@ -4,12 +4,7 @@
     padding-top: 0;
     padding-bottom: 0;
     line-height: 84px;
-    border-radius: 8px 8px 0 0;
-    &>span{
-	    color: #fff;
-        padding-left: 14px;
-        font-size: 26px;
-    }
+    border-radius: 8px 8px 0 0;    
 }
 .session_content{
     border: 1px solid #b4b4b4;
@@ -22,4 +17,13 @@
 }
 .session_body{
     margin-bottom: 120px;
+}
+.session_name{
+    color: #fff;
+    font-size: 16px;
+}
+.session_lastname{
+    color: #fff;
+    padding-left: 14px;
+    font-size: 26px;
 }

@@ -8,7 +8,8 @@ class session extends React.Component{
   render() {
       return  <div className="session_body">
                 <div className="session_title">
-                <span>{this.props.name}</span>
+                    <span className="session_lastname">{this.props.lastname}</span>
+                    <span className="session_name">{this.props.name}</span>
                 </div>
                 <div className="session_content">
                    {this.props.children}

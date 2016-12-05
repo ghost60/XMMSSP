@@ -3,9 +3,9 @@
     width: 183px;
     display: inline-block;
     position: absolute;
-    top: 240px;
+    top: 231px;
     z-index: 999;
-    left: -184px;
+    left: -204px;
     background: #fff;
     border-radius: 6px 6px 6px 6px;
     padding: 4px;
@@ -13,7 +13,7 @@
 .Imglist_li{
     border: 1px solid #bdbdbd;
     list-style-type: none;
-    width: 54px;
+    width: 48px;
     display: inline-block;
     margin: 0 2px 2px 2px;
     text-align: center;
@@ -25,9 +25,12 @@
     &:hover{
 	    cursor: pointer;
         background-color: #53a5e8;  
-        span{
-            color: #fff;
-        }
+        color: #fff;
+    }
+    &.active{
+        cursor: pointer;
+        background-color: #53a5e8;  
+        color: #fff;
     }
 }
 .Imglist_title{
@@ -44,7 +47,8 @@
     line-height: 28px;
     width: 78px;
     font-size: 15px;
-    margin-left: 18px;
+    margin-left: 2px;
+    cursor: pointer;
     span{
         background:url(./images/play.png);
         height: 16px;
