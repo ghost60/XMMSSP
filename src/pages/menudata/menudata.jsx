@@ -97,8 +97,8 @@ export const navlist = {
       hxyb: { name: "航线预报" },
       zhyb: {
         name: "灾害预报", children: {
-          zhyb_yjbd: { id: 0, name: "预警报单" },
-          zhyb_tfyb: { id: 1, name: "台风预报" }
+          yjbd: { id: 0, name: "预警报单" },
+          tfyb: { id: 1, name: "台风预报" }
         }
       }
     }
@@ -128,19 +128,19 @@ export const navlist = {
   hyfw: {
     name: "海洋服务",
     children: {
-      hyfw_hyhjdcypj: { id: 0, name: "海洋环境调查与评价" },
-      hyfw_hysydtjc: { id: 1, name: "海域使用动态监测" },
-      hyfw_hysylz: { id: 2, name: "海域使用论证" },
-      hyfw_xcgcyjsfx: { id: 3, name: "现场观测与计算分析" },
-      hyfw_zxybfw: { id: 4, name: "专项预报服务" },
+      hyhjdcypj: { id: 0, name: "海洋环境调查与评价" },
+      hysydtjc: { id: 1, name: "海域使用动态监测" },
+      hysylz: { id: 2, name: "海域使用论证" },
+      xcgcyjsfx: { id: 3, name: "现场观测与计算分析" },
+      zxybfw: { id: 4, name: "专项预报服务" },
     }
   },
   yjya: {
     name: "应急预案",
     children: {
-      yjya_gjhyjyjya: { id: 0, name: "国家海洋局应急预案" },
-      yjya_dhqyjya: { id: 0, name: "东海区应急预案" },
-      yjya_xmzxzyjya: { id: 0, name: "厦门中心站应急预案" },
+      gjhyjyjya: { id: 0, name: "国家海洋局应急预案" },
+      dhqyjya: { id: 0, name: "东海区应急预案" },
+      xmzxzyjya: { id: 0, name: "厦门中心站应急预案" },
     }
   },
   hykp: {
