@@ -16,7 +16,7 @@ export class TabsPanel1 extends React.Component {
             lgInfo: "-",
             waterTemp: "-"
         }
-        this.mapCfg = [
+        this.mapCfg = this.props.mapCfg || [
             { x: 11, y: 185, title: "漳州沿海" },
             { x: 57, y: 140, title: "厦门沿海" },
             { x: 101, y: 106, title: "泉州沿海" },
@@ -56,7 +56,7 @@ export class TabsPanel1 extends React.Component {
         return (
             <div className="c">
                 <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
-                <div className={"tab-panel--right "+this.props._className}>
+                <div className={"tab-panel--right " + this.props._className}>
                     <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
@@ -88,7 +88,7 @@ export class TabsPanel2 extends React.Component {
     constructor(props) {
         super(props)
         _this = this;
-        this.mapCfg = [
+        this.mapCfg =  this.props.mapCfg ||[
             { x: 69, y: 242, title: "东山" },
             { x: 146, y: 165, title: "厦门" },
             { x: 238, y: 87, title: "崇武" },
@@ -150,10 +150,10 @@ export class TabsPanel2 extends React.Component {
 
             <div className="c">
                 <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
-                <div className={"tab-panel--right "+this.props._className}>
+                <div className={"tab-panel--right " + this.props._className}>
                     <TabPanelTitle2 title={this.state.title} pubTime={"潮汐预报"} forcastInfo={this.state.forcastTime[0] + "-" + this.state.forcastTime[1]} />
                     <div className="tab-panel-info--container">
-                        <div style={{ "marginTop": 10 }}>
+                        <div style={{ "margin": "10px 0 10px 0" }}>
                             {
                                 _this.state.forcastTime.map(function (item, index) {
                                     console.log(item, index)
@@ -188,7 +188,7 @@ export class TabsPanel3 extends React.Component {
             lgInfo: "-",
             waterTemp: "-"
         }
-        this.mapCfg = [
+        this.mapCfg =  this.props.mapCfg ||[
             { x: 178, y: 181, title: "厦门大嶝海域" },
             { x: 233, y: 156, title: "厦门小嶝海域" },
             { x: 97, y: 106, title: "厦门同安湾" },
@@ -228,7 +228,7 @@ export class TabsPanel3 extends React.Component {
         return (
             <div className="c">
                 <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
-                <div className={"tab-panel--right "+this.props._className}>
+                <div className={"tab-panel--right " + this.props._className}>
                     <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
@@ -267,7 +267,7 @@ export class TabsPanel4 extends React.Component {
             "jsymsd": ["00:00-10:53", "14:19-23:59"]
 
         }
-        this.mapCfg = [
+        this.mapCfg = this.props.mapCfg || [
             { x: 250, y: 148, title: "观音山" },
             { x: 222, y: 210, title: "黄厝" },
             { x: 108, y: 253, title: "曾厝垵" },
@@ -312,7 +312,7 @@ export class TabsPanel4 extends React.Component {
         return (
             <div className="c">
                 <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
-                <div className={"tab-panel--right "+this.props._className}>
+                <div className={"tab-panel--right " + this.props._className}>
                     <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
@@ -356,15 +356,106 @@ export class TabsPanel4 extends React.Component {
     }
 }
 
-TabsPanel1.defaultProps={
-    _className:""
+export class TabsPanel5 extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            title: "-",
+            pubTime: '-',
+            forcastInfo: '-',
+            lgInfo: "-",
+            waterTemp: "-",
+            "dysyd": "-",
+            "zjdysj": "-",
+            "stylzs": "-",
+            "jsymsd": ["00:00-10:53", "14:19-23:59"]
+
+        }
+        this.mapCfg = this.props.mapCfg || [
+            { x: 250, y: 148, title: "观音山" },
+            { x: 222, y: 210, title: "黄厝" },
+            { x: 108, y: 253, title: "曾厝垵" },
+            { x: 56, y: 228, title: "港仔后" },
+            { x: 53, y: 194, title: "大德记" },
+            { x: 186, y: 234, title: "太阳湾" },
+
+        ]
+        this.handlerMapCilck(0)
+    }
+    handlerMapCilck(i) {
+        $.ajax({
+            type: "post",
+            url: "http://chukui0202.xicp.net/forcast", //添加自己的接口链接
+            timeOut: 5000,
+            data: { type: "yuchang", name: this.mapCfg[i]['title'] },
+            before: function () {
+                console.log("before");
+            },
+            success: function (data) {
+                // var data = JSON.parse(data)
+                console.log(data)
+                this.setState({
+                    title: this.mapCfg[i]['title'],
+                    pubTime: data.pubTime,
+                    forcastInfo: data.forcastInfo,
+                    lgInfo: data.lgInfo,
+                    waterTemp: data.waterTemp,
+                    "dysyd": data.dysyd,
+                    "zjdysj": data.zjdysj,
+                    "stylzs": data.stylzs,
+                    "jsymsd": data.jsymsd
+                })
+            }.bind(this),
+            error: function () {
+                console.log("error");
+            }
+        });
+    }
+    render() {
+
+        return (
+            <div className="c">
+                <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
+                <div className={"tab-panel--right " + this.props._className}>
+                    <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
+                    <div className="tab-panel-info">
+                        <div className="tab-panel-info--container">
+                            <div style={{ "padding": "20px" }}>
+                                <table style={{"width":"100%"}}>
+                                    <tbody>
+                                        <tr className="tab-panel-info--thead">
+                                            <td>海上游览指数</td>
+                                            <td>海滨观光指数</td>
+                                        </tr>
+                                        <tr className="tab-panel-info--tbody">
+                                            <td>{this.state.dysyd}</td>
+                                            <td>{this.state.zjdysj}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
-TabsPanel2.defaultProps={
-    _className:""
+
+TabsPanel1.defaultProps = {
+    _className: "",
+    mapCfg: null
 }
-TabsPanel3.defaultProps={
-    _className:""
+TabsPanel2.defaultProps = {
+    _className: "",
+    mapCfg: null
 }
-TabsPanel4.defaultProps={
-    _className:""
+TabsPanel3.defaultProps = {
+    _className: "",
+    mapCfg: null
+}
+TabsPanel4.defaultProps = {
+    _className: "",
+    mapCfg: null
 }
