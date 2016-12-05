@@ -33,12 +33,7 @@ class dwgksession extends React.Component {
       }.bind(this)
     });
     debugger
-    // var iframeWin = this.refs.iframe.contentWindow || this.refs.iframe.contentDocument.parentWindow;
-    // if (iframeWin.document.body) {
-    //   var height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
-    //   this.refs.iframe.height = height+"px"
-    //   console.log(height)
-    // }
+
   }
   componentWillReceiveProps(nextProps) {
     if (cdata == '') return;
@@ -47,6 +42,14 @@ class dwgksession extends React.Component {
         this.setState({ data: cdata[i], name: this.props.params.cid });
         break;
       }
+    }
+  }
+  setIframe() {
+    var iframeWin = this.refs.iframe.contentWindow || this.refs.iframe.contentDocument.parentWindow;
+    if (iframeWin.document.body) {
+      var height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+      this.refs.iframe.height = height+"px"
+      console.log(height)
     }
   }
   render() {
@@ -66,7 +69,7 @@ class dwgksession extends React.Component {
 
     return <Session name={this.state.name}>
       {content}
-      <iframe ref="iframe" src="data/DWGK/dwjs.html" className="dwjs-iframe" >
+      <iframe ref="iframe" src="data/DWGK/dwjs.html" className="dwjs-iframe" onLoad={this.setIframe.bind(this)}>
       </iframe>
     </Session>
   }

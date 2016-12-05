@@ -139,7 +139,10 @@
         }
 
         .tab-panel--map {
-           position: relative
+            width: 360px;
+            position: relative;
+            height: 334px;
+            overflow: hidden;
         }
         .map1{
            width: 360px;height: auto
