@@ -1,0 +1,7 @@
+.dwjs-iframe{
+    width: 100%;
+    min-height: 2462px;
+    /*max-height: 2000px;*/
+    border: none;
+    text-align: center
+}
