@@ -11,7 +11,6 @@ class szybsession extends React.Component {
     this.state = { name: '', data: '' };
   }
   addmenu(mprops) {
-    debugger
     if (!mprops.params) {
       var menu = menudata.navlist.hyyb.children.szyb.children;
       menu = menu[Object.keys(menu)[0]];
@@ -59,7 +58,6 @@ class szybsession extends React.Component {
   }
   componentDidMount() {
     let route = this.addmenu(this.props);
-    debugger
     this.querydata(route);
   }
   componentWillReceiveProps(nextProps) {

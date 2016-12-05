@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link,IndexLink} from 'react-router';
+import {Row,Col} from '../../components/grid/Grid';
 import './Imgplayer.scss';
 var c;
 var length;
@@ -10,6 +10,12 @@ class imgplayer extends React.Component{
         super(props);
         this.state=({imgurl:'',data:this.props.list,play:'播放'});
     } 
+    componentDidMount(){
+        if (!!this.props.list.content && this.props.list.content.length>0) {
+            let url = this.props.list.url + this.props.list.content[0];
+            this.setState({imgurl:url,data:this.props.list});
+        }
+    }
     componentWillReceiveProps(nextProps) {
         if (!!nextProps.list.content && nextProps.list.content.length>0) {
             let url = nextProps.list.url + nextProps.list.content[0];
@@ -44,10 +50,12 @@ class imgplayer extends React.Component{
     }
     render() {
         if (!!this.state.imgurl) {
-            return  <div className="imgplayer_panel">        
-                      <Imgshow url={this.state.imgurl}/>
-                      <Imglist play={this.state.play} list={this.props.list.content} callback={this.liClick.bind(this)} playClick={this.playClick.bind(this)}/>
-                    </div>
+            return  <Row>
+                        <Col>
+                            <Imgshow url={this.state.imgurl}/>
+                        </Col>
+                        <Imglist play={this.state.play} list={this.props.list.content} callback={this.liClick.bind(this)} playClick={this.playClick.bind(this)}/>
+                    </Row>
         }else{
             return <div><span>无数据</span></div>;
         }         
@@ -69,9 +77,9 @@ class Imglist extends React.Component{
                         </li>
                     }
         );
-        return  <div style={{height:"100%",width:"18%",display:"inline-block"}}>
-                    <span className="Imglist_title">选择图片：</span>
-                    <button className="Imglist_button" onClick={this.props.playClick}>{this.props.play}</button>
+        return  <div className="Imglist_body">
+                    <span className="Imglist_title">选择图片</span>
+                    <span className="Imglist_button" onClick={this.props.playClick}><span></span>{this.props.play}</span>
                     <lu className="Imglist_lu">   
                         {list}               
                     </lu>
@@ -84,7 +92,7 @@ class Imgshow extends React.Component{
         super(props);
     }    
     render() {
-        return  <div style={{width: "80%",display:"inline-block"}}>
+        return  <div style={{width: "100%",display:"inline-block"}}>
                   <img src={this.props.url} style={{width:"100%"}}/>
                 </div>
     }     
