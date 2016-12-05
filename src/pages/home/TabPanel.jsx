@@ -10,11 +10,11 @@ export class TabsPanel1 extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: "22222",
-            pubTime: 'this.props.pubTime',
-            forcastInfo: 'this.props.forcastInfo',
-            lgInfo: "上的撒旦撒的",
-            waterTemp: "速度速度算得上的"
+            title: "-",
+            pubTime: "-",
+            forcastInfo: '-',
+            lgInfo: "-",
+            waterTemp: "-"
         }
         this.mapCfg = [
             { x: 11, y: 185, title: "漳州沿海" },
@@ -56,7 +56,7 @@ export class TabsPanel1 extends React.Component {
         return (
             <div className="c">
                 <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
-                <div className="tab-panel--right">
+                <div className={"tab-panel--right "+this.props._className}>
                     <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
@@ -150,7 +150,7 @@ export class TabsPanel2 extends React.Component {
 
             <div className="c">
                 <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
-                <div className="tab-panel--right">
+                <div className={"tab-panel--right "+this.props._className}>
                     <TabPanelTitle2 title={this.state.title} pubTime={"潮汐预报"} forcastInfo={this.state.forcastTime[0] + "-" + this.state.forcastTime[1]} />
                     <div className="tab-panel-info--container">
                         <div style={{ "marginTop": 10 }}>
@@ -228,7 +228,7 @@ export class TabsPanel3 extends React.Component {
         return (
             <div className="c">
                 <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
-                <div className="tab-panel--right">
+                <div className={"tab-panel--right "+this.props._className}>
                     <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
@@ -312,7 +312,7 @@ export class TabsPanel4 extends React.Component {
         return (
             <div className="c">
                 <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
-                <div className="tab-panel--right">
+                <div className={"tab-panel--right "+this.props._className}>
                     <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
@@ -354,4 +354,17 @@ export class TabsPanel4 extends React.Component {
             </div>
         )
     }
+}
+
+TabsPanel1.defaultProps={
+    _className:""
+}
+TabsPanel2.defaultProps={
+    _className:""
+}
+TabsPanel3.defaultProps={
+    _className:""
+}
+TabsPanel4.defaultProps={
+    _className:""
 }

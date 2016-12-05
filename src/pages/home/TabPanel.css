@@ -25,6 +25,10 @@
             /*padding: 20px;*/
             color: #fff
         }
+        .tab-panel--right__cust {
+            width: 490px;
+        }
+        
         
         .tab-panel--right::before {
             content: 'ss';
@@ -75,7 +79,7 @@
 
         }
         .tab-panel-info {
-            height: 200px;
+            /*height: 200px;*/
             color: #666;
             background-color: #fff
         }
@@ -122,15 +126,16 @@
         }
        
         .tab-panel--tips {
+            display: table;
             clear: both;
-            height: 60px;
+            min-height: 60px;
             background-color: #F5F5F5;
             padding: 13px 10px;
             box-sizing: border-box;
             margin-top: 20px;
         }
         .tab-panel--tips div{
-            float: left;box-sizing: border-box;font-size: 14px;padding:0 7px;height: 100%
+           display: table-cell;box-sizing: border-box;font-size: 14px;height: 100%
         }
 
         .tab-panel--map {

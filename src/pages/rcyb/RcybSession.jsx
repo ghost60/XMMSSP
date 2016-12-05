@@ -48,13 +48,13 @@ class rcybsession extends React.Component{
   }
   renderContent(type){
     if(type==="hlswyb"){
-      return <TabsPanel1 mapSrc="./images/map1.png"/>
+      return <TabsPanel1 mapSrc="./images/map1.png" _className="tab-panel--right__cust"/>
     }else if(type==="cxyb"){
-      return <TabsPanel2 mapSrc="./images/map2.png"/>
+      return <TabsPanel2 mapSrc="./images/map2.png" _className="tab-panel--right__cust"/>
     }else if(type==="xmhlyb"){
-      return <TabsPanel3 mapSrc="./images/map3.png"/>
+      return <TabsPanel3 mapSrc="./images/map3.png" _className="tab-panel--right__cust"/>
     }else if(type==="xmycyb"){
-      return <TabsPanel4 mapSrc="./images/map4.png"/>
+      return <TabsPanel4 mapSrc="./images/map4.png" _className="tab-panel--right__cust"/>
     }
     
   }
