@@ -10,7 +10,7 @@ class dwgk extends React.Component{
       if (true) {}
       return  <div>
               <Col width={[1,6]}>
-                <Aside cid={this.props.params.cid} link={"dwgk"}/>
+                <Aside cid={this.props.params.cid} parent={"dwgk"}/>
               </Col>
               <Col width={[5,6]}>
                 {this.props.children}

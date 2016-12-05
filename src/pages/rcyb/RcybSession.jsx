@@ -75,7 +75,12 @@ class rcybsession extends React.Component {
     } else if (type === "xmycyb") {
       return <TabsPanel4 mapSrc="/images/map4_cus.png" _className="tab-panel--right__cust" />
     }else if(type==="xmbhlyyb"){
-       return <TabsPanel5 mapSrc="/images/map4_cus.png" _className="tab-panel--right__cust" />
+       return <TabsPanel5 mapSrc="/images/map4_cus.png" _className="tab-panel--right__cust" mapCfg={
+        [
+            { x: 204, y: 157, title: "厦门环岛路东部" },
+            { x: 243, y: 113, title: "厦门鼓浪屿	" },
+        ]
+      }/>
     }
     else if(type === "hlybt")
       return <img src="http://xmhyxxs.e34.163ns.cn/XMMSSP/upload/img/HLYB/20161204_18_24厦门海洋预报台海浪预报图.jpg"/>

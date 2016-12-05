@@ -55,7 +55,8 @@ class aside extends React.Component {
     }
     componentDidMount() {
         // this.updateaside(this.props);
-        var name = menudata.navlist[this.props.parent].children[this.props.link].name;//一级中文名与路由同名
+        var name =this.props.link? menudata.navlist[this.props.parent].children[this.props.link].name:
+        menudata.navlist[this.props.parent].name;//一级中文名与路由同名
         this.setState({ name: name });
     }
     getContent() {
