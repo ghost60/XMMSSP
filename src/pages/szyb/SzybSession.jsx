@@ -37,9 +37,10 @@ class szybsession extends React.Component {
       async: true,
       success: function (data) {
         debugger
-          this.setState({ name: name, data: data[i] });
+          this.setState({ name: name, data: data });
       }.bind(this),
       error: function (xhr, status, err) {
+        debugger
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
@@ -55,7 +56,7 @@ class szybsession extends React.Component {
   render() {
     debugger
     var img = '';
-    if (this.state.data !== '') img = <Imgplayer list={this.state.data} />
+    if (this.state.data !== '') img = <Imgplayer data={this.state.data} />
     return <Session lastname={this.state.name} name={"/海洋预报/数值预报"}>
       {img}
     </Session>

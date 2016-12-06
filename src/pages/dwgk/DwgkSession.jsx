@@ -1,9 +1,7 @@
 import React from 'react';
-import Aside from '../../components/aside/Aside';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
 import "./Dwgk.css"
-var cdata = '';
 
 class dwgksession extends React.Component {
   constructor(props) {
@@ -14,7 +12,6 @@ class dwgksession extends React.Component {
     this.addname(this.props);
   }
   addname(mprops){
-    debugger
     if (!mprops.params) {
       var menu = menudata.navlist.dwgk.children;
       var key = Object.keys(menu)[0];

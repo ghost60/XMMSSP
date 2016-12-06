@@ -44,8 +44,10 @@ export default class GZDTList extends React.Component{
     render() {
         const list = gzdtlist.map((li,i) => {
             return  <div className="gzdt_li" key={i}>
+                        <Link to={'pdfshow/PDF/2016001福建海浪.pdf'}>
                         <span className="gzdt_time">{li.time}</span>
                         <span className="gzdt_name">{li.name}</span>
+                        </Link>
                     </div>
             }
         );

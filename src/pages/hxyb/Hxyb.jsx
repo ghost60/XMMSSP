@@ -7,39 +7,90 @@ import './Hxyb.scss';
 
 
 const hx=['厦门-金门','泉州-金门','马尾-马祖','基隆-马祖','台中-平潭','基隆-台州','台中-金门','台北港-平潭'];
-
+const pic=[
+  'upload/img/PNG/xm-jm_period.png',
+  'upload/img/PNG/xm-jm_wave.png',
+  'upload/img/PNG/xm-jm_wind.png'
+]
 class hxyb extends React.Component{
   constructor(props) {
       super(props);
-      this.state={alldata:[],data:{},name:'',tpkey:'lzq'};
+      this.state={data:{}, name:'',tpkey:'lzq',pic:'',list:[]};
   }
-  componentWillMount(){
-      $.ajax({
-          url: './data/hxyb.json',
+  componentDidMount(){
+    debugger
+    querylatlng('厦门-金门');
+    var list = querylist();
+    var pic = querypic('浪周期');
+    this.setState({data:latlng,pic:querypic(e.target.innerText),list:list});
+  }
+  selectChange(e){
+    var name = e.target.innerText;
+    var latlng = querylatlng(name);
+    var list = querylist();
+    var pic = querypic('浪周期');
+    this.setState({data:latlng,tpkey:'lzq',pic:querypic(e.target.innerText)});
+  }
+  querylatlng(name){
+    $.ajax({
+          url: ctx+'/getHXYB/getHXZB',
           dataType: 'json',
-          type: 'get',
+          type: 'post',
           async: true,
+          data:{'routeName':name},
           success: function(data) {
-              this.setState({alldata:data,data:{0:data.rows[0].latlon},name:data.rows[0].name});
+              return data.data;
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());
           }.bind(this)
       });
   }
-  selectChange(e){
-    console.log(e.target.innerText);
-    var data={};
-    for (var i = this.state.alldata.rows.length - 1; i >= 0; i--) {
-      if(this.state.alldata.rows[i].name.indexOf(e.target.innerText)>=0){
-          data[i]=this.state.alldata.rows[i].latlon;
-      }
-    }
-    this.setState({alldata:this.state.alldata,data:data,name:e.target.innerText});
+  querylist(){
+    $.ajax({
+          url: ctx+'/getHXYB/getDownloadList',
+          dataType: 'json',
+          type: 'get',
+          async: true,
+          success: function(data) {
+              return data;
+          }.bind(this),
+          error: function(xhr, status, err) {
+              console.error(this.props.url, status, err.toString());
+          }.bind(this)
+      });
+  }
+  querypic(name){
+    $.ajax({
+          url: ctx+'/getHXYB/getDownloadList',
+          dataType: 'json',
+          type: 'get',
+          async: true,
+          data:{name:name}
+          success: function(data) {
+              return data;
+          }.bind(this),
+          error: function(xhr, status, err) {
+              console.error(this.props.url, status, err.toString());
+          }.bind(this)
+      });
+  }
+  downloadlist(name){
+    $.ajax({
+          url: ctx+'/getHXYB/download',
+          dataType: 'json',
+          type: 'get',
+          async: true,
+          success: function(data) {
+              alert("下载成功！");
+          }.bind(this),
+          error: function(xhr, status, err) {
+              console.error(this.props.url, status, err.toString());
+          }.bind(this)
+      });
   }
   tpselect(e){
-    this.setState({tpkey:e.target.dataset.key});
-
+    this.setState({tpkey:e.target.dataset.key,pic:querypic(e.target.innerText)});
   }
   tpactive(key){
     if(key===this.state.tpkey){
@@ -75,7 +126,7 @@ class hxyb extends React.Component{
                             <span className={this.tpactive("fs")} data-key="fs" onClick={this.tpselect.bind(this)}>风速</span>
                         </div>
                         <div className="hxyb-tp-tp">
-                             <img src="./images/xm-jm_period.png" alt="" />
+                             <img src={this.state.pic} alt="" />
                         </div>
                        </div>
                     </div>                    

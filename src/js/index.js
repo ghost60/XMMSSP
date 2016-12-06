@@ -37,12 +37,14 @@ import szybsession from '../pages/szyb/SzybSession';
 
 import * as menudata from '../pages/menudata/menudata';
 
+import pdfshow from '../pages/pdfshow/PdfShow';
+
 class App extends React.Component {
   render() {
     return <Grid>
       <Row>
         <Col>
-          <Title backimg={'../images/titleback.png'} />
+          <Title backimg={'./images/titleback.png'} />
         </Col>
       </Row>
       <Row>
@@ -69,6 +71,7 @@ ReactDOM.render((
       <Redirect from="/hyyb/rcyb" to="/hyyb/rcyb/rcybsession/hlswyb" />
       <Redirect from="/hyyb/szyb" to="/hyyb/szyb/szybsession/hmf_xtpy" />
 
+      <Route path="pdfshow/:path/:file" component={pdfshow} />
 
       <Route path="dwgk" component={dwgk}>
         <Route path="dwgksession/:cid" component={dwgksession} />
@@ -79,7 +82,6 @@ ReactDOM.render((
       </Route>
 
       <Route path="gzdt" component={gzdt}>
-
       </Route>
       
       <Route path="hyyb" component={hyyb}>

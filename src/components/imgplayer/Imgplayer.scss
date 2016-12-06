@@ -1,5 +1,5 @@
 .Imglist_body{
-    height: 444px;
+    height: 316px;
     width: 183px;
     display: inline-block;
     position: absolute;
@@ -57,6 +57,8 @@
         margin: 0 6px;
     }
 }
-.Imglist_lu{
+.Imglist_ul{
 	overflow-y:scroll;
+    height: 256px;
+    display: inline-block;
 }

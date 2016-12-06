@@ -8,22 +8,22 @@ var now=0;
 class imgplayer extends React.Component{ 
     constructor(props) {
         super(props);
-        this.state=({imgurl:'',data:this.props.list,play:'播放',likey:'li0'});
+        this.state=({imgurl:'',data:this.props.data,play:'播放',likey:'li0'});
     } 
     componentDidMount(){
-        if (!!this.props.list.content && this.props.list.content.length>0) {
-            let url = this.props.list.url + this.props.list.content[0];
-            this.setState({imgurl:url,data:this.props.list});
+        if (!!this.props.data.content && this.props.data.content.length>0) {
+            let url = this.props.data.url + this.props.data.content[0];
+            this.setState({imgurl:url,data:this.props.data});
         }
     }
     componentWillReceiveProps(nextProps) {
-        if (!!nextProps.list.content && nextProps.list.content.length>0) {
-            let url = nextProps.list.url + nextProps.list.content[0];
-            this.setState({imgurl:url,data:nextProps.list});
+        if (!!nextProps.data.content && nextProps.data.content.length>0) {
+            let url = nextProps.data.url + nextProps.data.content[0];
+            this.setState({imgurl:url,data:nextProps.data});
         }
     }
     liClick(e){
-        let url = this.props.list.url + e.target.dataset.liname;
+        let url = this.props.data.url + e.target.dataset.liname;
         this.setState({imgurl:url,likey:e.target.dataset.likey}); 
     }
     playClick(){
@@ -54,7 +54,7 @@ class imgplayer extends React.Component{
                         <Col>
                             <Imgshow url={this.state.imgurl}/>
                         </Col>
-                        <Imglist likey={this.state.likey} play={this.state.play} list={this.props.list.content} callback={this.liClick.bind(this)} playClick={this.playClick.bind(this)}/>
+                        <Imglist likey={this.state.likey} play={this.state.play} list={this.props.data.content} callback={this.liClick.bind(this)} playClick={this.playClick.bind(this)}/>
                     </Row>
         }else{
             return <div><span>无数据</span></div>;
@@ -87,9 +87,9 @@ class Imglist extends React.Component{
         return  <div className="Imglist_body">
                     <span className="Imglist_title">选择图片</span>
                     <span className="Imglist_button" onClick={this.props.playClick}><span></span>{this.props.play}</span>
-                    <lu className="Imglist_lu">   
+                    <span className="Imglist_ul">   
                         {list}               
-                    </lu>
+                    </span>
                 </div>
     }     
 };
