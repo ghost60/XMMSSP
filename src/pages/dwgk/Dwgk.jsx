@@ -8,7 +8,6 @@ class dwgk extends React.Component{
       super(props);
   }
   render() {
-      if (true) {}
       return  <div>
               <Col width={[1,6]}>
                 <Aside cid={this.props.params.cid} parent={"dwgk"}/>

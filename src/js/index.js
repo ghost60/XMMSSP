@@ -20,6 +20,9 @@ import Footer from '../pages/footer/Footer';
 import dwgk from '../pages/dwgk/Dwgk';
 import dwgksession from '../pages/dwgk/DwgkSession';
 
+import hyjc from '../pages/hyjc/Hyjc';
+import hyjcsession from '../pages/hyjc/HyjcSession';
+
 import gzdt from '../pages/gzdt/Gzdt';
 
 import hyyb from '../pages/hyyb/Hyyb';
@@ -69,6 +72,10 @@ ReactDOM.render((
 
       <Route path="dwgk" component={dwgk}>
         <Route path="dwgksession/:cid" component={dwgksession} />
+      </Route>
+
+      <Route path="hyjc" component={hyjc}>
+        <Route path="hyjcsession/:cid" component={hyjcsession} />
       </Route>
 
       <Route path="gzdt" component={gzdt}>

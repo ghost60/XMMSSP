@@ -14,10 +14,13 @@ class dwgksession extends React.Component {
     this.addname(this.props);
   }
   addname(mprops){
+    debugger
     if (!mprops.params) {
       var menu = menudata.navlist.dwgk.children;
-      menu = menu[Object.keys(menu)[0]];
-      this.setState({ name: menu.name, src: Object.keys(menu)[0] });
+      var key = Object.keys(menu)[0];
+      var key = Object.keys(menu)[0];
+      menu = menu[key];
+      this.setState({ name: menu.name, src: key });
     }else{
       menu = menudata.navlist.dwgk.children;
       for (var key in menu) {
@@ -40,7 +43,7 @@ class dwgksession extends React.Component {
   render() {  
     var src=`data/DWGK/${this.state.src}.html`;
     return  <Session lastname={this.state.name} name={"/单位概况"}>
-              <iframe ref="iframe" src={src} className="dwjs-iframe" onLoad={this.setIframe.bind(this)}>
+              <iframe ref="iframe" src={src} className="iframe" onLoad={this.setIframe.bind(this)}>
               </iframe>
             </Session>
   }
