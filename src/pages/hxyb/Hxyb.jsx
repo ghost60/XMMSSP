@@ -66,7 +66,7 @@ class hxyb extends React.Component{
           dataType: 'json',
           type: 'get',
           async: true,
-          data:{name:name}
+          data:{name:name},
           success: function(data) {
               return data;
           }.bind(this),
