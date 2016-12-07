@@ -36,11 +36,9 @@ class szybsession extends React.Component {
       type: 'get',
       async: true,
       success: function (data) {
-        debugger
           this.setState({ name: name, data: data });
       }.bind(this),
       error: function (xhr, status, err) {
-        debugger
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
@@ -54,7 +52,6 @@ class szybsession extends React.Component {
     this.querydata(route);
   }
   render() {
-    debugger
     var img = '';
     if (this.state.data !== '') img = <Imgplayer data={this.state.data} />
     return <Session lastname={this.state.name} name={"/海洋预报/数值预报"}>

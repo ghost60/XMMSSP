@@ -56,10 +56,8 @@
         }
     }    
 }
-.hxyb-tp-tp{
-	img{
-		width:100%;
-	}
+.hxyb-bd{
+    background:#fff;
 }
 .hxyb-bd-title{
     font-size: 25px;
@@ -68,4 +66,35 @@
 .hxyb-bd-list{
     border: 1px solid #666;
     margin: 12px;
+}
+.hxyb-xml{
+    
+}
+.hxyb-excel{
+    
+}
+.hxyb-xml-body{
+     display: inline-block;
+    width: 28%;
+    margin-left: 46px;
+    span{
+        display: inline-block;
+        margin: 10px 18px;
+        &:hover{
+            cursor: pointer;
+             color: #1ea0ff;
+        }
+    }
+}
+.hxyb-excel-body{
+     display: inline-block;
+     width: 62%;
+     span{
+        display: inline-block;
+        margin: 10px 18px;
+        &:hover{
+            cursor: pointer;
+             color: #1ea0ff;
+        }
+    }
 }

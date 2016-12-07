@@ -25,7 +25,7 @@ class ExampleMarkerComponent extends React.Component {
       fontSize: '14px',
       fontWeight: 'bold',
       marginTop: '-12px',
-      marginLeft: '-12px',
+      marginLeft: '-16px',
       width: '24px',
       height: '24px'
     };
@@ -39,44 +39,29 @@ class Lmap extends React.Component{
   constructor(props) {
       super(props);
   }
-  lineclick(e){
-    alert(e)
-  }
   render() {
       let data = this.props.data;
       let polyline = [];
       let marker = [];
       let labels = [];
-      let color = '#FF0033';
-      let position={};
-      debugger
+      let color = '#FF0033';      
       for (var i = data.length - 1; i >= 0; i--) {
         if(i%2==1){
           color='#68BBB5';
         }else{
           color = '#398BFA';
         }
-        if (data.length===1) {
-          var flatlon = data[i].latlon[0];
-          var llatlon = data[i].latlon[data[i].latlon.length-1];
+        if (data.length>1) {
           var mlatlon = data[i].latlon[Math.ceil((data[i].latlon.length-1)/2)];
+          var position={};
           position.lng=mlatlon[1];
           position.lat=mlatlon[0];
-          let label = {};
-          label.position=position;
-          label.text=i;
-          labels.push(label);
-        }else{
-          var flatlon = data[i].latlon[0];
-          var llatlon = data[i].latlon[data[i].latlon.length-1];
-          position.lng=(flatlon[1]+llatlon[1])/2;
-          position.lat=(flatlon[0]+llatlon[0])/2;
-          let label = {};
+          var label = {};
           label.position=position;
           label.text=i;
           labels.push(label);
         }
-        polyline.push(<Polyline key={i} getCenter={this.getlinebound} onClick={this.lineclick.bind(this,data[i].name)} color={color} weight={5} positions={data[i].latlon}/>);       
+        polyline.push(<Polyline key={i} getCenter={this.getlinebound} onClick={this.props.routecallback.bind(this,data[i].name)} color={color} weight={5} positions={data[i].latlon}/>);       
       }      
 
       let myIcon = L.icon({

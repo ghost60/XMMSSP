@@ -24,9 +24,9 @@ export const navlist = {
         name: "资质证书",
         // children: {}
       },
-      xszt: {
+      xstz: {
         id: 3,
-        name: "下属站台",
+        name: "下属台站",
         // children: {}
       }
     }

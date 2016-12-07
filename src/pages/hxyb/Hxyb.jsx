@@ -7,29 +7,27 @@ import './Hxyb.scss';
 
 
 const hx=['厦门-金门','泉州-金门','马尾-马祖','基隆-马祖','台中-平潭','基隆-台州','台中-金门','台北港-平潭'];
-const pic=[
+const pic={"data":[
   'upload/img/PNG/xm-jm_period.png',
   'upload/img/PNG/xm-jm_wave.png',
   'upload/img/PNG/xm-jm_wind.png'
 ]
+}
 class hxyb extends React.Component{
   constructor(props) {
       super(props);
-      this.state={data:{}, name:'',tpkey:'lzq',pic:'',list:[]};
+      this.state={data:{}, name:'',tpkey:'0',pic:[],list:[]};
   }
   componentDidMount(){
-    debugger
-    querylatlng('厦门-金门');
-    var list = querylist();
-    var pic = querypic('浪周期');
-    this.setState({data:latlng,pic:querypic(e.target.innerText),list:list});
+    this.querylatlng('厦门-金门');
+    this.querylist();
+    this.querypic(0,'厦门-金门');
   }
   selectChange(e){
     var name = e.target.innerText;
-    var latlng = querylatlng(name);
-    var list = querylist();
-    var pic = querypic('浪周期');
-    this.setState({data:latlng,tpkey:'lzq',pic:querypic(e.target.innerText)});
+    this.querylatlng(name);
+    this.querylist();
+    this.querypic(0,name);
   }
   querylatlng(name){
     $.ajax({
@@ -39,7 +37,7 @@ class hxyb extends React.Component{
           async: true,
           data:{'routeName':name},
           success: function(data) {
-              return data.data;
+            this.setState({data:data.data});
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());
@@ -53,34 +51,35 @@ class hxyb extends React.Component{
           type: 'get',
           async: true,
           success: function(data) {
-              return data;
+              this.setState({list:data});
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());
           }.bind(this)
       });
   }
-  querypic(name){
+  querypic(type,name){
     $.ajax({
           url: ctx+'/getHXYB/getDownloadList',
           dataType: 'json',
-          type: 'get',
+          type: 'post',
           async: true,
-          data:{name:name},
+          data:{typr:type,name:name},
           success: function(data) {
-              return data;
+              this.setState({pic:data});
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());
           }.bind(this)
       });
   }
-  downloadlist(name){
+  downloadlist(name,path){
     $.ajax({
           url: ctx+'/getHXYB/download',
           dataType: 'json',
-          type: 'get',
+          type: 'post',
           async: true,
+          data:{filename:name,path:path},
           success: function(data) {
               alert("下载成功！");
           }.bind(this),
@@ -90,7 +89,8 @@ class hxyb extends React.Component{
       });
   }
   tpselect(e){
-    this.setState({tpkey:e.target.dataset.key,pic:querypic(e.target.innerText)});
+    this.querypic(e.target.innerText);
+    this.setState({tpkey:e.target.dataset.key});
   }
   tpactive(key){
     if(key===this.state.tpkey){
@@ -99,16 +99,28 @@ class hxyb extends React.Component{
       return "hxyb-tp";
     }
   }
+  bddownload(name,path){
+    this.downloadlist(name,path);
+  }
+  routeclick(name){
+    this.querypic(1,name);
+  }
   render() {
       const option = hx.map((li,i) => {
         return  <span key={i} onClick={this.selectChange.bind(this)}>{li}</span>
         }
-      );      
+      ); 
+      const xml = !this.state.list.xml?[]:this.state.list.xml.map((li,i)=>{
+        return <span onClick={this.bddownload.bind(this,li,"xml")}>{li}</span>
+      }) 
+      const excel = !this.state.list.excel?[]:this.state.list.excel.map((li,i)=>{
+        return <span onClick={this.bddownload.bind(this,li,"excel")}>{li}</span>
+      })      
       return  <Col>
-              <Session name={'航线预报'}>
+              <Session lastname={'航线预报'}>
                 <Row>
                   <Col width={[1,2]}>
-                    <Lmap data={this.state.data} />
+                    <Lmap data={this.state.data} routecallback={this.routeclick.bind(this)}/>
                   </Col>
                   <Col  width={[1,2]}>
                     <div className="hxyb-xz">
@@ -121,23 +133,27 @@ class hxyb extends React.Component{
                       </div>
                       <div>
                         <div className="hxyb-tp-xz">
-                            <span className={this.tpactive("lzq")} data-key="lzq" onClick={this.tpselect.bind(this)}>浪周期</span>
-                            <span className={this.tpactive("lg")} data-key="lg" onClick={this.tpselect.bind(this)}>浪高</span>
-                            <span className={this.tpactive("fs")} data-key="fs" onClick={this.tpselect.bind(this)}>风速</span>
+                            <span className={this.tpactive(0)} data-key={0} onClick={this.tpselect.bind(this)}>浪周期</span>
+                            <span className={this.tpactive(1)} data-key={1} onClick={this.tpselect.bind(this)}>浪高</span>
+                            <span className={this.tpactive(2)} data-key={2} onClick={this.tpselect.bind(this)}>风速</span>
                         </div>
                         <div className="hxyb-tp-tp">
-                             <img src={this.state.pic} alt="" />
+                             <img src={this.state.pic[this.state.tpkey]} alt="" />
                         </div>
                        </div>
                     </div>                    
                   </Col>
                 </Row>
+                <Row>
                   <Col>
-                    <div className="hxyb-bd-title">表单下载</div>
-                    <div className="hxyb-bd-list">
+                    <div className="hxyb-bd">
+                      <div className="hxyb-bd-title">表单下载</div>
+                      <div className="hxyb-bd-list">
+                        <span className="hxyb-xml-body">{xml}</span>
+                        <span className="hxyb-excel-body">{excel}</span>
+                      </div>
                     </div>
                   </Col>
-                <Row>
                 </Row>
               </Session>
               </Col>
