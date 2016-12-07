@@ -10,3 +10,8 @@ body {
 a, a:active, a:hover, a:link, a:visited {
     text-decoration: none
 }
+.iframe{
+    width: 100%;
+    border: none;
+    text-align: center
+}
