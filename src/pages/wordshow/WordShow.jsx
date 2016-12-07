@@ -1,10 +1,9 @@
 import React from 'react';
-import PDF from './PDF';
 import {Col} from '../../components/grid/Grid';
-import './PdfShow.scss';
+import './WordShow.scss';
 
 
-class PdfShow extends React.Component{
+class WordShow extends React.Component{
   constructor(props) {
       super(props);
       this.state={name:this.props.params.name,method:this.props.params.method,filename:this.props.params.filename,file:''};
@@ -29,14 +28,14 @@ class PdfShow extends React.Component{
   }
   render() {
        return  <Col offset={[1,20]} width={[18,20]}>
-       			<div className="pdfshow-title">
-       				<span className="pdfshow-name">{this.state.name}</span>
-       				<span className="pdfshow-back" onClick={this.back.bind(this)}>返回</span>
+       			<div className="wordshow-title">
+       				<span className="wordshow-name">{this.state.name}</span>
+       				<span className="wordshow-back" onClick={this.back.bind(this)}>返回</span>
        			</div>
-       			<div className="pdfshow-body">
-		       		<PDF file={'./pdf/2016001福建海浪.pdf'} />
+       			<div className="wordshow-body">
+		       		{this.state.file}
 	       		</div>
 		       </Col>	        
       }
 };
-export default PdfShow;
+export default WordShow;

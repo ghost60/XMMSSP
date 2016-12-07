@@ -7,16 +7,11 @@ import './Hxyb.scss';
 
 
 const hx=['厦门-金门','泉州-金门','马尾-马祖','基隆-马祖','台中-平潭','基隆-台州','台中-金门','台北港-平潭'];
-const pic={"data":[
-  'upload/img/PNG/xm-jm_period.png',
-  'upload/img/PNG/xm-jm_wave.png',
-  'upload/img/PNG/xm-jm_wind.png'
-]
-}
+
 class hxyb extends React.Component{
   constructor(props) {
       super(props);
-      this.state={data:{}, name:'',tpkey:'0',pic:[],list:[]};
+      this.state={data:{}, name:'',tpkey:0,pic:[],list:[]};
   }
   componentDidMount(){
     this.querylatlng('厦门-金门');
@@ -58,15 +53,15 @@ class hxyb extends React.Component{
           }.bind(this)
       });
   }
-  querypic(type,name){
+  querypic(type,routeName){
     $.ajax({
-          url: ctx+'/getHXYB/getDownloadList',
+          url: ctx+'/getHXYB/getYBTP',
           dataType: 'json',
           type: 'post',
           async: true,
-          data:{typr:type,name:name},
+          data:{type:type,routeName:routeName},
           success: function(data) {
-              this.setState({pic:data});
+              this.setState({pic:data.data});
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());
@@ -74,22 +69,34 @@ class hxyb extends React.Component{
       });
   }
   downloadlist(name,path){
-    $.ajax({
-          url: ctx+'/getHXYB/download',
-          dataType: 'json',
-          type: 'post',
-          async: true,
-          data:{filename:name,path:path},
-          success: function(data) {
-              alert("下载成功！");
-          }.bind(this),
-          error: function(xhr, status, err) {
-              console.error(this.props.url, status, err.toString());
-          }.bind(this)
+    // $.ajax({
+    //       url: ctx+'/getHXYB/download',
+    //       dataType: 'file',
+    //       type: 'post',
+    //       async: true,
+    //       data:{fileName:name,path:path},
+    //       success: function(data) {
+    //           alert("下载成功！");
+    //       }.bind(this),
+    //       error: function(xhr, status, err) {
+    //           console.error(this.props.url, status, err.toString());
+    //       }.bind(this)
+    //   });
+      this.jdownload(ctx+'/getHXYB/download',`fileName=${name}&path=${path}`,"download");
+  }
+  jdownload(url, data, method){
+    if( url && data ){ 
+      data = typeof data == 'string' ? data : jQuery.param(data);
+      var inputs = '';
+      $.each(data.split('&'), function(){ 
+        var pair = this.split('=');
+        inputs+='<input type="hidden" name="'+ pair[0] +'" value="'+ pair[1] +'" />'; 
       });
+      $('<form action="'+ url +'" method="'+ (method||'post') +'">'+inputs+'</form>')
+      .appendTo('body').submit().remove();
+    };
   }
   tpselect(e){
-    this.querypic(e.target.innerText);
     this.setState({tpkey:e.target.dataset.key});
   }
   tpactive(key){
@@ -114,7 +121,7 @@ class hxyb extends React.Component{
         return <span onClick={this.bddownload.bind(this,li,"xml")}>{li}</span>
       }) 
       const excel = !this.state.list.excel?[]:this.state.list.excel.map((li,i)=>{
-        return <span onClick={this.bddownload.bind(this,li,"excel")}>{li}</span>
+        return <span onClick={this.bddownload.bind(this,li,"xls")}>{li}</span>
       })      
       return  <Col>
               <Session lastname={'航线预报'}>

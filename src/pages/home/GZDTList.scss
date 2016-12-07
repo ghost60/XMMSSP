@@ -3,14 +3,15 @@
     margin: 3px 40px;
 }
 .gzdt_name{
-	font-size: 14px;
+    font-size: 14px;
     display: inline-block;
     white-space: nowrap;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     overflow: hidden;
-    width: 360px;
+    width: 350px;
     vertical-align: bottom;
+    color: #313131;
     &:hover{
         color: #e64f3c;
         cursor: pointer;
@@ -19,7 +20,7 @@
 .gzdt_time{
     color: #797979;
     font-size: 13px;
-    width: 54px;
+    width: 80px;
     display: inline-block;
 }
 .gzdt_body{

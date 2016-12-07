@@ -1,7 +1,6 @@
 import React from 'react';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
-import "./Hyjc.css"
 
 class hyjcsession extends React.Component {
   constructor(props) {
@@ -12,7 +11,6 @@ class hyjcsession extends React.Component {
     this.addname(this.props);
   }
   addname(mprops){
-    debugger
     if (!mprops.params) {
       var menu = menudata.navlist.hyjc.children;
       var key = Object.keys(menu)[0];
@@ -45,5 +43,4 @@ class hyjcsession extends React.Component {
             </Session>
   }
 };
-
 export default hyjcsession;

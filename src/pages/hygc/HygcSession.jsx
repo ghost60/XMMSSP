@@ -1,56 +1,46 @@
 import React from 'react';
-
-import Aside from '../../components/aside/Aside';
 import Session from '../../components/session/Session';
-// import './DwgkSession.scss';
-
-var cdata='';
+import * as menudata from '../../pages/menudata/menudata';
 
 class hygcsession extends React.Component{
   constructor(props) {
-      super(props);
-      this.state={name:'',data:''};
+    super(props);
+    this.state = {name: '',src:''};
   }
-  componentDidMount(){
-        $.ajax({
-            url: './data/hygc.json',
-            dataType: 'json',
-            type: 'get',
-            async: true,
-            success: function(data) {
-              cdata=data;
-              if (!this.props.params.id) {
-                this.setState({name:data[0]["name"],data:data[0]});
-              }
-              for (var i = 0; i < data.length; i++) {
-                  if (data[i]["name"]==this.props.params.id) {
-                    this.setState({name:'',data:data[i]});
-                    break;
-                  }
-              }
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
+  componentDidMount() {
+    this.addname(this.props);
   }
-  componentWillReceiveProps(nextProps) {
-    if(cdata=='')return;
-    for (var i = 0; i < cdata.length; i++) {
-        if (cdata[i]["name"]==this.props.params.id) {
-          this.setState({data:cdata[i],name:this.props.params.id});
-          break;
+  addname(mprops){
+    if (!mprops.params) {
+      var menu = menudata.navlist.hygc.children;
+      var key = Object.keys(menu)[0];
+      menu = menu[key];
+      this.setState({ name: menu.name, src: key });
+    }else{
+      menu = menudata.navlist.hygc.children;
+      for (var key in menu) {
+        if (key == mprops.params.cid) {
+          this.setState({ name: menu[key].name, src: key });
         }
       }
+    }
   }
-  render() {
-      var content = '';
-      if (this.state.data.type=="text") {
-        content=<div>{this.state.data.content}</div>;
-      }
-      return  <Session name={this.state.name}>
-                {content}
-              </Session>
-      }
+  componentWillReceiveProps(nextProps) {
+    this.addname(this.props);
+  }
+  setIframe() {
+    var iframeWin = this.refs.iframe.contentWindow || this.refs.iframe.contentDocument.parentWindow;
+    if (iframeWin.document.body) {
+      var height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+      this.refs.iframe.height = height+"px"
+    }
+  }
+  render() {  
+    var src=`data/HYJC/${this.state.src}.html`;
+    return  <Session lastname={this.state.name} name={"/海洋观测"}>
+              <iframe ref="iframe" src={src} className="iframe" onLoad={this.setIframe.bind(this)}>
+              </iframe>
+            </Session>
+  }
 };
 export default hygcsession;

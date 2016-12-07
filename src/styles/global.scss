@@ -4,19 +4,14 @@ body {
     background: url(../images/backbody.png);
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: "Helvetica Neue",Arial,STHeiti,"Microsoft YaHei",sans-serif,Helvetica,DroidSansFallback,FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3";}
-a {
-    text-decoration: none;
-    &:link {
-        text-decoration: none;
-    }
-    &:visited {
-        text-decoration: none;
-    }
-    &:hover {
-        text-decoration: none;
-    }
-    &:active {
-        text-decoration: none;
-    }
+    font-family: "Helvetica Neue",Arial,STHeiti,"Microsoft YaHei",sans-serif,Helvetica,DroidSansFallback,FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3";
+}
+
+a, a:active, a:hover, a:link, a:visited {
+    text-decoration: none
+}
+.iframe{
+    width: 100%;
+    border: none;
+    text-align: center
 }

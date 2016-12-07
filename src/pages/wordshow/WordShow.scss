@@ -1,0 +1,20 @@
+.wordshow-title{
+    background: #4b9bd7;
+    height: 45px;
+    font-size: 18px;
+    color: #fff;
+    line-height: 45px;
+    margin-bottom: 10px;
+    .wordshow-name{
+		margin-left: 20px;
+    }
+    .wordshow-back{
+		cursor: pointer;
+		font-size: 15px;
+	    float: right;
+	    margin-right: 20px;
+    }
+}
+.wordshow-body{
+    text-align: center;
+}

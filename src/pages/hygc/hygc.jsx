@@ -1,7 +1,7 @@
-//主面板
 import React from 'react';
 import {Row,Col} from '../../components/grid/Grid';
 import Aside from '../../components/aside/Aside';
+import HygcSession from './HygcSession';
 
 class hygc extends React.Component{
   constructor(props) {
@@ -13,7 +13,7 @@ class hygc extends React.Component{
                 <Aside id={7} parent={"hygc"}/>
               </Col>
               <Col width={[5,6]}>
-                {this.props.children}
+                {this.props.children||(<HygcSession/>)}
               </Col>
               </Row>
       }

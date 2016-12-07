@@ -58,7 +58,7 @@ class Lmap extends React.Component{
           position.lat=mlatlon[0];
           var label = {};
           label.position=position;
-          label.text=i;
+          label.text=i+1;
           labels.push(label);
         }
         polyline.push(<Polyline key={i} getCenter={this.getlinebound} onClick={this.props.routecallback.bind(this,data[i].name)} color={color} weight={5} positions={data[i].latlon}/>);       

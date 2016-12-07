@@ -117,12 +117,9 @@ export const navlist = {
         id: 0, name: "课题研究"
       },
       jcrw: {
-        id: 0, name: "监测任务", children: {
-          hyjc_gjzlxjcrw: { name: "国家指令性监测任务" },
-          hyjc_dwycxjcrw: { name: "对外有偿性监测任务" },
-        }
+        id: 0, name: "监测任务"
       },
-      jcfc: { id: 0, name: "监测风采", children: {} },
+      jcfc: { id: 0, name: "监测风采"},
     }
   },
   hyfw: {
