@@ -43,8 +43,7 @@ export default class MarkerLayer extends MapLayer {
 
   attachEvents() {
     const map: Map = this.props.map;
-    map.on('viewreset',()=>this.updatePosition());
-    map.on('click',()=>this.updatePosition());
+    map.on('zoomend',()=>this.updatePosition());
   }
 
   getLocationForMarker(marker) {
