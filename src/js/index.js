@@ -33,6 +33,7 @@ import hykp from '../pages/hykp/Hykp';
 import hykpsession from '../pages/hykp/HykpSession';
 
 import gzdt from '../pages/gzdt/Gzdt';
+import gzdtsession from '../pages/gzdt/GzdtSession';
 
 import hyyb from '../pages/hyyb/Hyyb';
 
@@ -43,6 +44,9 @@ import hxyb from '../pages/hxyb/Hxyb';
 
 import szyb from '../pages/szyb/Szyb';
 import szybsession from '../pages/szyb/SzybSession';
+
+import zhyb from '../pages/zhyb/Zhyb';
+import zhybsession from '../pages/zhyb/ZhybSession';
 
 import * as menudata from '../pages/menudata/menudata';
 
@@ -105,16 +109,18 @@ ReactDOM.render((
       </Route>
 
       <Route path="gzdt" component={gzdt}>
+        <Route path="gzdtsession/:cid" component={gzdtsession} />
       </Route>
       
       <Route path="hyyb" component={hyyb}>
-
         <Route path="rcyb" component={rcyb}>
-
           <Route path="rcybsession/:cid" component={rcybsession} />
         </Route>
         <Route path="szyb" component={szyb}>
           <Route path="szybsession/:cid" component={szybsession} />
+        </Route>
+        <Route path="zhyb" component={zhyb}>
+          <Route path="zhybsession/:cid" component={zhybsession} />
         </Route>
         <Route path="hxyb" component={hxyb} />
       </Route>
