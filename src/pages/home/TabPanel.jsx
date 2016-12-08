@@ -388,7 +388,7 @@ export class TabsPanel5 extends React.Component {
             type: "post",
             url: ctx+"forcast", //添加自己的接口链接
             timeOut: 5000,
-            data: { type: "yuchang", name: this.mapCfg[i]['title'] },
+            data: { type: "binhailvyou", name: this.mapCfg[i]['title'] },
             before: function () {
                 console.log("before");
             },
@@ -435,6 +435,77 @@ export class TabsPanel5 extends React.Component {
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export class TabsPanel6 extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            title: "-",
+            pubTime: '-',
+            lgInfo: "-",
+        }
+        this.mapCfg =  this.props.mapCfg ||[
+            { x: 107, y: 191, title: "泉州湾" },
+            { x: 82, y: 257, title: "深沪湾" },
+            { x: 44, y: 289, title: "围头湾" },
+            { x: 160, y: 133, title: "大港湾" },
+            { x: 245, y: 82, title: "湄洲湾南部" },
+            { x: 207, y: 52, title: "湄洲湾北部" },
+        ]
+        this.handlerMapCilck(0)
+    }
+    handlerMapCilck(i) {
+        $.ajax({
+            type: "post",
+            url: ctx+"forcast", //添加自己的接口链接
+            timeOut: 5000,
+            data: { type: "qzhyyb", name: this.mapCfg[i]['title'] },
+            before: function () {
+                console.log("before");
+            },
+            success: function (data) {
+                // var data = JSON.parse(data)
+                console.log(data)
+                this.setState({
+                    title: this.mapCfg[i]['title'],
+                    pubTime: data.pubTime,
+                    forcastInfo: data.forcastInfo,
+                    lgInfo: data.lgInfo,
+                })
+            }.bind(this),
+            error: function () {
+                console.log("error");
+            }
+        });
+    }
+    render() {
+
+        return (
+            <div className="c">
+                <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
+                <div className={"tab-panel--right " + this.props._className}>
+                    <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo="未来24小时海洋预报" />
+                    <div className="tab-panel-info">
+                        <div className="tab-panel-info--container">
+                            <div className="tab-panel-info--left">
+                                <span className="tab-panel-info--span1">浪高</span>
+                                <span className="tab-panel-info--span2">{this.state.lgInfo}</span>
+                            </div>
+                        </div>
+                        <div className="tab-panel--tips">
+                            <div dangerouslySetInnerHTML={{ __html: "微浪&lt0.1m<br />4=&lt巨浪&lt6m" }}></div>
+                            <div dangerouslySetInnerHTML={{ __html: "0.1=&lt小浪&lt0.5m<br />6=&lt狂狼&lt9m" }}></div>
+                            <div dangerouslySetInnerHTML={{ __html: "0.5=&lt轻浪&lt1.25m<br />9=&lt狂涛&lt14m" }}></div>
+                            <div dangerouslySetInnerHTML={{ __html: "1.25=&lt中浪&lt2.5m<br />怒涛&gt=14m" }}></div>
+                            <div dangerouslySetInnerHTML={{ __html: "2.5=&lt大浪&lt4m" }}></div>
                         </div>
                     </div>
                 </div>

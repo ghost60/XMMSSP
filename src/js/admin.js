@@ -18,22 +18,7 @@ import "../pages/admin/Admin.scss"
 let isLogin = 0;
 let _nextState;
 let _this;
-const requireAuth = (nextState, replace) => {
-    if (isLogin===0) {
-      debugger;
-      _nextState = nextState      
-        console.log(nextState)
-        replace({ pathname: '/login' })
-    }
-    else{
-      _nextState = nextState
-    }
-}
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    debugger
-     $.ajax({
+$.ajax({
           url: ctx + 'search/isLogin',
           dataType: 'json',
           type: 'get',
@@ -47,19 +32,34 @@ class App extends React.Component {
           }.bind(this),
           error: function(xhr, status, err) {
             debugger
-              console.error(this.props.url, status, err.toString());
+            
           }.bind(this)
       });
+const requireAuth = (nextState, replace) => {
+    if (isLogin===0) {
+      _nextState = nextState      
+        console.log(nextState)
+        replace({ pathname: '/login' })
+    }
+    else{
+      _nextState = nextState
+    }
+}
+class App extends React.Component {
+  constructor(props){
+    super(props);
   }
   render() {
-    return <Grid>
+    return <div>
+      <Header />
+    <Grid>
       <Row>
         <Col>
           <Title backimg={'../images/titleback.png'} />
         </Col>
       </Row>
-        {this.props.children || <Login/>}
-    </Grid>
+        {this.props.children || <Admin/>}
+    </Grid><Footer /></div>
   }
 };
 //列表
@@ -85,6 +85,8 @@ class Dtjs extends React.Component{
  constructor(props){
     super(props)
     this.state=({name:'',link:'', data: [], current: 1, total: 1});
+
+    
   }
   handleChange(event) {
     console.log('Selected file:', event.target.files[0]);
@@ -122,29 +124,28 @@ class Dtjs extends React.Component{
           }.bind(this),
           error: function(xhr, status, err) {
             debugger
-              console.error(this.props.url, status, err.toString());
+              
           }.bind(this)
       });
   }
   querydata() {
-    $.ajax({
-          url: ctx + './data/gzdt.json',
+   $.ajax({
+          url: ctx + 'pubNews/getJsonList',
           dataType: 'json',
-          type: 'get',
+          type: 'post',
           async: true,
-          processData: false,  // 告诉jQuery不要去处理发送的数据
-		    	contentType: false, 
           success: function(data) {
-            var total = Math.ceil(data.list.length/4)*10;
-            this.setState({data:data.list,total:total});
+            debugger
+            this.setState({data:data})
           }.bind(this),
           error: function(xhr, status, err) {
-              console.error(this.props.url, status, err.toString());
+            debugger
+            
           }.bind(this)
       });
   }
   componentDidMount() {
-    // this.querydata();
+     this.querydata();
   }
   onChange(page) {
     this.setState({
@@ -156,9 +157,27 @@ class Dtjs extends React.Component{
     console.log('Delete', record.name);
     e.preventDefault();
   }
+  changeTop(state,filename,e){
+    $.ajax({
+              url: ctx + 'pubNews/changeTOP',
+              dataType: 'json',
+              type: 'post',
+              async: true,
+              data:{state:state,filename:filename},
+              success: function(data) {
+                if(data==="1"){
+                  alert("取消置顶成功！")
+                }
+              }.bind(this),
+              error: function(xhr, status, err) {
+                alert("取消失败")
+              }.bind(this)
+          });
+    debugger
+  }
   render(){
     const columns = [
-        { title: '文件名称', dataIndex: 'name', key: 'name', width: 100 },
+        { title: '文件名称', dataIndex: 'fileName', key: 'name', width: 100 },
         { title: '文件标题', dataIndex: 'title', key: 'title', width: 100 },
         { title: '上传时间', dataIndex: 'time', key: 'time', width: 100 },
         {
@@ -166,13 +185,19 @@ class Dtjs extends React.Component{
           <a onClick={e => this.onDelete(record, e)} href="#">删除</a>,
         },
         {
-          title: '置顶', dataIndex: 'letup', key: 'letup', width: 100, render: (text, record) =>
-          <a onClick={e => this.onDelete(record, e)} href="#">置顶</a>,
+          title: '置顶', dataIndex: 'istop', key: 'letup', width: 100, render: (text, record) =>{
+            if(text==="1"){
+              return <a onClick={this.changeTop.bind(this,"0",record["fileName"])} href="">取消置顶</a>
+           }
+           else{
+              return <a onClick={this.changeTop.bind(this,"1",record["fileName"])} href="" >置顶</a>
+           }
+          }
         }
       ];
-      var sdata=this.state.data.slice((this.state.current-1)*4,(this.state.current-1)*4+4);
+      var sdata=this.state.data.slice((this.state.current-1)*4,(this.state.current)*4);
       return  <Row>
-                <Col offset={[1,6]} width={[4,6]}>
+                <Col >
                   <form id="upload" encType ="multipart/form-data"  method="post" onSubmit={this.upload.bind(this)}>
                     <div className="form-group"><lable>文件选择</lable><FileInput name="file" accept="application/msword" onChange={this.handleChange} /></div>
                     <div className="form-group"><lable>文章标题</lable><input id="title" name="title" type="input"/></div>
@@ -181,7 +206,7 @@ class Dtjs extends React.Component{
                     <div className="form-group"><button className="submit" type="submit" >立即上传</button></div>
                   </form>
                 </Col>
-                <Col offset={[1,6]} width={[4,6]}>
+                <Col >
                   <Table
                     columns={columns}
                     data={sdata}
@@ -223,7 +248,7 @@ class Gzdt extends React.Component{
     var form=document.getElementById("upload");
     var formdata=new FormData(form);
     $.ajax({
-          url: ctx + '/admin/formupload',
+          url: ctx + 'admin/formupload',
           dataType: 'json',
           type: 'post',
           async: true,
@@ -305,11 +330,176 @@ class Gzdt extends React.Component{
 //产品
 class Products extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.state={
+          name:"西太平洋",
+          location:"XMMSSP\\upload\\img\\XTPY",
+          remark:"手动上传"
+        }
+    }
+    productsClickHandler(type,e){
+      debugger
+      if (e.target && e.target.nodeName == "DIV") {
+        this.setState({
+          name:this.props.lists[type][e.target.id].name,
+          location:this.props.lists[type][e.target.id].location,
+          remark:this.props.lists[type][e.target.id].remark,
+        })
+      }
     }
     render(){
-        return (<div>Products</div>)
+        return (<div>
+          <div className="products-info-c">
+            <div className="product-info--left">
+              <div className="product-info--col"><label>党团建设上传地址</label><span>XMMSSP\upload\img\dtword</span></div>
+              <div className="product-info--col"><label>首页轮播图上传地址</label><span>XMMSSP\upload\indexPic</span></div>
+            </div>
+            <div className="product-info--right">
+              <div className="product-info--col"><label>产品名</label><span>{this.state.name}</span></div>
+              <div className="product-info--col"><label>FTP文件路径</label><span>{this.state.location}</span></div>
+              <div className="product-info--col"><label>备注</label><span>{this.state.remark}</span></div>
+            </div>
+            </div>
+            <div className="product-list-c">
+              <div className="product-list-col" onClick={this.productsClickHandler.bind(this,"szyb")}>
+                 <span>数值预报</span>
+                 {
+                   this.props.lists.szyb.map((ele,index)=>{
+                     return <div key={ele.name} id={index}>{ele.name}</div>
+                   })
+                 }
+              </div>
+              <div className="product-list-col" onClick={this.productsClickHandler.bind(this,"hyyb")}>
+                 <span>海洋预报</span>
+                  {
+                   this.props.lists.hyyb.map((ele,index)=>{
+                     return <div  key={ele.name} id={index}>{ele.name}</div>
+                   })
+                 }       
+              </div>
+              <div className="product-list-col" onClick={this.productsClickHandler.bind(this,"hxyb")}>
+                 <span>航线预报</span>                
+                 {
+                   this.props.lists.hxyb.map((ele,index)=>{
+                     return <div key={ele.name} id={index}>{ele.name}</div>
+                   })
+                 }                   
+              </div>
+            </div>
+          </div>
+        
+        )
     }
+}
+Products.defaultProps={
+  lists:{
+    szyb:[
+      {
+        name:"西太平洋",
+        location:"XMMSSP\\upload\\img\\XTPY",
+        remark:"手动上传"
+      },
+      {
+        name:"台湾海峡(海面风)",
+        location:"XMMSSP\\upload\\img\\HMFTWHX",
+        remark:"手动上传"
+      },
+      {
+        name:"台湾海峡(海浪)",
+        location:"XMMSSP\\upload\\img\\HLTWHX",
+        remark:"手动上传"
+      },
+      {
+        name:"厦金海域",
+        location:"XMMSSP\\upload\\img\\XJHY",
+        remark:"手动上传"
+      },
+      {
+        name:"两马海域",
+        location:"XMMSSP\\upload\\img\\LMHY",
+        remark:"手动上传"
+      },
+      {
+        name:"台湾海峡(海流)",
+        location:"XMMSSP\\upload\\img\\HLTWHX",
+        remark:"手动上传"
+      },
+      {
+        name:"小区(海流)",
+        location:"XMMSSP\\upload\\img\\HLXQ",
+        remark:"手动上传"
+      },
+      {
+        name:"台湾海峡(潮汐)",
+        location:"XMMSSP\\upload\\img\\CXTWHX",
+        remark:"手动上传"
+      },
+      {
+        name:"小区(潮汐)",
+        location:"XMMSSP\\upload\\img\\CXXQ",
+        remark:"手动上传"
+      }
+    ],
+    hyyb:[
+      {
+        name:"海浪水温预报",
+        location:"数据库",
+        remark:"自动上传"
+      },
+      {
+        name:"海浪预报图",
+        location:"XMMSSP\\upload\\img\\HLYB",
+        remark:"自动上传"
+      },
+      {
+        name:"潮汐预报",
+        location:"数据库",
+        remark:"自动上传"
+      },
+      {
+        name:"厦门海洋预报",
+        location:"数据库",
+        remark:"自动上传"
+      },
+      {
+        name:"风暴潮动画示意图",
+        location:"XMMSSP\\upload\\img\\FBCDHSYT",
+        remark:"自动上传"
+      },
+      {
+        name:"海浪动画示意图",
+        location:"XMMSSP\\upload\\img\\HLDHSYT",
+        remark:"自动上传"
+      },
+      {
+        name:"滨海旅游区预报",
+        location:"数据库",
+        remark:"自动上传"
+      },
+      {
+        name:"海浪预警报单",
+        location:"XMMSSP\\upload\\img\\yjword",
+        remark:"自动上传"
+      },
+      {
+        name:"风暴潮预警报单",
+        location:"XMMSSP\\upload\\img\\yjword",
+        remark:"自动上传"
+      }
+    ],
+    hxyb:[
+      {
+        name:"xml",
+        location:"XMMSSP\\upload\\download\\xml",
+        remark:"手动上传"
+      },
+       {
+        name:"xls",
+        location:"XMMSSP\\upload\\download\\xls",
+        remark:"手动上传"
+      }
+    ]
+  }
 }
 //悬浮框
 class Xfk extends React.Component{
@@ -410,14 +600,16 @@ class Login extends React.Component {
 	}
 }
 
-ReactDOM.render((<Header />), document.getElementById('head'));
-ReactDOM.render((<Footer />), document.getElementById('foot'));
+// ReactDOM.render((<Header />), document.getElementById('head'));
+// ReactDOM.render((<Footer />), document.getElementById('foot'));
 // 配置路由
 ReactDOM.render((
   <Router history={hashHistory} >
     <Route path="/" component={App}>
+        <Redirect from="admin" to="admin/gzdt" />
         <Route path="login" component={Login}/>
         <Route path="admin" component={Admin} onEnter={requireAuth}>
+          
           <Route path="gzdt" component={Gzdt}/>
           <Route path="dtjs" component={Dtjs}/>
           <Route path="products" component={Products}/>

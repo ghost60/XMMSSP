@@ -31,7 +31,7 @@ class szybsession extends React.Component {
   }
   querydata(name) {
     $.ajax({
-      url: ctx+'/szyb?name='+name,
+      url: ctx+'szyb?name='+name,
       dataType: 'json',
       type: 'get',
       async: true,
