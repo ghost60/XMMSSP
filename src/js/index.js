@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import {
   Router, Route, Link, hashHistory, browserHistory, IndexRoute, Redirect, IndexLink
 }
-from 'react-router'
+from 'react-router';
 import withBasename from '../components/basename/basename';
 import {
   Grid, Row, Col

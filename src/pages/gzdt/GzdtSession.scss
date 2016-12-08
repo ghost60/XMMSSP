@@ -1,0 +1,16 @@
+.gzdt_show_li{
+	border-bottom: 1px solid #ddd;
+}
+.gzdt_show_name{
+    display: inline-block;
+    width: 80%;
+    margin: 5px 30px;
+    font-size: 16px;    
+    color: #333;
+    &:hover{
+		color: #4b9bd7;
+	}
+}
+.gzdt_page{
+	text-align: center;
+}

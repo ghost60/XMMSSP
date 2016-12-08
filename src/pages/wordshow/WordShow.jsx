@@ -10,13 +10,13 @@ class WordShow extends React.Component{
   }
   componentWillMount(){
     $.ajax({
-          url: ctx+this.state.method,
-          dataType: 'json',
+          url: ctx+'/'+this.state.method,
+          dataType: 'html',
           type: 'post',
           async: true,
           data:{filename:this.state.filename},
           success: function(data) {
-            this.setState({file:file});
+            this.setState({file:data});
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());
@@ -33,7 +33,7 @@ class WordShow extends React.Component{
        				<span className="wordshow-back" onClick={this.back.bind(this)}>返回</span>
        			</div>
        			<div className="wordshow-body">
-		       		{this.state.file}
+              <div dangerouslySetInnerHTML={{__html: this.state.file}}></div>
 	       		</div>
 		       </Col>	        
       }

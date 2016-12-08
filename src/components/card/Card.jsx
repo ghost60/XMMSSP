@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link,IndexLink} from 'react-router';
+import {Link} from 'react-router';
 import './Card.scss';
 
 class CardHasIcon extends React.Component{
@@ -11,7 +11,9 @@ class CardHasIcon extends React.Component{
                     <div className="card-title" style={this.props.card_title}>
                         <span className="card-title-icon"><img src={this.props.icon_url}/></span>
                         <span className="card-title-text">{this.props.title}</span>
+                        <Link to={this.props.morelink}>
                         <span className="card-title-more"><img src={this.props.more_img}/></span>
+                        </Link>
                     </div>
                     <div className="card-content" style={this.props.card_content}>
                         {this.props.children}

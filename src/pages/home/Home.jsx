@@ -16,61 +16,33 @@ import SZYBImgList from './SZYBImgList';
 import YJBDList from './YJBDList';
 import GZDTList from './GZDTList';
 
-const IMAGE_DATA_1 = [
-  {
-    src: require('./images/1.jpg'),
-    alt: 'images-1',
-  },
-  {
-    src: require('./images/2.jpg'),
-    alt: 'images-2',
-  }
-];
-const IMAGE_DATA_2 = [
-  {
-    src: require('./images/东山湾生态浮标.jpg'),
-    alt: '东山湾生态浮标',
-  },
-  {
-    src: require('./images/厦门中心站完成福建.jpg'),
-    alt: '厦门中心站完成福建',
-  },
-  {
-    src: require('./images/厦门中心站.jpg'),
-    alt: '厦门中心站',
-  }
-];
-
 class home extends React.Component {
   constructor(props) {
     super(props);
+    this.state={fimgs:[],simgs:[]}
   }
   componentDidMount(){
     $.ajax({
-            type: "get",
-            url: "http://168.192.19.124:8080/XMMSSP/getIndexImage", //添加自己的接口链接
-            timeOut: 5000,
-            before: function () {
-                console.log("before");
-            },
-            success: function (data) {
-                var data = JSON.parse(data)
-                console.log(data)
-                this.setState({})
-            }.bind(this),
-            error: function () {
-                console.log("error");
-            }
-        });
+        url: ctx+'/admin/getThreeImg',
+        dataType: 'json',
+        type: 'get',
+        async: true,
+        success: function(data) {
+          this.setState({fimgs:data});
+        }.bind(this),
+        error: function(xhr, status, err) {
+            console.error(this.props.url, status, err.toString());
+        }.bind(this)
+    });
   }
   render() {
       return  <Row style={{minHeight:"604px",marginTop:"20px"}}>
                 <Row>
                   <Col width={[1,2]}>
-                    <Slider items={IMAGE_DATA_2} speed={1.2} delay={2.1} pause={true} autoplay={true} dots={true} arrows={false} istext={true} height={"300px"}/>
+                    <Slider items={this.state.fimgs} speed={1.2} delay={2.1} pause={true} autoplay={true} dots={true} arrows={false} istext={true} height={"300px"}/>
                   </Col>
                   <Col width={[1,2]}>
-                    <Card title={'工作动态'} card_body={{marginTop:"12px"}} card_content={{minHeight:"267px"}} icon_url={require('./images/gzdt_icon.png')} more_img={require('./images/more.png')} card_title={{background:"#4b9bd7",height:"32px",lineHeight:"32px"}}>
+                    <Card title={'工作动态'} card_body={{marginTop:"12px"}} card_content={{minHeight:"267px"}} icon_url={require('./images/gzdt_icon.png')} more_img={require('./images/more.png')} morelink={'gzdt/gzdtSession/gzdt'} card_title={{background:"#4b9bd7",height:"32px",lineHeight:"32px"}}>
                       <GZDTList />
                     </Card>
                   </Col>
@@ -93,12 +65,12 @@ class home extends React.Component {
                     </Row>
                     <Row style={{marginTop:18}}>
                     <Col width={[18,30]}>
-                      <Card title={'数值预报'} icon_url={require('./images/szyb_icon.png')} more_img={require('./images/more.png')} card_title={{background:"#1ea0ff",height:"58px",lineHeight:"58px"}}>
+                      <Card title={'数值预报'} icon_url={require('./images/szyb_icon.png')} more_img={require('./images/more.png')} morelink={'hyyb/szyb/szybsession/hmf_xtpy'} card_title={{background:"#1ea0ff",height:"58px",lineHeight:"58px"}}>
                         <SZYBImgList />
                       </Card>
                     </Col>
                     <Col width={[12,30]} pdl={18}>
-                      <Card title={'预警报单'} icon_url={require('./images/yjbd_icon.png')} more_img={require('./images/more.png')} card_title={{background:"#e64f3c",height:"58px",lineHeight:"58px"}}>
+                      <Card title={'预警报单'} icon_url={require('./images/yjbd_icon.png')} more_img={require('./images/more.png')} morelink={'hyyb/zhyb/zhybSession/yjbd'} card_title={{background:"#e64f3c",height:"58px",lineHeight:"58px"}}>
                         <YJBDList />
                       </Card>
                     </Col>
@@ -108,7 +80,7 @@ class home extends React.Component {
                 <Row>
                   <Col>
                     <Slider
-                        items={IMAGE_DATA_1}
+                        items={this.state.simgs}
                         speed={1.2}
                         delay={2.1}
                         pause={true}

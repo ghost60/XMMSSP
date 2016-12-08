@@ -9,11 +9,11 @@ export default class SliderItem extends Component {
     let width = 100 / count + '%';
     let height = {height:this.props.height};
     let textpanel = istext?(<div className="SliderItem-textpanel">
-        <span>{item.alt}</span>
+        <span>{item.title}</span>
         </div>):null;
     return (
       <li className="slider-item" style={{width: width,height:"100%"}}>
-        <img src={item.src} alt={item.alt} style={height}/>
+        <img src={item.path} alt={item.title} style={height}/>
         {textpanel}
       </li>
     );

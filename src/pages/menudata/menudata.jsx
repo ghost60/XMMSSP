@@ -34,8 +34,8 @@ export const navlist = {
   gzdt: {
     name: "工作动态",
     children: {
-      gzdt_gzdt: { id: 0, name: "工作动态" },
-      gzdt_dtjs: { id: 1, name: "党团建设" }
+      gzdt: { id: 0, name: "工作动态" },
+      dtjs: { id: 1, name: "党团建设" }
     }
   },
   hygc: {

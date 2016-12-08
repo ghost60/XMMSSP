@@ -37,7 +37,9 @@ export default class YJBDList extends React.Component{
         const list = yjbdlist.map((li,i) => {
             return  <div className="yjbd_li" key={i}>
                         <span className="yjbd_grade" style={{background:li.grade}}></span>
+                        <Link to={`pdfshow/预警报单/querypdf/${li.name}`}>
                         <span className="yjbd_name">{li.name}</span>
+                        </Link>
                         <span className="yjbd_time">{li.time}</span>
                         <span className="yjbd_code">{li.code}</span>
                     </div>

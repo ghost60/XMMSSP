@@ -9,8 +9,11 @@ import {
 from '../../components/grid/Grid';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
+import Pagination from 'rc-pagination';
+import 'rc-pagination/assets/index.css';
+import './GzdtSession.scss'
 
-class dwgksession extends React.Component {
+class gzdtsession extends React.Component {
   constructor(props) {
     super(props);
     this.state = {name: '',src:'',filelist:[]};
@@ -35,7 +38,7 @@ class dwgksession extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    this.addname(this.props);
+    this.addname(nextProps);
   }
   setIframe() {
     var iframeWin = this.refs.iframe.contentWindow || this.refs.iframe.contentDocument.parentWindow;
@@ -45,31 +48,31 @@ class dwgksession extends React.Component {
     }
   }
   render() {
-    var type='wordshow';
-    var method='GZDTList';
+    var list='/admin/GZDTList';
+    var type='工作动态';
     if (this.state.name==='工作动态') {
-      type='wordshow';
-      method='GZDTList';
+      list='/admin/GZDTList';
+      type='工作动态';
     }else if (this.state.name==='党团建设') {
-      type='wordshow';
-      method='GZDTList';
+      list='/pubNews/getJsonList';
+      type='党团建设';
     }  
     return  <Session lastname={this.state.name} name={"/工作动态"}>
-              <Show type={type} method={method}/>
+              <Show list={list} type={type}/>
             </Session>
   }
 };
-export default dwgksession;
+export default gzdtsession;
 
 
 class Show extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {filelist:[]};
+    this.state = {filelist:[],current: 1, total: 1};
   }
-  componentDidMount() {
+  queryData(url){
     $.ajax({
-        url: ctx+'/admin/'+this.props.method,
+        url: url,
         dataType: 'json',
         type: 'get',
         async: true,
@@ -81,21 +84,34 @@ class Show extends React.Component {
         }.bind(this)
     });
   }
+  componentDidMount() {
+    this.queryData(ctx+this.props.list);
+  }
+  componentWillReceiveProps(nextProps) {
+    this.queryData(ctx+nextProps.list);
+  }
+  onChange(page) {
+    this.setState({
+      current: page,
+    });
+  }
   render() {
-      const list = this.state.filelist.map((li,i) => {
-            return  <div className="gzdt_show_li" key={i}>
-                        <span className="gzdt_show_time">{li.time}</span>
-                        <Link to={`${this.props.type}/工作动态/${this.props.type}/${li.filename}`}>                        
-                        <span className="gzdt_show_name">{li.title}</span>
-                        </Link>
-                    </div>
-            }
-      );
-      return  <Col>
-                  <div className="gzdt_show_body">
-                    {list}
-                </div>
-              </Col>
-      }
+    var sdata=this.state.filelist.slice((this.state.current-1)*15,(this.state.current-1)*15+15);
+    const list = sdata.map((li,i) => {
+          return  <div className="gzdt_show_li" key={i}>                        
+                      <Link to={`wordshow/${this.props.type}/queryWord/${li.filename}`}>                        
+                      <span className="gzdt_show_name">{li.title}</span>
+                      </Link>
+                      <span className="gzdt_show_time">{li.time.substring(0,10)}</span>
+                  </div>
+          }
+    );
+    return  <Col>
+                <div className="gzdt_show_body">
+                  {list}
+                  <div className="gzdt_page"><Pagination onChange={this.onChange.bind(this)} current={this.state.current} total={this.state.total} /></div>
+              </div>
+            </Col>
+    }
 };
 
