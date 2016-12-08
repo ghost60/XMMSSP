@@ -18,3 +18,17 @@
 .pdfshow-body{
     text-align: center;
 }
+.pdfshow-page{
+    background: rgba(22, 22, 22, 0.49);
+    margin: 10px 0;
+    color: #fff;
+    span{
+        margin: 5px 24px;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

@@ -7,18 +7,24 @@ import './PdfShow.scss';
 class PdfShow extends React.Component{
   constructor(props) {
       super(props);
-      debugger
-      this.state={name:this.props.params.name,method:this.props.params.method,filename:this.props.params.filename,file:''};
+      this.state={
+        name:this.props.params.name,
+        method:this.props.params.method,
+        filename:this.props.params.filename,
+        file:'',
+        page:1,
+        pages:1
+      };
   }
   componentWillMount(){
     $.ajax({
-          url: ctx+this.state.method,
+          url: ctx+'/'+this.state.method,
           dataType: 'json',
           type: 'post',
           async: true,
           data:{filename:this.state.filename},
           success: function(data) {
-            this.setState({file:file});
+            this.setState({file:data.fullUrl});
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());
@@ -28,6 +34,17 @@ class PdfShow extends React.Component{
   back(){
     window.history.back(-1); 
   }
+  onDocumentComplete(pages){
+    this.setState({pages:pages});
+  }
+  bef(){
+    if (this.state.page-1===0) return;
+    this.setState({page:this.state.page-1});
+  }
+  aft(){
+    if (this.state.page-1===this.state.pages) return;
+    this.setState({page:this.state.page+1});
+  }
   render() {
        return  <Col offset={[1,20]} width={[18,20]}>
        			<div className="pdfshow-title">
@@ -35,7 +52,8 @@ class PdfShow extends React.Component{
        				<span className="pdfshow-back" onClick={this.back.bind(this)}>返回</span>
        			</div>
        			<div className="pdfshow-body">
-		       		<PDF file={'./pdf/2016001福建海浪.pdf'} />
+		       		<PDF file={this.state.file} page={this.state.page} onDocumentComplete={this.onDocumentComplete.bind(this)}/>              
+              <div className="pdfshow-page"><span className="pdfshow-page-bef" onClick={this.bef.bind(this)}>前一页</span><span className="pdfshow-page-num">{this.state.page+'/'+this.state.pages}</span><span className="pdfshow-page-aft" onClick={this.aft.bind(this)}>后一页</span></div>
 	       		</div>
 		       </Col>	        
       }

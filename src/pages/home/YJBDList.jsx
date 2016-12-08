@@ -25,7 +25,7 @@ export default class YJBDList extends React.Component{
         const list = this.state.fimgs.map((li,i) => {
             return  <div className="yjbd_li" key={i}>
                         <span className="yjbd_grade" style={{background:li.grade}}></span>
-                        <Link to={`pdfshow/预警报单/querypdf/${li.name}`}>
+                        <Link to={`pdfshow/预警报单/yjbd/${li.url}`}>
                         <span className="yjbd_name">{li.name}</span>
                         </Link>
                         <span className="yjbd_time">{li.time}</span>

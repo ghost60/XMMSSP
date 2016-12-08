@@ -2,6 +2,7 @@ import React from 'react';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
 import {Link} from 'react-router';
+import './ZhybSession.scss';
 
 class zhybsession extends React.Component {
     constructor(props) {
@@ -9,7 +10,6 @@ class zhybsession extends React.Component {
     this.state = { name: ''};
   }
   addmenu(mprops) {
-    debugger
     if (!mprops.params) {
       var menu = menudata.navlist.hyyb.children.zhyb.children;
       menu = menu[Object.keys(menu)[0]];
@@ -51,7 +51,6 @@ class YJBDList extends React.Component{
         this.state={yjbdlist:[]};
     }
     componentDidMount(){
-      debugger
         $.ajax({
             url: ctx+'/yjbd/getFourYJBD',
             dataType: 'json',
@@ -67,15 +66,15 @@ class YJBDList extends React.Component{
     }
     render() {
         const list = this.state.yjbdlist.map((li,i) => {
-            return  <div className="yjbd_li" key={i}>
-                        <Link to={`pdfshow/预警报单/querypdf/${li.name}`}>
-                        <span className="yjbd_name">{li.name}</span>
+            return  <div className="zhyb_yjbd_li" key={i}>
+                        <Link to={`pdfshow/预警报单/yjbd/${li.url}`}>
+                        <span className="zhyb_yjbd_name">{li.name}</span>
                         </Link>
-                        <span className="yjbd_time">{li.time}</span>
+                        <span className="zhyb_yjbd_time">{li.time}</span>
                     </div>
             }
         );
-        return  <div className="yjbd_body">
+        return  <div className="zhyb_yjbd_body">
                     {list}
                 </div>
         }
