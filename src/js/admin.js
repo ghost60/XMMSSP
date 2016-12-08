@@ -31,7 +31,7 @@ $.ajax({
               isLogin=parseInt(data.islogin)
           }.bind(this),
           error: function(xhr, status, err) {
-            debugger
+            
             
           }.bind(this)
       });
@@ -92,7 +92,7 @@ class Dtjs extends React.Component{
     console.log('Selected file:', event.target.files[0]);
   }
   formyz(){
-    debugger
+    
       var file = document.getElementById("file");
       var title = document.getElementById("title");
       if(file.files.length<1 || title.value==""){
@@ -120,11 +120,11 @@ class Dtjs extends React.Component{
 			    contentType: false, 
           data: formdata,
           success: function(data) {
-            debugger
+            alert("上传成功！")
+             window.location.reload();
           }.bind(this),
           error: function(xhr, status, err) {
-            debugger
-              
+            alert("上传失败")    
           }.bind(this)
       });
   }
@@ -135,12 +135,11 @@ class Dtjs extends React.Component{
           type: 'post',
           async: true,
           success: function(data) {
-            debugger
-            this.setState({data:data})
+            var total = Math.ceil(data.length/4)*10;
+            this.setState({data:data,total:total});
           }.bind(this),
           error: function(xhr, status, err) {
-            debugger
-            
+            alert("连接服务器失败")
           }.bind(this)
       });
   }
@@ -153,11 +152,31 @@ class Dtjs extends React.Component{
     });
   }
   onDelete(record, e) {
-    debugger
+    
     console.log('Delete', record.name);
     e.preventDefault();
+    $.ajax({
+              url: ctx + '/pubNews/deleteDTJSFile',
+              dataType: 'json',
+              type: 'post',
+              async: true,
+              data:{istop:record["istop"],filename:record["fileName"]},
+              success: function(data) {
+                if(data.state===1){
+                  alert("删除成功！")
+                   window.location.reload();
+                }
+                else{
+                  alert("删除失败")
+                }
+              }.bind(this),
+              error: function(xhr, status, err) {
+                alert("连接服务器失败")
+              }.bind(this)
+          });
   }
   changeTop(state,filename,e){
+    
     $.ajax({
               url: ctx + '/pubNews/changeTOP',
               dataType: 'json',
@@ -165,15 +184,17 @@ class Dtjs extends React.Component{
               async: true,
               data:{state:state,filename:filename},
               success: function(data) {
-                if(data==="1"){
+                
+                if(data.result===1){
                   alert("取消置顶成功！")
+                  window.location.reload();
                 }
               }.bind(this),
               error: function(xhr, status, err) {
-                alert("取消失败")
+                alert("取消置顶失败")
               }.bind(this)
           });
-    debugger
+    
   }
   render(){
     const columns = [
@@ -182,19 +203,21 @@ class Dtjs extends React.Component{
         { title: '上传时间', dataIndex: 'time', key: 'time', width: 100 },
         {
           title: '删除', dataIndex: 'delete', key: 'delete', width: 100, render: (text, record) =>
-          <a onClick={e => this.onDelete(record, e)} href="#">删除</a>,
+          <button  className="btn btn-error" onClick={e => this.onDelete(record, e)} >删除</button>,
         },
         {
           title: '置顶', dataIndex: 'istop', key: 'letup', width: 100, render: (text, record) =>{
+            
             if(text==="1"){
-              return <a onClick={this.changeTop.bind(this,"0",record["fileName"])} href="">取消置顶</a>
+              return <button className="btn btn-success" onClick={this.changeTop.bind(this,"0",record["fileName"])} >取消置顶</button>
            }
            else{
-              return <a onClick={this.changeTop.bind(this,"1",record["fileName"])} href="" >置顶</a>
+              return <button className="btn btn-success" onClick={this.changeTop.bind(this,"1",record["fileName"])}  >置顶</button>
            }
           }
         }
       ];
+      
       var sdata=this.state.data.slice((this.state.current-1)*4,(this.state.current)*4);
       return  <Row>
                 <Col >
@@ -228,7 +251,7 @@ class Gzdt extends React.Component{
     console.log('Selected file:', event.target.files[0]);
   }
   formyz(){
-    debugger
+    
       var file = document.getElementById("file");
       var title = document.getElementById("title");
       if(file.files.length<1 || title.value==""){
@@ -238,53 +261,52 @@ class Gzdt extends React.Component{
       return true;
   }
   upload(e){
-    e.preventDefault();
-    var file = document.getElementById("file");
-    var title = document.getElementById("title");
-      if(file.files.length<1 || title.value==""){
-          alert("上传文件不能为空");
-          return false;
-      }
-    var form=document.getElementById("upload");
+     e.preventDefault();
+    // var file = document.getElementById("file");
+    // var title = document.getElementById("title");
+    //   if(file.files.length<1 || title.value==""){
+    //       alert("上传文件不能为空");
+    //       return false;
+    //   }
+    var form=document.getElementById("gzdt-upload");
     var formdata=new FormData(form);
     $.ajax({
           url: ctx + '/admin/formupload',
           dataType: 'json',
           type: 'post',
           async: true,
-          data: formdata,
           processData: false,  // 告诉jQuery不要去处理发送的数据
-		    	contentType: false, 
+			    contentType: false, 
+          data: formdata,
           success: function(data) {
-            debugger
+            alert("上传成功！")
+             window.location.reload();
           }.bind(this),
           error: function(xhr, status, err) {
-            debugger
-              console.error(this.props.url, status, err.toString());
+            alert("上传失败")
+              
           }.bind(this)
       });
   }
   querydata() {
     $.ajax({
-          url: ctx + './data/gzdt.json',
+          url: ctx + '/admin/GZDTList',
           dataType: 'json',
-          type: 'get',
+          type: 'post',
           async: true,
-          processData: false,  // 告诉jQuery不要去处理发送的数据
-			    contentType: false, 
           success: function(data) {
-            debugger
-            var total = Math.ceil(data.list.length/4)*10;
-            this.setState({data:data.list,total:total});
+            
+            var total = Math.ceil(data.length/4)*10;
+            this.setState({data:data,total:total});
           }.bind(this),
           error: function(xhr, status, err) {
-            debugger
+            
               console.error(this.props.url, status, err.toString());
           }.bind(this)
       });
   }
   componentDidMount() {
-    // this.querydata();
+     this.querydata();
   }
   onChange(page) {
     this.setState({
@@ -292,7 +314,7 @@ class Gzdt extends React.Component{
     });
   }
   onDelete(record, e) {
-    debugger
+    
     console.log('Delete', record.name);
     e.preventDefault();
   }
@@ -313,7 +335,8 @@ class Gzdt extends React.Component{
       var sdata=this.state.data.slice((this.state.current-1)*4,(this.state.current-1)*4+4);
       return  <Row>
                 <Col offset={[1,6]} width={[4,6]}>
-                  <form id="upload" encType ="multipart/form-data"  method="post" onSubmit={this.upload.bind(this)}>
+                
+                  <form id="gzdt-upload" encType ="multipart/form-data"  method="post" onSubmit={this.upload.bind(this)}>
                     <div className="form-group"><lable>文件选择</lable><FileInput name="file" accept="application/msword" onChange={this.handleChange} /></div>
                     <div className="form-group"><lable>文件标题</lable><input id="title" name="title" type="input"/></div>
                     <div className="form-group"><button className="submit" type="submit" >立即上传</button></div>
@@ -338,7 +361,7 @@ class Products extends React.Component{
         }
     }
     productsClickHandler(type,e){
-      debugger
+      
       if (e.target && e.target.nodeName == "DIV") {
         this.setState({
           name:this.props.lists[type][e.target.id].name,
@@ -571,7 +594,7 @@ class Login extends React.Component {
 			},
 			error: function (xhr, status, err) {
 				alert(status);
-        debugger
+        
         isLogin = 0;
 			}
 		});
@@ -605,11 +628,11 @@ class Login extends React.Component {
 // 配置路由
 ReactDOM.render((
   <Router history={hashHistory} >
-    <Route path="/" component={App}>
+        <Redirect from="/" to="admin/gzdt" />        
+        <Route path="/" component={App}>
         <Redirect from="admin" to="admin/gzdt" />
         <Route path="login" component={Login}/>
         <Route path="admin" component={Admin} onEnter={requireAuth}>
-          
           <Route path="gzdt" component={Gzdt}/>
           <Route path="dtjs" component={Dtjs}/>
           <Route path="products" component={Products}/>
