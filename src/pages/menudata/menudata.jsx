@@ -107,8 +107,8 @@ export const navlist = {
     name: "海洋监测",
     children:
     {
-      jcjs: {
-        id: 0, name: "监测介绍"
+      jctx: {
+        id: 0, name: "监测体系"
       },
       txwj: {
         id: 0, name: "体系文件"

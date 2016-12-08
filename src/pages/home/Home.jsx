@@ -28,7 +28,7 @@ class home extends React.Component {
         type: 'get',
         async: true,
         success: function(data) {
-          this.setState({fimgs:data});
+          this.setState({fimgs:data.imhMessage});
         }.bind(this),
         error: function(xhr, status, err) {
             console.error(this.props.url, status, err.toString());

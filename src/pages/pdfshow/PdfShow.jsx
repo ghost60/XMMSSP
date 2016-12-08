@@ -7,6 +7,7 @@ import './PdfShow.scss';
 class PdfShow extends React.Component{
   constructor(props) {
       super(props);
+      debugger
       this.state={name:this.props.params.name,method:this.props.params.method,filename:this.props.params.filename,file:''};
   }
   componentWillMount(){

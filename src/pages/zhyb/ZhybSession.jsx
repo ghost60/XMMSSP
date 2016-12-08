@@ -1,56 +1,82 @@
 import React from 'react';
-import LineChart from '../../components/highcharts/LineChart';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
-import { TabsPanel1, TabsPanel2, TabsPanel3, TabsPanel4, TabsPanel5} from '../home/TabPanel';
+import {Link} from 'react-router';
 
 class zhybsession extends React.Component {
     constructor(props) {
     super(props);
-    this.state = { name: '', data: '' };
+    this.state = { name: ''};
   }
   addmenu(mprops) {
+    debugger
     if (!mprops.params) {
       var menu = menudata.navlist.hyyb.children.zhyb.children;
       menu = menu[Object.keys(menu)[0]];
-      return menu.name;
+      this.setState({name:menu.name});
     } else {
       menu = menudata.navlist.hyyb.children.zhyb.children;
       for (var key in menu) {
         if (key == mprops.params.cid) {
-          return menu[key].name;
+          this.setState({name:menu[key].name});
+          return;
         }
       }
     }
   }
-  querydata(name) {
-    $.ajax({
-      url: ctx+'/zhyb?name='+name,
-      dataType: 'json',
-      type: 'get',
-      async: true,
-      success: function (data) {
-          this.setState({ name: name, data: data });
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  }
   componentDidMount() {
-    let route = this.addmenu(this.props);
-    this.querydata(route);
+    this.addmenu(this.props);
   }
   componentWillReceiveProps(nextProps) {
-    let route = this.addmenu(nextProps);
-    this.querydata(route);
+    this.addmenu(nextProps);
   }
   render() {
-    var img = '';
-    if (this.state.data !== '') img = <Imgplayer data={this.state.data} />
+    var com = <YJBDList/>;
+    if (this.state.name==="预警报单") {
+        com = <YJBDList/>;
+    }else{
+        com = '';
+    }
     return <Session lastname={this.state.name} name={"/海洋预报/灾害预报"}>
-      {img}
+      {com}
     </Session>
   }
 };
 export default zhybsession;
+
+
+class YJBDList extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state={yjbdlist:[]};
+    }
+    componentDidMount(){
+      debugger
+        $.ajax({
+            url: ctx+'/yjbd/getFourYJBD',
+            dataType: 'json',
+            type: 'get',
+            async: true,
+            success: function(data) {
+              this.setState({yjbdlist:data.data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    }
+    render() {
+        const list = this.state.yjbdlist.map((li,i) => {
+            return  <div className="yjbd_li" key={i}>
+                        <Link to={`pdfshow/预警报单/querypdf/${li.name}`}>
+                        <span className="yjbd_name">{li.name}</span>
+                        </Link>
+                        <span className="yjbd_time">{li.time}</span>
+                    </div>
+            }
+        );
+        return  <div className="yjbd_body">
+                    {list}
+                </div>
+        }
+};
