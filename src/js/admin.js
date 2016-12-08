@@ -19,7 +19,7 @@ let isLogin = 0;
 let _nextState;
 let _this;
 $.ajax({
-          url: ctx + 'search/isLogin',
+          url: ctx + '/search/isLogin',
           dataType: 'json',
           type: 'get',
           async: false,
@@ -112,7 +112,7 @@ class Dtjs extends React.Component{
     var form=document.getElementById("upload");
     var formdata=new FormData(form);
     $.ajax({
-          url: ctx + 'pubNews/pubNews',
+          url: ctx + '/pubNews/pubNews',
           dataType: 'json',
           type: 'post',
           async: true,
@@ -130,7 +130,7 @@ class Dtjs extends React.Component{
   }
   querydata() {
    $.ajax({
-          url: ctx + 'pubNews/getJsonList',
+          url: ctx + '/pubNews/getJsonList',
           dataType: 'json',
           type: 'post',
           async: true,
@@ -159,7 +159,7 @@ class Dtjs extends React.Component{
   }
   changeTop(state,filename,e){
     $.ajax({
-              url: ctx + 'pubNews/changeTOP',
+              url: ctx + '/pubNews/changeTOP',
               dataType: 'json',
               type: 'post',
               async: true,
@@ -248,7 +248,7 @@ class Gzdt extends React.Component{
     var form=document.getElementById("upload");
     var formdata=new FormData(form);
     $.ajax({
-          url: ctx + 'admin/formupload',
+          url: ctx + '/admin/formupload',
           dataType: 'json',
           type: 'post',
           async: true,
@@ -545,7 +545,7 @@ class Login extends React.Component {
 		var password = $("#password").val();
     var _formData = {user:user,password:password};
 		$.ajax({
-			url: ctx + 'search/identify',
+			url: ctx + '/search/identify',
 			dataType: 'json',
 			type: 'get',
 			async: true,

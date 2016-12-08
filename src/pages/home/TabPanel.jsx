@@ -29,7 +29,7 @@ export class TabsPanel1 extends React.Component {
     handlerMapCilck(i) {
         $.ajax({
             type: "post",
-            url: ctx+"forcast", //添加自己的接口链接
+            url: ctx+"/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "haiqu", name: this.mapCfg[i]['title'] },
             before: function () {
@@ -108,7 +108,7 @@ export class TabsPanel2 extends React.Component {
     handlerMapCilck(i) {
         $.ajax({
             type: "post",
-            url: ctx+"forcast", //添加自己的接口链接
+            url: ctx+"/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "chaoxi", name: this.mapCfg[i]['title'] },
             before: function () {
@@ -202,7 +202,7 @@ export class TabsPanel3 extends React.Component {
     handlerMapCilck(i) {
         $.ajax({
             type: "post",
-            url: ctx+"forcast", //添加自己的接口链接
+            url: ctx+"/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "xmhaiyu", name: this.mapCfg[i]['title'] },
             before: function () {
@@ -281,7 +281,7 @@ export class TabsPanel4 extends React.Component {
     handlerMapCilck(i) {
         $.ajax({
             type: "post",
-            url: ctx+"forcast", //添加自己的接口链接
+            url: ctx+"/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "yuchang", name: this.mapCfg[i]['title'] },
             before: function () {
@@ -386,7 +386,7 @@ export class TabsPanel5 extends React.Component {
     handlerMapCilck(i) {
         $.ajax({
             type: "post",
-            url: ctx+"forcast", //添加自己的接口链接
+            url: ctx+"/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "binhailvyou", name: this.mapCfg[i]['title'] },
             before: function () {
@@ -398,13 +398,8 @@ export class TabsPanel5 extends React.Component {
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     pubTime: data.pubTime,
-                    forcastInfo: data.forcastInfo,
-                    lgInfo: data.lgInfo,
-                    waterTemp: data.waterTemp,
-                    "dysyd": data.dysyd,
-                    "zjdysj": data.zjdysj,
-                    "stylzs": data.stylzs,
-                    "jsymsd": data.jsymsd
+                    hbggzs:data.hbggzs,
+                    hsylzs:data.hsylzs
                 })
             }.bind(this),
             error: function () {
@@ -418,7 +413,7 @@ export class TabsPanel5 extends React.Component {
             <div className="c">
                 <TabPanelMap mapSrc={this.props.mapSrc} clickCall={this.handlerMapCilck.bind(this)} points={this.mapCfg} />
                 <div className={"tab-panel--right " + this.props._className}>
-                    <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo={this.state.forcastInfo} />
+                    <TabPanelTitle2 title={this.state.title} pubTime={this.state.pubTime + "发布"} forcastInfo="未来24小时海洋预报" />
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
                             <div style={{ "padding": "20px" }}>
@@ -429,8 +424,8 @@ export class TabsPanel5 extends React.Component {
                                             <td>海滨观光指数</td>
                                         </tr>
                                         <tr className="tab-panel-info--tbody">
-                                            <td>{this.state.dysyd}</td>
-                                            <td>{this.state.zjdysj}</td>
+                                            <td>{this.state.hsylzs}</td>
+                                            <td>{this.state.hbggzs}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -465,7 +460,7 @@ export class TabsPanel6 extends React.Component {
     handlerMapCilck(i) {
         $.ajax({
             type: "post",
-            url: ctx+"forcast", //添加自己的接口链接
+            url: ctx+"/forcast", //添加自己的接口链接
             timeOut: 5000,
             data: { type: "qzhyyb", name: this.mapCfg[i]['title'] },
             before: function () {
@@ -527,6 +522,14 @@ TabsPanel3.defaultProps = {
     mapCfg: null
 }
 TabsPanel4.defaultProps = {
+    _className: "",
+    mapCfg: null
+}
+TabsPanel5.defaultProps = {
+    _className: "",
+    mapCfg: null
+}
+TabsPanel6.defaultProps = {
     _className: "",
     mapCfg: null
 }

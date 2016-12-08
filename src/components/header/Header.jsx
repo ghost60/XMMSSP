@@ -15,7 +15,7 @@ export default class Header extends React.Component {
 
         $.ajax({
             type: "get",
-            url: ctx+"getLunarInfo", //添加自己的接口链接
+            url: ctx+"/getLunarInfo", //添加自己的接口链接
             timeOut: 5000,
             before: function () {
                 console.log("before");

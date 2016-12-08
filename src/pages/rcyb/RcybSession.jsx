@@ -92,7 +92,7 @@ class rcybsession extends React.Component {
       return <TabsPanel6 mapSrc="/images/map6_cus.png" _className="tab-panel--right__cust" />
     }
     else if (type === "hlybt")
-      return <img src={ctx2 + "forcast?type=hlyb"} />
+      return <img src={ctx + "/forcast?type=hlyb"} />
   }
   render() {
     return <Session lastname={this.state.name} name={"/海洋预报/日常预报"}>
