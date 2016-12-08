@@ -34,26 +34,88 @@
     &:hover{
     	cursor: pointer;
     }
+	& a{
+		color: #666
+	}
+}
+.navLi__active{
+	color: #2dcc9b !important
 }
 .form-group{
 	padding:10px;
 	lable{
 		padding-right:10px;
 	}
-	input{
+	input[type="input"]{
 	    border: 1px solid #c7c7c7;
 	    padding: 5px;
 	    border-radius: 6px;
         width: 250px;
 	}
 	.submit{
-	    width: 60px;
+	    width: 316px;
 	    background: #2db7f5;
 	    color: #fff;
 	    border: none;
 	    height: 30px;
 	    font-size: 15px;
-	    margin-left: 250px;
 	    cursor: pointer;
+	}
+	.submit:hover{
+		 background: #1ea0ff;
+	}
+}
+
+.admin-container{
+	position: relative;
+}
+.admin-aside{
+	width: 270px;
+	position: absolute;
+	z-index: 1;
+}
+.admin-right-container{
+	position: absolute;
+	left:0;top: 0;
+	padding-left: 280px;
+	width: 100%;
+}
+.products-info{
+	width: 100%;
+	& div{
+	
+	}
+}
+.products-info-table{
+	width: 100%;
+	text-align: left;
+	& td {
+		text-align: left;
+	}
+	& td label{
+		color: #fff
+	}
+	& td:first-child{
+		background-color: #666;
+		width: 150px;
+		text-align: center;
+	}
+	& td:nth-child(3){
+		background-color: #666;
+		text-align: center;
+		width: 150px;
+	}
+}
+.products-list{
+	display: table;
+	width: 100%;
+}
+.products-list-c{
+	display: table-cell;
+	text-align: center;
+	& span{
+		color: orange;
+		font-size: 20px;
+		display: inline-block;
 	}
 }
