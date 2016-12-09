@@ -24,8 +24,8 @@ export default class GZDTList extends React.Component{
     render() {
         const list = this.state.filelist.map((li,i) => {
             return  <div className="gzdt_li" key={i}>
-                        <span className="gzdt_time">{li.time}</span>
-                        <Link to={`wordshow/工作动态/gzdtShow/${li.filename}`}>                        
+                        <span className="gzdt_time">{li.time.substring(0,10)}</span>
+                        <Link to={`wordshow/工作动态/gzdtShow/${li.filename.split('.')[0]}`}>                        
                         <span className="gzdt_name">{li.title}</span>
                         </Link>
                     </div>

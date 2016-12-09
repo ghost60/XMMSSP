@@ -51,7 +51,7 @@ class home extends React.Component {
       return  <Row style={{minHeight:"604px",marginTop:"20px"}}>
                 <Row>
                   <Col width={[1,2]}>
-                    <Slider items={this.state.fimgs} speed={1.2} delay={2.1} pause={true} autoplay={true} dots={true} arrows={false} istext={true} height={"300px"}/>
+                    <Slider items={this.state.fimgs} speed={1.2} delay={2.1} pause={true} autoplay={true} dots={true} arrows={false} istext={true} height={"306px"}/>
                   </Col>
                   <Col width={[1,2]}>
                     <Card title={'工作动态'} card_body={{marginTop:"12px"}} card_content={{minHeight:"267px"}} icon_url={require('./images/gzdt_icon.png')} more_img={require('./images/more.png')} morelink={'gzdt/gzdtSession/gzdt'} card_title={{background:"#4b9bd7",height:"32px",lineHeight:"32px"}}>

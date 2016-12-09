@@ -99,7 +99,7 @@ class Show extends React.Component {
     var sdata=this.state.filelist.slice((this.state.current-1)*15,(this.state.current-1)*15+15);
     const list = sdata.map((li,i) => {
           return  <div className="gzdt_show_li" key={i}>                        
-                      <Link to={`wordshow/${this.props.type}/queryWord/${li.filename}`}>
+                      <Link to={`wordshow/${this.props.type}/queryWord/${li.filename.split('.')[0]}`}>
                       <span className="gzdt_show_name">{li.title}</span>
                       </Link>
                       <span className="gzdt_show_time">{li.time.substring(0,10)}</span>

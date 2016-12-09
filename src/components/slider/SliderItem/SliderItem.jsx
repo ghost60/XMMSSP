@@ -12,7 +12,7 @@ export default class SliderItem extends Component {
         <span>{item.title}</span>
         </div>):null;
     return (
-      <li className="slider-item" style={{width: width,height:"100%"}}>
+      <li className="slider-item" style={{width: width}}>
         <img src={item.path} alt={item.title} style={height}/>
         {textpanel}
       </li>
