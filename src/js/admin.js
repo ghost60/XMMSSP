@@ -96,7 +96,7 @@ class Dtjs extends React.Component {
         var loaded = evt.loaded;				  //已经上传大小情况 
         var tot = evt.total;					  //附件总大小 
         var per = Math.floor(100 * loaded / tot);	  //已经上传的百分比  
-        target.innerHTML = "已上传"+per+"%";
+        target.innerHTML = "已上传("+per+"%)";
     }
     formyz() {
 
@@ -280,7 +280,7 @@ class Gzdt extends React.Component {
         var tot = evt.total;					  //附件总大小 
         var per = Math.floor(100 * loaded / tot);	  //已经上传的百分比  
         debugger
-        target.innerHTML = "已上传"+per+"%";
+        target.innerHTML = "已上传("+per+"%)";
     }
     upload(e) {
         e.preventDefault();
