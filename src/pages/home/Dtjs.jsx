@@ -33,7 +33,7 @@ export default class Dtjs extends React.Component {
                 <Summary data={{ title: this.state.summary.title, summary: this.state.summary.summary }} />
                 {
                     this.state.newsLists.map(function (item, index) {
-                        return (<NewsList key={index} data={{ date: item.date, title: item.title }} />)
+                        return (<NewsList key={index} data={{ date: item.date, title: item.title, fileName: item.fileName }} />)
                     })
                 }
             </div>

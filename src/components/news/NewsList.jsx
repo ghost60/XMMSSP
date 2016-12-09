@@ -11,7 +11,9 @@ export default class NewsList extends React.Component {
             <div style={{"margin":8}}>
                 <CurrentDate date={this.props.data.date} />
                 <div className="news-linkTitle">
+                    <Link to={`wordshow/党团建设/queryWord/${this.props.data.fileName.split('.')[0]}`}> 
                     {this.props.data.title}
+                    </Link>
                 </div>
             </div>
         )
