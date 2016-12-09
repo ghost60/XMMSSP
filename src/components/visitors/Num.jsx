@@ -1,7 +1,6 @@
 import React from 'react';
 import './Num.scss';
 
-var visitors="00000000";
 export default class Num extends React.Component{
 	constructor(props) {
         super(props);
