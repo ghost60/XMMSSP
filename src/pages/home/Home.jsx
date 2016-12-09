@@ -34,6 +34,18 @@ class home extends React.Component {
             console.error(this.props.url, status, err.toString());
         }.bind(this)
     });
+    $.ajax({
+        url: ctx+'/picture',
+        dataType: 'json',
+        type: 'get',
+        async: true,
+        success: function(data) {
+          this.setState({simgs:data.img});
+        }.bind(this),
+        error: function(xhr, status, err) {
+            console.error(this.props.url, status, err.toString());
+        }.bind(this)
+    });
   }
   render() {
       return  <Row style={{minHeight:"604px",marginTop:"20px"}}>

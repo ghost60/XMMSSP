@@ -99,7 +99,7 @@ class Imgshow extends React.Component{
         super(props);
     }    
     render() {
-        return  <div style={{width: "100%",display:"inline-block"}}>
+        return  <div style={{width: "100%",display:"inline-block",padding:"20px"}}>
                   <img src={this.props.url} style={{width:"100%"}}/>
                 </div>
     }     

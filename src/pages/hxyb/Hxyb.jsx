@@ -145,7 +145,7 @@ class hxyb extends React.Component{
                             <span className={this.tpactive(2)} data-key={2} onClick={this.tpselect.bind(this)}>风速</span>
                         </div>
                         <div className="hxyb-tp-tp">
-                             <img src={this.state.pic[this.state.tpkey]} alt="" />
+                             <img style={{width:"544px"}} src={this.state.pic[this.state.tpkey]} alt="" />
                         </div>
                        </div>
                     </div>                    
