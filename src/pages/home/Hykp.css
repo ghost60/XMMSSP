@@ -1,7 +1,7 @@
 .hykp-title {
     width: 100%;
     height: 76px;
-    background-image: url(/images/title-hykp.png);
+    background-image: url(../../images/title-hykp.png);
     background-repeat: no-repeat
 }
 
@@ -17,7 +17,7 @@
 
 .hykp-imgBg {
     padding: 70px 20px 0 20px;
-    background-image: url("/images/Rings.png");
+    background-image: url("../../images/Rings.png");
     height: 500px;
     margin-top: -18px;
     position: relative;

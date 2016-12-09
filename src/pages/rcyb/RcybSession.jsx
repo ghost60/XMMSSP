@@ -6,7 +6,7 @@ import { TabsPanel1, TabsPanel2, TabsPanel3, TabsPanel4, TabsPanel5, TabsPanel6 
 class rcybsession extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', data: {} };
+    this.state = { name: '', data: {},hlybSrc:"" };
   }
   addmenu(mprops) {
     if (!mprops.params) {
@@ -48,7 +48,7 @@ class rcybsession extends React.Component {
   }
   renderContent(type) {
     if (type === "hlswyb") {
-      return <TabsPanel1 mapSrc="/images/map1_cus.png" _className="tab-panel--right__cust" mapCfg={
+      return <TabsPanel1 mapSrc="./images/map1_cus.png" _className="tab-panel--right__cust" mapCfg={
         [
           { x: 60, y: 236, title: "漳州沿海" },
           { x: 99, y: 199, title: "厦门沿海" },
@@ -68,7 +68,7 @@ class rcybsession extends React.Component {
         ]
       } />
     } else if (type === "xmhlyb") {
-      return <TabsPanel3 mapSrc="/images/map3_cus.png" _className="tab-panel--right__cust" mapCfg={
+      return <TabsPanel3 mapSrc="./images/map3_cus.png" _className="tab-panel--right__cust" mapCfg={
         [
           { x: 204, y: 157, title: "厦门大嶝海域" },
           { x: 243, y: 113, title: "厦门小嶝海域" },
@@ -80,19 +80,31 @@ class rcybsession extends React.Component {
         ]
       } />
     } else if (type === "xmycyb") {
-      return <TabsPanel4 mapSrc="/images/map4_cus.png" _className="tab-panel--right__cust" />
+      return <TabsPanel4 mapSrc="./images/map4_cus.png" _className="tab-panel--right__cust" />
     } else if (type === "xmbhlyyb") {
-      return <TabsPanel5 mapSrc="/images/map4_cus.png" _className="tab-panel--right__cust" mapCfg={
+      return <TabsPanel5 mapSrc="./images/map4_cus.png" _className="tab-panel--right__cust" mapCfg={
         [
           { x: 226, y: 165, title: "厦门环岛路东部" },
           { x: 67, y: 224, title: "厦门鼓浪屿" },
         ]
       } />
     } else if (type === "qzhyyb") {
-      return <TabsPanel6 mapSrc="/images/map6_cus.png" _className="tab-panel--right__cust" />
+      return <TabsPanel6 mapSrc="./images/map6_cus.png" _className="tab-panel--right__cust" />
     }
     else if (type === "hlybt")
-      return <img src={ctx + "/forcast?type=hlyb"} />
+     $.ajax({
+      url: ctx+'/forcast?type=hlyb',
+      type: 'post',
+      async: true,
+      success: function (data) {
+        this.setState({"hlybSrc":ctx+"/"+data})
+      }.bind(this),
+      error: function (xhr, status, err) {
+        debugger
+      
+      }.bind(this)
+    });
+      return <img src={this.state.hlybSrc} alt="正在加载..."/>
   }
   render() {
     return <Session lastname={this.state.name} name={"/海洋预报/日常预报"}>

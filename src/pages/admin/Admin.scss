@@ -68,16 +68,15 @@
 }
 
 .admin-container{
-	position: relative;
+	// position: relative;
 }
 .admin-aside{
 	width: 270px;
-	position: absolute;
+	// position: absolute;
 	z-index: 1;
+	float: left;
 }
 .admin-right-container{
-	position: absolute;
-	left:0;top: 0;
 	padding-left: 280px;
 	width: 100%;
 }
