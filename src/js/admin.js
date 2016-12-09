@@ -24,13 +24,13 @@ $.ajax({
     type: 'get',
     async: false,
     xhrFields: {
-        withCredentials: true
+        withCredentials: false
     },
     crossDomain: true,
-    success: function(data) {
+    success: function (data) {
         isLogin = parseInt(data.islogin)
     }.bind(this),
-    error: function(xhr, status, err) {
+    error: function (xhr, status, err) {
 
 
     }.bind(this)
@@ -85,31 +85,19 @@ class Dtjs extends React.Component {
     constructor(props) {
         super(props)
         this.state = ({ name: '', link: '', data: [], current: 1, total: 1 });
-
-
     }
     handleChange(event) {
-        console.log('Selected file:', event.target.files[0]);
     }
-     progressHandler(evt,obj) {
+    progressHandler(obj,evt) {
+        debugger
         var target = this.refs[obj];
         var loaded = evt.loaded;				  //已经上传大小情况 
         var tot = evt.total;					  //附件总大小 
         var per = Math.floor(100 * loaded / tot);	  //已经上传的百分比  
-        target.innerHTML = "已上传("+per+"%)";
-    }
-    formyz() {
-
-        var file = document.getElementById("file");
-        var title = document.getElementById("title");
-        if (file.files.length < 1 || title.value == "") {
-            alert("上传文件不能为空");
-            return false;
-        }
-        return true;
+        target.innerHTML = "已上传(" + per + "%)";
     }
     upload(e) {
-        // e.preventDefault();
+        e.preventDefault();
         var file = document.getElementById("file");
         var title = document.getElementById("title");
         if (file.files.length < 1 || title.value == "") {
@@ -125,19 +113,19 @@ class Dtjs extends React.Component {
             async: true,
             processData: false,  // 告诉jQuery不要去处理发送的数据
             contentType: false,
-            xhr: function() {
+            xhr: function () {
                 var xhr = $.ajaxSettings.xhr();
                 if (this.progressHandler && xhr.upload) {
-                    xhr.upload.addEventListener("progress", this.progressHandler.bind(this,"gzdt-submit"), false);
+                    xhr.upload.addEventListener("progress", this.progressHandler.bind(this, "dtjs-submit"), false);
                     return xhr;
                 }
             }.bind(this),
             data: formdata,
-            success: function(data) {
+            success: function (data) {
                 alert("上传成功！")
                 window.location.reload();
             }.bind(this),
-            error: function(xhr, status, err) {
+            error: function (xhr, status, err) {
                 alert("上传失败")
             }.bind(this)
         });
@@ -148,11 +136,11 @@ class Dtjs extends React.Component {
             dataType: 'json',
             type: 'post',
             async: true,
-            success: function(data) {
+            success: function (data) {
                 var total = Math.ceil(data.length / 4) * 10;
                 this.setState({ data: data, total: total });
             }.bind(this),
-            error: function(xhr, status, err) {
+            error: function (xhr, status, err) {
                 alert("连接服务器失败")
             }.bind(this)
         });
@@ -175,7 +163,7 @@ class Dtjs extends React.Component {
             type: 'post',
             async: true,
             data: { istop: record["istop"], filename: record["fileName"] },
-            success: function(data) {
+            success: function (data) {
                 if (data.state === 1) {
                     alert("删除成功！")
                     window.location.reload();
@@ -184,28 +172,26 @@ class Dtjs extends React.Component {
                     alert("删除失败")
                 }
             }.bind(this),
-            error: function(xhr, status, err) {
+            error: function (xhr, status, err) {
                 alert("连接服务器失败")
             }.bind(this)
         });
     }
     changeTop(state, filename, e) {
-
         $.ajax({
             url: ctx + '/pubNews/changeTOP',
             dataType: 'json',
             type: 'post',
             async: true,
             data: { state: state, filename: filename },
-            success: function(data) {
-
+            success: function (data) {
                 if (data.result === 1) {
-                    alert("取消置顶成功！")
+                  state === "1" ? alert("置顶成功!"):alert("取消置顶成功！")
                     window.location.reload();
                 }
             }.bind(this),
-            error: function(xhr, status, err) {
-                alert("取消置顶失败")
+            error: function (xhr, status, err) {
+               alert("操作失败，请重试，若再次失败请联系管理员")
             }.bind(this)
         });
 
@@ -240,7 +226,7 @@ class Dtjs extends React.Component {
                     <div className="form-group"><lable>文章标题</lable><input id="title" name="title" type="input" /></div>
                     <div className="form-group"><lable>文章摘要</lable><input id="summary" name="summary" type="input" /></div>
                     <div className="form-group"><lable>是否置顶</lable><input id="istop" name="istop" type="checkbox" /></div>
-                    <div className="form-group"><button className="submit" type="submit" >立即上传</button></div>
+                    <div className="form-group"><button className="submit" type="submit" ref="dtjs-submit">立即上传</button></div>
                 </form>
             </Col>
             <Col >
@@ -265,7 +251,6 @@ class Gzdt extends React.Component {
         console.log('Selected file:', event.target.files[0]);
     }
     formyz() {
-
         var file = document.getElementById("file");
         var title = document.getElementById("title");
         if (file.files.length < 1 || title.value == "") {
@@ -274,13 +259,13 @@ class Gzdt extends React.Component {
         }
         return true;
     }
-    progressHandler(obj,evt) {
+    progressHandler(obj, evt) {
         var target = this.refs[obj];
         var loaded = evt.loaded;				  //已经上传大小情况 
         var tot = evt.total;					  //附件总大小 
         var per = Math.floor(100 * loaded / tot);	  //已经上传的百分比  
         debugger
-        target.innerHTML = "已上传("+per+"%)";
+        target.innerHTML = "已上传(" + per + "%)";
     }
     upload(e) {
         e.preventDefault();
@@ -300,14 +285,14 @@ class Gzdt extends React.Component {
             processData: false,  // 告诉jQuery不要去处理发送的数据
             contentType: false,
             data: formdata,
-            xhr: function() {
+            xhr: function () {
                 var xhr = $.ajaxSettings.xhr();
                 if (this.progressHandler && xhr.upload) {
-                    xhr.upload.addEventListener("progress", this.progressHandler.bind(this,"gzdt-submit"), false);
+                    xhr.upload.addEventListener("progress", this.progressHandler.bind(this, "gzdt-submit"), false);
                     return xhr;
                 }
             }.bind(this),
-            success: function(data) {
+            success: function (data) {
                 if (data.state === "1") {
                     alert("上传成功！")
                 } else if (data.state === "2") {
@@ -321,7 +306,7 @@ class Gzdt extends React.Component {
                 }
                 window.location.reload();
             }.bind(this),
-            error: function(xhr, status, err) {
+            error: function (xhr, status, err) {
                 alert("上传失败,请联系服务器管理员")
             }.bind(this)
         });
@@ -332,11 +317,11 @@ class Gzdt extends React.Component {
             dataType: 'json',
             type: 'post',
             async: true,
-            success: function(data) {
+            success: function (data) {
                 var total = Math.ceil(data.length / 4) * 10;
                 this.setState({ data: data, total: total });
             }.bind(this),
-            error: function(xhr, status, err) {
+            error: function (xhr, status, err) {
 
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
@@ -358,12 +343,12 @@ class Gzdt extends React.Component {
             type: 'post',
             async: true,
             data: { filename: record.name.split(".")[0] },
-            success: function(data) {
+            success: function (data) {
                 if (data.state === "1")
                     alert("删除成功")
                 else alert("删除失败")
             }.bind(this),
-            error: function(xhr, status, err) {
+            error: function (xhr, status, err) {
                 alert("连接服务器失败")
             }.bind(this)
         });
@@ -618,11 +603,11 @@ class Login extends React.Component {
             type: 'get',
             async: true,
             xhrFields: {
-                withCredentials: true
+                withCredentials: false
             },
             crossDomain: true,
             data: _formData,
-            success: function(data) {
+            success: function (data) {
                 if (data.type === 'fail') {
                     alert(data.rows)
                     isLogin = 0;
@@ -637,7 +622,7 @@ class Login extends React.Component {
                     //  _this.context.router.push('http://127.0.0.1/admin.html#/admin')
                 }
             },
-            error: function(xhr, status, err) {
+            error: function (xhr, status, err) {
                 alert(status);
 
                 isLogin = 0;
