@@ -38,7 +38,6 @@ $.ajax({
 const requireAuth = (nextState, replace) => {
     if (isLogin === 0) {
         _nextState = nextState
-        console.log(nextState)
         replace({ pathname: '/login' })
     }
     else {
@@ -154,8 +153,6 @@ class Dtjs extends React.Component {
         });
     }
     onDelete(record, e) {
-
-        console.log('Delete', record.name);
         e.preventDefault();
         $.ajax({
             url: ctx + '/pubNews/deleteDTJSFile',
@@ -245,10 +242,8 @@ class Gzdt extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({ name: '', link: '', data: [], current: 1, total: 1 });
-        console.log(ctx);
     }
     handleChange(event) {
-        console.log('Selected file:', event.target.files[0]);
     }
     formyz() {
         var file = document.getElementById("file");

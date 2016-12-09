@@ -132,7 +132,7 @@
             background-color: #F5F5F5;
             padding: 13px 10px;
             box-sizing: border-box;
-            margin-top: 20px;
+            margin-top: 20px;width: 100%
         }
         .tab-panel--tips div{
            display: table-cell;box-sizing: border-box;font-size: 14px;height: 100%

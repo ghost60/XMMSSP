@@ -62,11 +62,9 @@ class LineChart extends React.Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-        console.log(defaultCfg)
         for (var key in nextProps.config) {
             defaultCfg[key] = nextProps.config[key];
         }
-        console.log(defaultCfg)
         this.setState({
             defaultCfg: defaultCfg
         })

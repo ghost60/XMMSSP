@@ -8,7 +8,6 @@ var aside_content;
 class aside extends React.Component {
     constructor(props) {
         super(props);
-        //console.log(this.props.params.cid)
         var cidSplit=[];
         var cid = 0;
         if (this.props.cid) {

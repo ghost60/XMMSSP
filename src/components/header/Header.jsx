@@ -18,11 +18,8 @@ export default class Header extends React.Component {
             url: ctx+"/getLunarInfo", //添加自己的接口链接
             timeOut: 5000,
             before: function () {
-                console.log("before");
             },
             success: function (data) {
-               // var data = JSON.parse(data)
-                console.log(data)
                 this.setState({
                     solarYear: data.solarYear,
                     solarMonth: data.solarMonth,
@@ -34,40 +31,8 @@ export default class Header extends React.Component {
                 })
             }.bind(this),
             error: function () {
-                console.log("error");
             }
         });
-
-        // $.get("http://localhost:3000/getLunarInfo", function (data, status) {
-        //     alert(22222)
-        //     if (status === 'success') {
-        //         this.setState({
-        //             solarYear: data.solarYear,
-        //             solarMonth: data.solarMonth,
-        //             solarDat: data.solarDay,
-        //             weekDay: data.weekDay,
-        //             GanZhiYear: data.GanZhiYear,
-        //             lunarMonthName: data.lunarMonthName,
-        //             lunarDayName: data.lunarDayName
-        //         })
-        //     } else {
-        //         alert("连接失败，轻检查网络或向管理员报告")
-        //     }
-        // }.bind(this))
-
-        // $.when($.get("http://localhost:3000/getLunarInfo")).then((data) => {
-        //     this.setState({
-        //         solarYear: data.solarYear,
-        //         solarMonth: data.solarMonth,
-        //         solarDat: data.solarDay,
-        //         weekDay: data.weekDay,
-        //         GanZhiYear: data.GanZhiYear,
-        //         lunarMonthName: data.lunarMonthName,
-        //         lunarDayName: data.lunarDayName
-        //     })
-        // }).fail(function () {
-        //     alert("连接服务器失败！")
-        // })
     }
     SetHome() {
         var vrl = window.location;

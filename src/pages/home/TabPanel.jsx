@@ -33,11 +33,8 @@ export class TabsPanel1 extends React.Component {
             timeOut: 5000,
             data: { type: "haiqu", name: this.mapCfg[i]['title'] },
             before: function () {
-                console.log("before");
             },
             success: function (data) {
-                // var data = JSON.parse(data)
-                console.log(data)
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     pubTime: data.pubTime,
@@ -47,7 +44,6 @@ export class TabsPanel1 extends React.Component {
                 })
             }.bind(this),
             error: function () {
-                console.log("error");
             }
         });
     }
@@ -112,10 +108,9 @@ export class TabsPanel2 extends React.Component {
             timeOut: 5000,
             data: { type: "chaoxi", name: this.mapCfg[i]['title'] },
             before: function () {
-                console.log("before");
             },
             success: function (data) {
-                // var data = JSON.parse(data)
+              
                 var forcastTime = [data[0]["month"] + "/" + data[0]["day"], data[1]["month"] + "/" + data[1]["day"]]
                 this.setState({
                     title: this.mapCfg[i]['title'],
@@ -125,12 +120,12 @@ export class TabsPanel2 extends React.Component {
                 this.handlerDatePickerClick(0)
             }.bind(this),
             error: function () {
-                console.log("error");
+               
             }
         });
     }
     handlerDatePickerClick(i) {
-        console.log("datePicker")
+      
         _this.setState({
             chartData: [
                 {
@@ -156,7 +151,7 @@ export class TabsPanel2 extends React.Component {
                         <div style={{ "margin": "10px 0 10px 0" }}>
                             {
                                 _this.state.forcastTime.map(function (item, index) {
-                                    console.log(item, index)
+                                  
                                     return (
                                         <div key={index} onClick={_this.handlerDatePickerClick.bind(_this, index)} className={_this.getCurrentDatePickerClass(index)}>{item}</div>
                                     )
@@ -206,11 +201,10 @@ export class TabsPanel3 extends React.Component {
             timeOut: 5000,
             data: { type: "xmhaiyu", name: this.mapCfg[i]['title'] },
             before: function () {
-                console.log("before");
+              
             },
             success: function (data) {
-                // var data = JSON.parse(data)
-                console.log(data)
+              
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     pubTime: data.pubTime,
@@ -219,7 +213,7 @@ export class TabsPanel3 extends React.Component {
                 })
             }.bind(this),
             error: function () {
-                console.log("error");
+               
             }
         });
     }
@@ -285,11 +279,8 @@ export class TabsPanel4 extends React.Component {
             timeOut: 5000,
             data: { type: "yuchang", name: this.mapCfg[i]['title'] },
             before: function () {
-                console.log("before");
             },
-            success: function (data) {
-                // var data = JSON.parse(data)
-                console.log(data)
+            success: function (data) {          
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     pubTime: data.pubTime,
@@ -303,7 +294,6 @@ export class TabsPanel4 extends React.Component {
                 })
             }.bind(this),
             error: function () {
-                console.log("error");
             }
         });
     }
@@ -390,11 +380,8 @@ export class TabsPanel5 extends React.Component {
             timeOut: 5000,
             data: { type: "binhailvyou", name: this.mapCfg[i]['title'] },
             before: function () {
-                console.log("before");
             },
             success: function (data) {
-                // var data = JSON.parse(data)
-                console.log(data)
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     pubTime: data.pubTime,
@@ -403,7 +390,6 @@ export class TabsPanel5 extends React.Component {
                 })
             }.bind(this),
             error: function () {
-                console.log("error");
             }
         });
     }
@@ -464,11 +450,8 @@ export class TabsPanel6 extends React.Component {
             timeOut: 5000,
             data: { type: "qzhyyb", name: this.mapCfg[i]['title'] },
             before: function () {
-                console.log("before");
             },
             success: function (data) {
-                // var data = JSON.parse(data)
-                console.log(data)
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     pubTime: data.pubTime,
@@ -476,8 +459,7 @@ export class TabsPanel6 extends React.Component {
                     lgInfo: data.lgInfo,
                 })
             }.bind(this),
-            error: function () {
-                console.log("error");
+            error: function () {              
             }
         });
     }
