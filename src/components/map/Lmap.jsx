@@ -4,21 +4,6 @@ import './leaflet.css';
 import ExWMSTileLayer from './ExWMSTileLayer';
 import MarkerLayer from './MarkerLayer';
 
-// const markers = [{
-//     "position": {
-//         "lng": 118.1872,
-//         "lat": 24.5364
-//     },
-//     "text": "aa"
-// },
-// {
-//     "position": {
-//         "lng": 118.3872,
-//         "lat": 24.8364
-//     },
-//     "text": "bb"
-// }];
-
 class ExampleMarkerComponent extends React.Component {
   render() {
     const style = {
@@ -38,6 +23,10 @@ class ExampleMarkerComponent extends React.Component {
 class Lmap extends React.Component{
   constructor(props) {
       super(props);
+  }
+  componentDidMount(){
+    var logo = document.getElementsByClassName("leaflet-control-attribution leaflet-control");
+    logo[0].innerHTML=''; 
   }
   render() {
       let data = this.props.data;
@@ -81,7 +70,7 @@ class Lmap extends React.Component{
         marker.push(<Marker ref='m' position={data[0].latlon[0]} icon={myIcon} />);
         marker.push(<Marker position={data[0].latlon[data[0].latlon.length-1]} icon={myIcon} />);
         this.refs.map.leafletElement.fitBounds([data[0].latlon[0],data[0].latlon[data[0].latlon.length-1]]);
-      }
+      } 
     return (
       <Map ref='map' style={{height:'550px'}} center={[24.5364,118.1872]} zoom={10}>
           <ExWMSTileLayer type={'GaoDe.Normal.Map'} options={{maxZoom: 18,minZoom: 5}} />

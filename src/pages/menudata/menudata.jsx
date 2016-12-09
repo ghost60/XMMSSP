@@ -70,13 +70,13 @@ export const navlist = {
           hmf: {
             id: 0, name: "海面风", children: {
               hmf_xtpy: {name:"西太平洋"},
-              hmf_twhx: {name:"台湾海峡"}
+              hmf_twhx: {name:"台湾海峡(海面风)"}
             }
           },
           hailang: {
             id: 1, name: "海浪", children: {
               hailang_twhx: {name:"台湾海峡(海浪)"},
-              hailang_xjhy: {name:"夏金海域"},
+              hailang_xjhy: {name:"厦金海域"},
               hailang_lmhy: {name:"两马海域"},
             }
           },

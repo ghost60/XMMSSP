@@ -47,9 +47,10 @@ var Pdf = React.createClass({
         byteArray[index] = bytes.charCodeAt(index);
       }
       this._loadByteArray(byteArray);
-    } else {
-      console.error('React_Pdf works with a file(URL) or (base64)content. At least one needs to be provided!');
     }
+    // else {
+    //   console.error('React_Pdf works with a file(URL) or (base64)content. At least one needs to be provided!');
+    // }
   },
   componentWillReceiveProps: function(newProps) {
     if ((newProps.file && newProps.file !== this.props.file) || (newProps.content && newProps.content !== this.props.content)) {
@@ -86,7 +87,7 @@ var Pdf = React.createClass({
         ref: "pdfCanvas"
       }));
     }
-    return (this.props.loading || React.createElement("div", null, "Loading pdf...."));
+    return (this.props.loading || (<div style={{color:"#fff"}}>正在加载 pdf....</div>));
   },
   _onDocumentComplete: function(pdf) {
     if (!this.isMounted()) return;
