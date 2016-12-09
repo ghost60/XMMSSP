@@ -99,12 +99,10 @@ class rcybsession extends React.Component {
       success: function (data) {
         this.setState({"hlybSrc":ctx+"/"+data})
       }.bind(this),
-      error: function (xhr, status, err) {
-        debugger
-      
+      error: function (xhr, status, err) {   
       }.bind(this)
     });
-      return <img src={this.state.hlybSrc} alt="正在加载..."/>
+      return <img src={this.state.hlybSrc} alt="正在加载..." style={{width:"100%"}}/>
   }
   render() {
     return <Session lastname={this.state.name} name={"/海洋预报/日常预报"}>

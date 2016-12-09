@@ -8,7 +8,6 @@ class Rcyb extends React.Component{
   constructor(props) {
       super(props);
       this.state=({name:'',link:''});
-      console.log(this.props.params.cid)
   }
   render() {
       return  <Row>

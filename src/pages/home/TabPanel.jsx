@@ -98,8 +98,10 @@ export class TabsPanel2 extends React.Component {
             dataPickerClass: "tab-panel--datePicker",
             currentDateIndex: 0
         }
-        this.handlerMapCilck(0);
-
+      
+    }
+    componentDidMount(){
+          this.handlerMapCilck(0);
     }
     handlerMapCilck(i) {
         $.ajax({
@@ -109,8 +111,7 @@ export class TabsPanel2 extends React.Component {
             data: { type: "chaoxi", name: this.mapCfg[i]['title'] },
             before: function () {
             },
-            success: function (data) {
-              
+            success: function (data) {  
                 var forcastTime = [data[0]["month"] + "/" + data[0]["day"], data[1]["month"] + "/" + data[1]["day"]]
                 this.setState({
                     title: this.mapCfg[i]['title'],
