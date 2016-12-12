@@ -48,9 +48,15 @@ import szybsession from '../pages/szyb/SzybSession';
 import zhyb from '../pages/zhyb/Zhyb';
 import zhybsession from '../pages/zhyb/ZhybSession';
 
+import yjya from '../pages/yjya/Yjya';
+import yjyasession from '../pages/yjya/YjyaSession';
+
 import * as menudata from '../pages/menudata/menudata';
 
-import pdfshow from '../pages/pdfshow/PdfShow';
+import {
+  pdfshow
+}
+from '../pages/pdfshow/PdfShow';
 import wordshow from '../pages/wordshow/WordShow';
 
 class App extends React.Component {
@@ -106,6 +112,10 @@ ReactDOM.render((
 
       <Route path="hykp" component={hykp}>
         <Route path="hykpsession/:cid" component={hykpsession} />
+      </Route>
+
+      <Route path="yjya" component={yjya}>
+        <Route path="yjyasession/:cid" component={yjyasession} />
       </Route>
 
       <Route path="gzdt" component={gzdt}>

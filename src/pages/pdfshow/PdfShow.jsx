@@ -47,15 +47,15 @@ class PdfShow extends React.Component{
   }
   render() {
        return  <Col offset={[1,20]} width={[18,20]}>
-       			<div className="pdfshow-title">
-       				<span className="pdfshow-name">{this.state.name}</span>
-       				<span className="pdfshow-back" onClick={this.back.bind(this)}>返回</span>
-       			</div>
-       			<div className="pdfshow-body">
-		       		<PDF file={this.state.file} page={this.state.page} onDocumentComplete={this.onDocumentComplete.bind(this)}/>              
-              <div className="pdfshow-page"><span className="pdfshow-page-bef" onClick={this.bef.bind(this)}>前一页</span><span className="pdfshow-page-num">{this.state.page+'/'+this.state.pages}</span><span className="pdfshow-page-aft" onClick={this.aft.bind(this)}>后一页</span></div>
-	       		</div>
-		       </Col>	        
+           			<div className="pdfshow-title">
+           				<span className="pdfshow-name">{this.state.name}</span>
+           				<span className="pdfshow-back" onClick={this.back.bind(this)}>返回</span>
+           			</div>
+           			<div className="pdfshow-body">
+    		       		<PDF file={this.state.file} page={this.state.page} onDocumentComplete={this.onDocumentComplete.bind(this)}/>              
+                  <div className="pdfshow-page"><span className="pdfshow-page-bef" onClick={this.bef.bind(this)}>前一页</span><span className="pdfshow-page-num">{this.state.page+'/'+this.state.pages}</span><span className="pdfshow-page-aft" onClick={this.aft.bind(this)}>后一页</span></div>
+    	       		</div>
+    		       </Col>	        
       }
 };
 export default PdfShow;

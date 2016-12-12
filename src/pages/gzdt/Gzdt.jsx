@@ -10,10 +10,10 @@ class gzdt extends React.Component{
   }
   render() {
       return  <div>
-              <Col width={[1,6]}>
+              {/*<Col width={[1,6]}>
                 <Aside cid={this.props.params.cid} parent={"gzdt"}/>
-              </Col>
-              <Col width={[5,6]}>
+              </Col>*/}
+              <Col>
                 {this.props.children||(<GzdtSession/>)}
               </Col>
               </div>

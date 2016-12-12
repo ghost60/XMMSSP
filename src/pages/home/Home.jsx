@@ -54,7 +54,7 @@ class home extends React.Component {
           <Slider items={this.state.fimgs} speed={1.2} delay={2.1} pause={true} autoplay={true} dots={true} arrows={false} istext={true} height={"306px"} />
         </Col>
         <Col width={[1, 2]}>
-          <Card title={'工作动态'} card_body={{ marginTop: "12px" }} card_content={{ minHeight: "267px" }} icon_url={require('./images/gzdt_icon.png')} more_img={require('./images/more.png')} morelink={'gzdt/gzdtSession/gzdt'} card_title={{ background: "#4b9bd7", height: "32px", lineHeight: "32px" }}>
+          <Card title={'工作动态'} card_body={{ marginTop: "12px" }} card_content={{ minHeight: "267px" }} icon_url={'./images/gzdt_icon.png'} more_img={require('./images/more.png')} morelink={'gzdt/gzdtSession/gzdt'} card_title={{ background: "#4b9bd7", height: "32px", lineHeight: "32px" }}>
             <GZDTList />
           </Card>
         </Col>
@@ -80,12 +80,12 @@ class home extends React.Component {
           </Row>
           <Row style={{ marginTop: 18 }}>
             <Col width={[18, 30]}>
-              <Card title={'数值预报'} icon_url={require('./images/szyb_icon.png')} more_img={require('./images/more-58.png')} morelink={'hyyb/szyb/szybsession/hmf_xtpy'} card_title={{ background: "#1ea0ff", height: "58px", lineHeight: "58px" }}>
+              <Card title={'数值预报'} icon_url={require('./images/szyb_icon.png')} more_img={'./images/more-58.png'} morelink={'hyyb/szyb/szybsession/hmf_xtpy'} card_title={{ background: "#1ea0ff", height: "58px", lineHeight: "58px" }}>
                 <SZYBImgList />
               </Card>
             </Col>
             <Col width={[12, 30]} pdl={18}>
-              <Card title={'预警报单'} icon_url={require('./images/yjbd_icon.png')} more_img={require('./images/more-58.png')} morelink={'hyyb/zhyb/zhybSession/yjbd'} card_title={{ background: "#e64f3c", height: "58px", lineHeight: "58px" }}>
+              <Card title={'预警报单'} icon_url={require('./images/yjbd_icon.png')} more_img={'./images/more-58.png'} morelink={'hyyb/zhyb/zhybSession/yjbd'} card_title={{ background: "#e64f3c", height: "58px", lineHeight: "58px" }}>
                 <YJBDList />
               </Card>
             </Col>

@@ -38,13 +38,13 @@ class aside extends React.Component {
                     child_link = tprops.parent + "/" + (!product.secFloor ? tprops.parent + "Session/" : tprops.link + "/" + tprops.link + "Session/") + item_child_key;
                     list_child_item.push(<li className="aside-child-li" key={"child_" + item_key + "_" + item_child_key}><Link to={child_link} activeClassName="aside__active">{list[item_key].children[item_child_key].name}</Link></li>);
                 }
-                list_item.push(<li key={item_key} className="aside-parent-li"><div className="aside-parent-title" onClick={this.asideParentTitleClick.bind(this, list[item_key].id, list[item_key].name)}><Link activeClassName="aside__active">{list[item_key].name}</Link></div><ul className={this.getAsideChildUlCls(list[item_key].id)}>{list_child_item}</ul></li>);
+                list_item.push(<li key={item_key} className="aside-parent-li"><div className="aside-parent-title" onClick={this.asideParentTitleClick.bind(this, list[item_key].id, list[item_key].name.replace('<br/>',''))}><Link activeClassName="aside__active">{list[item_key].name}</Link></div><ul className={this.getAsideChildUlCls(list[item_key].id)}>{list_child_item}</ul></li>);
                 list_child_item = [];
             }
             else {
                 //侧边栏一级路由
                 child_link = tprops.parent + "/" + (!product.secFloor ? tprops.parent + "Session/" : tprops.link + "/" + tprops.link + "Session/") + item_key;
-                list_item.push(<li key={item_key} className="aside-parent-li"><div className="aside-parent-title"><Link to={child_link} activeClassName="aside__active">{list[item_key].name}</Link></div></li>)
+                list_item.push(<li key={item_key} className="aside-parent-li"><div className="aside-parent-title"><Link to={child_link} activeClassName="aside__active">{list[item_key].name.replace('<br/>','')}</Link></div></li>)
             }
         }
         ul_item.push(<ul className="aside-ul aside-parent-ul" key={'aside_ul'}>{list_item}</ul>)

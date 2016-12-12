@@ -19,7 +19,7 @@ class gzdtsession extends React.Component {
     this.state = {name: '',src:'',filelist:[]};
   }
   componentDidMount() {
-    this.addname(this.props);    
+    // this.addname(this.props);    
   }
   addname(mprops){
     if (!mprops.params) {
@@ -50,14 +50,14 @@ class gzdtsession extends React.Component {
   render() {
     var list='/admin/GZDTList';
     var type='工作动态';
-    if (this.state.name==='工作动态') {
-      list='/admin/GZDTList';
-      type='工作动态';
-    }else if (this.state.name==='党团建设') {
-      list='/pubNews/getJsonList';
-      type='党团建设';
-    }  
-    return  <Session lastname={this.state.name} name={"/工作动态"}>
+    // if (this.state.name==='工作动态') {
+    //   list='/admin/GZDTList';
+    //   type='工作动态';
+    // }else if (this.state.name==='党团建设') {
+    //   list='/pubNews/getJsonList';
+    //   type='党团建设';
+    // }  
+    return  <Session lastname={"工作动态"}>
               <Show list={list} type={type}/>
             </Session>
   }

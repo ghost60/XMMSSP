@@ -100,7 +100,7 @@ class hxyb extends React.Component{
     this.setState({tpkey:e.target.dataset.key});
   }
   tpactive(key){
-    if(key===this.state.tpkey){
+    if(key==this.state.tpkey){
       return "hxyb-tp active";
     }else{
       return "hxyb-tp";
