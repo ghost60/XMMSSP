@@ -8,36 +8,28 @@
     border-radius: 6px 6px 0 0;
 }
 .card-title-text{
+    display: inline-block;
     margin-left: 12px;
     color: #fff;
     font-size: 18px;
 }
 .card-title-icon{
+    display: inline-block;
     margin-left: 16px;
-    height: 100%;
-    /* display: inline-block; */
-    vertical-align: top;
     img{
         height: 60%;
         width: auto;
         vertical-align: middle;
-        /* display: inline-block; */
     }
 }
 .card-title-more{
-    margin-right: 8px;
-    float: right;
-    height: 100%;
     display: inline-block;
-    vertical-align: top;
+    float: right;
     &:hover{
         cursor: pointer;
     }
     img{
-        height: 60%;
         width: auto;
-        vertical-align: middle;
-        /* display: inline-block; */
     }
 }
 .card-content{
