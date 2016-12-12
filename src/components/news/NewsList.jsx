@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 import './NewsList.css'
 import CurrentDate from '../../components/date/CurrentDate';
 
