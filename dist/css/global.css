@@ -13,5 +13,8 @@ a, a:active, a:hover, a:link, a:visited {
 .iframe{
     width: 100%;
     border: none;
-    text-align: center
+    text-align: center    
+}
+.iframe img{
+    width: 100%;
 }
