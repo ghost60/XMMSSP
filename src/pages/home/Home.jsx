@@ -64,17 +64,17 @@ class home extends React.Component {
           <Row>
             <Col>
               <div style={{ "position": "relative" }}>
-                <Link to="/hyyb/hxyb"><img src="./images/btn_hxyb.png" style={{ "position": "absolute","zIndex":1,"right":"1px","height":"50px","top":"-8px" }}></img></Link>
+                <Link to="/hyyb/hxyb"><img src="./images/btn_hxyb.png" style={{ "position": "absolute","zIndex":1,"left":"495px","height":"45px","top":"2px" }}></img></Link>
               </div>
               <Tabs>
                 <TabContent name="海区预报" imgSrc="./images/icon1">
-                  <TabsPanel1 mapSrc="./images/map1.png" />
+                  <TabsPanel1 mapSrc="./images/map1_cus.png" />
                 </TabContent>
                 <TabContent name="潮汐预报" imgSrc="./images/icon2">
-                  <TabsPanel2 mapSrc="./images/map2.png" />
+                  <TabsPanel2 mapSrc="./images/map2_cus.png" />
                 </TabContent>
-                <TabContent name="厦门海域预报" imgSrc="./images/icon3"><TabsPanel3 mapSrc="./images/map3.png" /></TabContent>
-                <TabContent name="浴场度假区预报" imgSrc="./images/icon4"><TabsPanel4 mapSrc="./images/map4.png" /></TabContent>
+                <TabContent name="厦门海域预报" imgSrc="./images/icon3"><TabsPanel3 mapSrc="./images/map3_cus.png" /></TabContent>
+                <TabContent name="浴场度假区预报" imgSrc="./images/icon4"><TabsPanel4 mapSrc="./images/map4_cus.png" /></TabContent>
               </Tabs>
             </Col>
           </Row>

@@ -33,10 +33,10 @@ export const navlist = {
   },
   gzdt: {
     name: "工作动态",
-    children: {
-      gzdt: { id: 0, name: "工作动态" },
-      dtjs: { id: 1, name: "党团建设" }
-    }
+    // children: {
+    //   gzdt: { id: 0, name: "工作动态" },
+    //   dtjs: { id: 1, name: "党团建设" }
+    // }
   },
   hygc: {
     name: "海洋观测",
@@ -135,9 +135,9 @@ export const navlist = {
   yjya: {
     name: "应急预案",
     children: {
-      gjhyjyjya: { id: 0, name: "国家海洋局应急预案" },
-      dhqyjya: { id: 0, name: "东海区应急预案" },
-      xmzxzyjya: { id: 0, name: "厦门中心站应急预案" },
+      gjhyjyjya: { id: 0, name: "国家海洋局<br/>应急预案" },
+      dhqyjya: { id: 0, name: "东海区<br/>应急预案" },
+      xmzxzyjya: { id: 0, name: "厦门中心站<br/>应急预案" },
     }
   },
   hykp: {
