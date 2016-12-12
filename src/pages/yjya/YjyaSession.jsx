@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
 import './YjyaSession.scss';
@@ -9,19 +10,21 @@ class yjyasession extends React.Component {
     this.state = {name: '',src:'',data:[]};
   }
   componentDidMount() {
-    this.addname(this.props);
+    this.addname(this.props);    
   }
   addname(mprops){
     if (!mprops.params) {
       var menu = menudata.navlist.yjya.children;
       var key = Object.keys(menu)[0];
       menu = menu[key];
-      this.setState({ name: menu.name, src: key });
+      this.downloadlist(key);
+      this.setState({ name: menu.name, src: key});
     }else{
       menu = menudata.navlist.yjya.children;
       for (var key in menu) {
         if (key == mprops.params.cid) {
-          this.setState({ name: menu[key].name, src: key });
+          this.downloadlist(key);
+          this.setState({ name: menu[key].name, src: key});
         }
       }
     }
@@ -31,13 +34,13 @@ class yjyasession extends React.Component {
   }
   downloadlist(name){
     $.ajax({
-          url: ctx+'/getHXYB/download',
+          url: ctx+'/yjya/getYJYA',
           dataType: 'json',
           type: 'post',
           async: true,
-          data:{fileName:name},
+          data:{type:name},
           success: function(data) {
-              this.setState({data:data});
+               this.setState({ data:data });
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());
@@ -47,8 +50,8 @@ class yjyasession extends React.Component {
   render() {  
     const list = this.state.data.map((li,i) => {
           return  <div className="yjya_show_li" key={i}>                        
-                      <Link to={`pdfshow/应急预案/yjya/${li.url}`}>
-                      <span className="yjya_show_name">{li.title}</span>
+                      <Link to={`pdfshow/应急预案/yjya-queryUrl/${li}`}>
+                      <span className="yjya_show_name">{li}</span>
                       </Link>
                   </div>
           }

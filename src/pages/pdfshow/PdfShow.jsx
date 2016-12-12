@@ -18,7 +18,7 @@ class PdfShow extends React.Component{
   }
   componentWillMount(){
     $.ajax({
-          url: ctx+'/'+this.state.method,
+          url: ctx+'/'+this.state.method.replace('-','/'),
           dataType: 'json',
           type: 'post',
           async: true,

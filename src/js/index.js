@@ -53,10 +53,7 @@ import yjyasession from '../pages/yjya/YjyaSession';
 
 import * as menudata from '../pages/menudata/menudata';
 
-import {
-  pdfshow
-}
-from '../pages/pdfshow/PdfShow';
+import pdfshow from '../pages/pdfshow/PdfShow';
 import wordshow from '../pages/wordshow/WordShow';
 
 class App extends React.Component {
