@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
+        body {
+            font-family: "Helvetica Neue", Arial, STHeiti, "Microsoft YaHei", sans-serif, Helvetica, DroidSansFallback, FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3";
+        }
+        
         img {
             width: 100%;
         }
@@ -14,13 +18,18 @@
         }
         
         .map-pt {
-            width: 10px;
-            height: 10px;
             position: absolute;
-            background-color: #ff8c00;
-            z-index: 1;
             cursor: pointer;
-            border-radius: 50%;
+            color: #1ea0ff;
+            text-shadow: 0 0 7px #53a5e8;
+            font-size: 20px;
+        }
+        
+        .fb {
+            position: absolute;
+            cursor: pointer;
+            color: #39962a;
+            text-shadow: 0 0 7px #03f4d3;
         }
         
         .poupDiv {
@@ -68,14 +77,19 @@
 
 <body>
     <div style="text-align:center;margin-left:auto;margin-right:auto;">
-        <img src="./images/xstz_content.png" alt="">
+        <img src="./images/xmhy_01.png" alt="">
         <div class="map-container" id="xstz-map-container">
-            <img src="./images/map.png" alt="">
+            <img src="./images/map2.png" alt="">
             <div>
-                <div class="map-pt" id="ptz" style="left:418px;top:210px"></div>
-                <div class="map-pt" id="cwz" style="left:325px;top:273px"></div>
-                <div class="map-pt" id="xmz" style="left:250px;top:323px"></div>
-                <div class="map-pt" id="dsz" style="left:198px;top:390px"></div>
+                <div class="map-pt" id="ptz" style="left:49px;top:229px">马銮码头</div>
+                <div class="map-pt" id="ptianz" style="left:87px;top:411px">海投码头</div>
+                <div class="map-pt" id="cwz" style="left:172px;top:291px">现代码头</div>
+                <div class="map-pt" id="xmz" style="left:223px;top:234px">高崎渔港</div>
+                <div class="map-pt" id="dsz" style="left:322px;top:269px">五通码头</div>
+                <div class="fb" id="fb1" style="left:579px;top:258px">3米浮标</div>
+                <div class="fb" id="fb2" style="left:433px;top:318px">3米浮标</div>
+                <div class="fb" id="fb3" style="left:356px;top:430px">3米浮标</div>
+                <div class="fb" id="fb4" style="left:282px;top:467px">3米浮标</div>
             </div>
             <div class="poupDiv" id="poupDiv">
                 <img src="./images/ptz.png" alt="">
@@ -90,9 +104,12 @@
                     poup.style.display = "block"
                     var tar_left =e.target.offsetLeft;
                     var tar_top =e.target.offsetTop;
-                    poup.style.left = ((tar_left - poup.clientWidth/2) <=0 ? 1: (tar_left - poup.clientWidth/2))+5 +"px"
-                    poup.style.top = tar_top - poup.clientHeight-10 +"px"
+                    poup.style.left = ((tar_left - poup.clientWidth/2) <=0 ? 1: (tar_left - poup.clientWidth/2))+10 +"px"
+                    poup.style.top = tar_top - poup.clientHeight -5 +"px"
                     var img = poup.children[0];
+                    if(e.target.getAttribute("class")==="fb")
+                    img.src = "./images/xmhy_fb.png"   
+                    else                  
                     img.src = "./images/"+e.target.id+".png" 
                }else{
                     var poup = document.getElementById("poupDiv");

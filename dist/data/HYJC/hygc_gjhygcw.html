@@ -13,14 +13,17 @@
             position: relative;
         }
         
+        .cd {
+            color: #1ea0ff !important;
+            text-shadow: 0 0 7px #53a5e8 !important;
+        }
+        
         .map-pt {
-            width: 10px;
-            height: 10px;
             position: absolute;
-            background-color: #ff8c00;
-            z-index: 1;
             cursor: pointer;
-            border-radius: 50%;
+            color: #39962a;
+            text-shadow: 0 0 7px #03f4d3;
+            font-family: "Helvetica Neue", Arial, STHeiti, "Microsoft YaHei", sans-serif, Helvetica, DroidSansFallback, FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3";
         }
         
         .poupDiv {
@@ -68,14 +71,20 @@
 
 <body>
     <div style="text-align:center;margin-left:auto;margin-right:auto;">
-        <img src="./images/xstz_content.png" alt="">
+        <img src="./images/hygc_01.png" alt="">
         <div class="map-container" id="xstz-map-container">
             <img src="./images/map.png" alt="">
             <div>
-                <div class="map-pt" id="ptz" style="left:418px;top:210px"></div>
-                <div class="map-pt" id="cwz" style="left:325px;top:273px"></div>
-                <div class="map-pt" id="xmz" style="left:250px;top:323px"></div>
-                <div class="map-pt" id="dsz" style="left:198px;top:390px"></div>
+                <div class="map-pt" id="ptzys" style="left:400px;top:154px">平潭站</div>
+                <div class="map-pt" id="putzys" style="left:320px;top:169px">莆田站</div>
+                <div class="map-pt" id="cwzys" style="left:289px;top:210px">崇武站</div>
+                <div class="map-pt" id="xmzys" style="left:223px;top:255px">厦门站</div>
+                <div class="map-pt" id="dszys" style="left:166px;top:315px">东山站</div>
+                <div class="map-pt cd" id="xyys" style="left:351px;top:193px">秀屿测点</div>
+                <div class="map-pt cd" id="jjys" style="left:311px;top:228px">晋江测点</div>
+                <div class="map-pt cd" id="xays" style="left:268px;top:278px">翔安测点</div>
+                <div class="map-pt cd" id="lhys" style="left:224px;top:309px">龙海测点</div>
+                <div class="map-pt cd" id="glys" style="left:203px;top:345px">古雷测点</div>
             </div>
             <div class="poupDiv" id="poupDiv">
                 <img src="./images/ptz.png" alt="">
@@ -90,8 +99,8 @@
                     poup.style.display = "block"
                     var tar_left =e.target.offsetLeft;
                     var tar_top =e.target.offsetTop;
-                    poup.style.left = ((tar_left - poup.clientWidth/2) <=0 ? 1: (tar_left - poup.clientWidth/2))+5 +"px"
-                    poup.style.top = tar_top - poup.clientHeight-10 +"px"
+                    poup.style.left = ((tar_left - poup.clientWidth/2) <=0 ? 1: (tar_left - poup.clientWidth/2))+10 +"px"
+                    poup.style.top = tar_top - poup.clientHeight-5 +"px"
                     var img = poup.children[0];
                     img.src = "./images/"+e.target.id+".png" 
                }else{
