@@ -17,13 +17,15 @@ export class TabsPanel1 extends React.Component {
             waterTemp: "-"
         }
         this.mapCfg = this.props.mapCfg || [
-            { x: 11, y: 185, title: "漳州沿海" },
-            { x: 57, y: 140, title: "厦门沿海" },
-            { x: 101, y: 106, title: "泉州沿海" },
-            { x: 128, y: 62, title: "莆田沿海" },
-            { x: 200, y: 92, title: "台湾海峡北部" },
-            { x: 118, y: 182, title: "台湾海峡南部" },
-        ]
+                { x: 60, y: 236, title: "漳州沿海" },
+                { x: 99, y: 199, title: "厦门沿海" },
+                { x: 139, y: 165, title: "泉州沿海" },
+                { x: 198, y: 111, title: "莆田沿海" },
+                { x: 231, y: 171, title: "台湾海峡北部" },
+                { x: 183, y: 243, title: "台湾海峡南部" },
+            ]
+    }
+      componentDidMount(){
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
@@ -85,10 +87,10 @@ export class TabsPanel2 extends React.Component {
         super(props)
         _this = this;
         this.mapCfg = this.props.mapCfg || [
-            { x: 69, y: 242, title: "东山" },
-            { x: 146, y: 165, title: "厦门" },
-            { x: 238, y: 87, title: "崇武" },
-            { x: 314, y: 39, title: "平潭" },
+          { x: 119, y: 242, title: "东山" },
+          { x: 194, y: 201, title: "厦门" },
+          { x: 250, y: 140, title: "崇武" },
+          { x: 301, y: 91, title: "平潭" },
         ]
         this.state = {
             title: this.mapCfg[0]['title'],
@@ -98,10 +100,10 @@ export class TabsPanel2 extends React.Component {
             dataPickerClass: "tab-panel--datePicker",
             currentDateIndex: 0
         }
-      
+
     }
-    componentDidMount(){
-          this.handlerMapCilck(0);
+    componentDidMount() {
+        this.handlerMapCilck(0);
     }
     handlerMapCilck(i) {
         $.ajax({
@@ -111,7 +113,7 @@ export class TabsPanel2 extends React.Component {
             data: { type: "chaoxi", name: this.mapCfg[i]['title'] },
             before: function () {
             },
-            success: function (data) {  
+            success: function (data) {
                 var forcastTime = [data[0]["month"] + "/" + data[0]["day"], data[1]["month"] + "/" + data[1]["day"]]
                 this.setState({
                     title: this.mapCfg[i]['title'],
@@ -121,12 +123,12 @@ export class TabsPanel2 extends React.Component {
                 this.handlerDatePickerClick(0)
             }.bind(this),
             error: function () {
-               
+
             }
         });
     }
     handlerDatePickerClick(i) {
-      
+
         _this.setState({
             chartData: [
                 {
@@ -152,7 +154,7 @@ export class TabsPanel2 extends React.Component {
                         <div style={{ "margin": "10px 0 10px 0" }}>
                             {
                                 _this.state.forcastTime.map(function (item, index) {
-                                  
+
                                     return (
                                         <div key={index} onClick={_this.handlerDatePickerClick.bind(_this, index)} className={_this.getCurrentDatePickerClass(index)}>{item}</div>
                                     )
@@ -184,15 +186,17 @@ export class TabsPanel3 extends React.Component {
             lgInfo: "-",
             waterTemp: "-"
         }
-        this.mapCfg = this.props.mapCfg || [
-            { x: 178, y: 181, title: "厦门大嶝海域" },
-            { x: 233, y: 156, title: "厦门小嶝海域" },
-            { x: 97, y: 106, title: "厦门同安湾" },
-            { x: 36, y: 154, title: "厦门西海域" },
-            { x: 135, y: 215, title: "厦门东部海域" },
-            { x: 9, y: 240, title: "厦门九龙江口" },
-            { x: 95, y: 271, title: "厦门南部海域" },
+        this.mapCfg = this.props.mapCfg ||  [
+          { x: 204, y: 157, title: "厦门大嶝海域" },
+          { x: 243, y: 113, title: "厦门小嶝海域" },
+          { x: 118, y: 81, title: "厦门同安湾" },
+          { x: 36, y: 123, title: "厦门西海域" },
+          { x: 146, y: 211, title: "厦门东部海域" },
+          { x: 9, y: 240, title: "厦门九龙江口" },
+          { x: 95, y: 271, title: "厦门南部海域" },
         ]
+    }
+      componentDidMount(){
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
@@ -202,10 +206,10 @@ export class TabsPanel3 extends React.Component {
             timeOut: 5000,
             data: { type: "xmhaiyu", name: this.mapCfg[i]['title'] },
             before: function () {
-              
+
             },
             success: function (data) {
-              
+
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     pubTime: data.pubTime,
@@ -214,7 +218,7 @@ export class TabsPanel3 extends React.Component {
                 })
             }.bind(this),
             error: function () {
-               
+
             }
         });
     }
@@ -256,8 +260,8 @@ export class TabsPanel4 extends React.Component {
             forcastInfo: '-',
             lgInfo: "-",
             waterTemp: "-",
-            swimingtime: {name:"-",info:"-"},
-            swimming: {name:"-",info:"-"},
+            swimingtime: { name: "-", info: "-" },
+            swimming: { name: "-", info: "-" },
             "stylzs": "-",
             "jsymsd": ["00:00-10:53", "14:19-23:59"]
 
@@ -271,6 +275,9 @@ export class TabsPanel4 extends React.Component {
             { x: 186, y: 234, title: "太阳湾" },
 
         ]
+        
+    }
+    componentDidMount(){
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
@@ -281,7 +288,7 @@ export class TabsPanel4 extends React.Component {
             data: { type: "yuchang", name: this.mapCfg[i]['title'] },
             before: function () {
             },
-            success: function (data) {          
+            success: function (data) {
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     pubTime: data.pubTime,
@@ -460,7 +467,7 @@ export class TabsPanel6 extends React.Component {
                     lgInfo: data.lgInfo,
                 })
             }.bind(this),
-            error: function () {              
+            error: function () {
             }
         });
     }

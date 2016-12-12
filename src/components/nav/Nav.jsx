@@ -25,7 +25,7 @@ class Nav extends React.Component {
             var child_li_key = 0;
             for (var child_key in navlist[item_key].children) {
                 var child_link = item_key + "/" + (!navlist[item_key].secFloor ? item_key + "Session/" :   "" ) + child_key;
-                child_li.push(<li key={child_li_key}><Link to={child_link}>{navlist[item_key].children[child_key].name}</Link></li>)
+                child_li.push(<li key={child_li_key}><Link dangerouslySetInnerHTML={{ __html: navlist[item_key].children[child_key].name} } to={child_link}></Link></li>)
                 child_li_key++;
             }
             if (child_li.length > 0) {

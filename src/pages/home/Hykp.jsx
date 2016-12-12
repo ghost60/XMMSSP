@@ -28,7 +28,7 @@ export default class Hykp extends React.Component {
                             <img src="./images/icon.png" className="hykp-icon" alt="" />
                             <img src="./images/img1.png" className="hykp-img" alt="" />
                             <div style={{ "position": "relative" }}>
-                                <div className={this.imgListClass(0)}><span className="hykp-img--span">海浪观测情况</span></div>
+                                <div className={this.imgListClass(0)}><span className="hykp-img--span">海洋科普知识-海啸</span></div>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@ export default class Hykp extends React.Component {
                             <img src="./images/icon.png" className="hykp-icon" alt="" />
                             <img src="./images/img2.png" className="hykp-img" alt="" />
                             <div style={{ "position": "relative" }}>
-                                <div className={this.imgListClass(1)}><span className="hykp-img--span">潮汐观测情况</span></div>
+                                <div className={this.imgListClass(1)}><span className="hykp-img--span">海洋科普知识-潮汐</span></div>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@ export default class Hykp extends React.Component {
                             <img src="./images/icon.png" className="hykp-icon" alt="" />
                             <img src="./images/img3.png" className="hykp-img" alt="" />
                             <div style={{ "position": "relative" }}>
-                                <div className={this.imgListClass(2)}><span className="hykp-img--span">气象观测概况</span></div>
+                                <div className={this.imgListClass(2)}><span className="hykp-img--span">海洋科普知识-海洋观测</span></div>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@ export default class Hykp extends React.Component {
                             <img src="./images/icon.png" className="hykp-icon" alt="" />
                             <img src="./images/img4.png" className="hykp-img" alt="" />
                             <div style={{ "position": "relative" }}>
-                                <div className={this.imgListClass(3)}><span className="hykp-img--span">海啸灾情应急响应标准等级划分</span></div>
+                                <div className={this.imgListClass(3)}><span className="hykp-img--span">海洋科普知识-防灾常识</span></div>
                             </div>
                         </div>
                     </div>
