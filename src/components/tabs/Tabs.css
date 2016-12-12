@@ -14,7 +14,8 @@
     margin-right: 10px;
     box-sizing: border-box;
     height: 48px;
-    cursor: pointer
+    cursor: pointer;
+    font-size: 13px;
 }
 .tab-li__active{
      background-color: #fff;
