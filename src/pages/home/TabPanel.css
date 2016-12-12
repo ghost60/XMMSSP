@@ -107,9 +107,18 @@
         }
         
         .tab-panel-info--span1 {
-            font-size: 25px
+            font-size: 25px;
+            position: relative;
+            padding-left: 45px;
         }
-        
+        .tab-panel-info--span1 img{
+            height: 25px;
+            width: auto;
+            display: inline-block;
+            left: 0;
+            top: 5px;
+            position: absolute;
+        }
         .tab-panel-info--span2 {
             font-size: 20px;
             color: orange;

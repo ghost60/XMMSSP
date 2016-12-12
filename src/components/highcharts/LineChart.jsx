@@ -35,7 +35,7 @@ let defaultCfg = {
     }
     ,
     tooltip: {
-        valueSuffix: "tooltip"
+        valueSuffix: ""
     }
     ,
     legend: {

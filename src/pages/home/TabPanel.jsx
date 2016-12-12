@@ -20,9 +20,9 @@ export class TabsPanel1 extends React.Component {
                 { x: 60, y: 236, title: "漳州沿海" },
                 { x: 99, y: 199, title: "厦门沿海" },
                 { x: 139, y: 165, title: "泉州沿海" },
-                { x: 198, y: 111, title: "莆田沿海" },
-                { x: 231, y: 171, title: "台湾海峡北部" },
-                { x: 183, y: 243, title: "台湾海峡南部" },
+                { x: 188, y: 111, title: "莆田沿海" },
+                { x: 237, y: 161, title: "台湾海峡北部" },
+                { x: 179, y: 253, title: "台湾海峡南部" },
             ]
     }
       componentDidMount(){
@@ -59,11 +59,11 @@ export class TabsPanel1 extends React.Component {
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
                             <div className="tab-panel-info--left">
-                                <span className="tab-panel-info--span1">浪高</span>
+                                <span className="tab-panel-info--span1"><img src="./images/lg_icon.png"/>浪高</span>
                                 <span className="tab-panel-info--span2">{this.state.lgInfo}</span>
                             </div>
                             <div className="tab-panel-info--right">
-                                <span className="tab-panel-info--span1">水温</span>
+                                <span className="tab-panel-info--span1"><img style={{paddingLeft:"25px"}} src="./images/sw_icon.png"/>水温</span>
                                 <span className="tab-panel-info--span2">{this.state.waterTemp}</span>
                             </div>
                         </div>
@@ -232,7 +232,7 @@ export class TabsPanel3 extends React.Component {
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
                             <div className="tab-panel-info--left">
-                                <span className="tab-panel-info--span1">浪高</span>
+                                <span className="tab-panel-info--span1"><img src="./images/lg_icon.png"/>浪高</span>
                                 <span className="tab-panel-info--span2">{this.state.lgInfo}</span>
                             </div>
                         </div>
@@ -481,7 +481,7 @@ export class TabsPanel6 extends React.Component {
                     <div className="tab-panel-info">
                         <div className="tab-panel-info--container">
                             <div className="tab-panel-info--left">
-                                <span className="tab-panel-info--span1">浪高</span>
+                                <span className="tab-panel-info--span1"><img src="./images/lg_icon.png"/>浪高</span>
                                 <span className="tab-panel-info--span2">{this.state.lgInfo}</span>
                             </div>
                         </div>
