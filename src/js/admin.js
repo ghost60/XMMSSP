@@ -87,12 +87,12 @@ class Dtjs extends React.Component {
     }
     handleChange(event) {
     }
-    progressHandler(obj,evt) {
+    progressHandler(obj, evt) {
         debugger
         var target = this.refs[obj];
         var loaded = evt.loaded;				  //已经上传大小情况 
         var tot = evt.total;					  //附件总大小 
-        var per = Math.floor(100 * loaded / tot);	  //已经上传的百分比  
+        var per = Math.floor(99 * loaded / tot);	  //已经上传的百分比  
         target.innerHTML = "已上传(" + per + "%)";
     }
     upload(e) {
@@ -125,7 +125,7 @@ class Dtjs extends React.Component {
                 window.location.reload();
             }.bind(this),
             error: function (xhr, status, err) {
-                alert("上传失败")
+                alert("上传失败");
             }.bind(this)
         });
     }
@@ -183,12 +183,12 @@ class Dtjs extends React.Component {
             data: { state: state, filename: filename },
             success: function (data) {
                 if (data.result === 1) {
-                  state === "1" ? alert("置顶成功!"):alert("取消置顶成功！")
+                    state === "1" ? alert("置顶成功!") : alert("取消置顶成功！")
                     window.location.reload();
                 }
             }.bind(this),
             error: function (xhr, status, err) {
-               alert("操作失败，请重试，若再次失败请联系管理员")
+                alert("操作失败，请重试，若再次失败请联系管理员")
             }.bind(this)
         });
 
@@ -289,7 +289,8 @@ class Gzdt extends React.Component {
             }.bind(this),
             success: function (data) {
                 if (data.state === "1") {
-                    alert("上传成功！")
+                    alert("上传成功！");
+                    window.location.reload();
                 } else if (data.state === "2") {
                     alert("只能上传doc文件")
                 } else if (data.state === "3") {
@@ -299,7 +300,6 @@ class Gzdt extends React.Component {
                 } else {
                     alert("上传失败")
                 }
-                window.location.reload();
             }.bind(this),
             error: function (xhr, status, err) {
                 alert("上传失败,请联系服务器管理员")
@@ -339,8 +339,10 @@ class Gzdt extends React.Component {
             async: true,
             data: { filename: record.name.split(".")[0] },
             success: function (data) {
-                if (data.state === "1")
+                if (data.state === "1") {
                     alert("删除成功")
+                    window.location.reload();
+                }
                 else alert("删除失败")
             }.bind(this),
             error: function (xhr, status, err) {
