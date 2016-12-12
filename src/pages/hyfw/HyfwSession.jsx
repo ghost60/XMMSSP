@@ -36,7 +36,7 @@ class hyfwsession extends React.Component{
     }
   }
   render() {  
-    var src=`data/HYJC/${this.state.src}.html`;
+    var src=`data/HYFW/${this.state.src}.html`;
     return  <Session lastname={this.state.name} name={"/海洋服务"}>
               <iframe ref="iframe" src={src} className="iframe" onLoad={this.setIframe.bind(this)}>
               </iframe>

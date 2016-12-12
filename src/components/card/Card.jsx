@@ -11,9 +11,11 @@ class CardHasIcon extends React.Component{
                     <div className="card-title" style={this.props.card_title}>
                         <span className="card-title-icon"><img src={this.props.icon_url}/></span>
                         <span className="card-title-text">{this.props.title}</span>
-                        <Link to={this.props.morelink}>
-                        <span className="card-title-more"><img src={this.props.more_img}/></span>
-                        </Link>
+                        <span className="card-title-more">
+                            <Link to={this.props.morelink}>
+                            <img src={this.props.more_img}/>
+                            </Link>
+                        </span>
                     </div>
                     <div className="card-content" style={this.props.card_content}>
                         {this.props.children}

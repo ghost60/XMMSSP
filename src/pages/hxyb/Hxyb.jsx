@@ -11,7 +11,7 @@ const hx=['厦门-金门','泉州-金门','马尾-马祖','基隆-马祖','台�
 class hxyb extends React.Component{
   constructor(props) {
       super(props);
-      this.state={data:{}, name:'',tpkey:0,pic:[],list:[]};
+      this.state={data:{}, name:'厦门-金门',tpkey:0,pic:[],list:[]};
   }
   componentDidMount(){
     this.querylatlng('厦门-金门');
@@ -32,7 +32,7 @@ class hxyb extends React.Component{
           async: true,
           data:{'routeName':name},
           success: function(data) {
-            this.setState({data:data.data});
+            this.setState({data:data.data,name:name});
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());
@@ -145,7 +145,7 @@ class hxyb extends React.Component{
                             <span className={this.tpactive(2)} data-key={2} onClick={this.tpselect.bind(this)}>风速</span>
                         </div>
                         <div className="hxyb-tp-tp">
-                             <img style={{width:"544px"}} src={this.state.pic[this.state.tpkey]} alt="" />
+                             <img style={{width:"544px",maxHeight:"178px"}} src={this.state.pic[this.state.tpkey]} alt="" />
                         </div>
                        </div>
                     </div>                    
