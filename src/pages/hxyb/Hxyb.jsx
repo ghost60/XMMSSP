@@ -32,7 +32,13 @@ class hxyb extends React.Component{
           async: true,
           data:{'routeName':name},
           success: function(data) {
-            this.setState({data:data.data,name:name});
+            var data = data.data;
+            for (var i = data.length - 1; i >= 0; i--) {
+              for (var j = data[i].latlon.length - 1; j >= 0; j--) {
+                 data[i].latlon[j]=data[i].latlon[j].reverse();
+              }
+            } 
+            this.setState({data:data,name:name});
           }.bind(this),
           error: function(xhr, status, err) {
               console.error(this.props.url, status, err.toString());

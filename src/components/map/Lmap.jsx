@@ -29,12 +29,13 @@ class Lmap extends React.Component{
     logo[0].innerHTML=''; 
   }
   render() {
-      let data = this.props.data;
+      let data = this.props.data||[];
       let polyline = [];
       let marker = [];
       let labels = [];
-      let color = '#FF0033';      
-      for (var i = data.length - 1; i >= 0; i--) {
+      let color = '#FF0033';  
+         
+      for (var i = data.length - 1; i >= 0; i--) {      
         if(i%2==1){
           color='#68BBB5';
         }else{
