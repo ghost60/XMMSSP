@@ -59,14 +59,7 @@ class rcybsession extends React.Component {
         ]
       } />
     } else if (type === "cxyb") {
-      return <TabsPanel2 mapSrc="./images/map2_cus.png" _className="tab-panel--right__cust" mapCfg={
-        [
-          { x: 119, y: 242, title: "东山" },
-          { x: 194, y: 201, title: "厦门" },
-          { x: 250, y: 140, title: "崇武" },
-          { x: 301, y: 91, title: "平潭" },
-        ]
-      } />
+      return <TabsPanel2 mapSrc="./images/map2_cus.png" _className="tab-panel--right__cust"  />
     } else if (type === "xmhlyb") {
       return <TabsPanel3 mapSrc="./images/map3_cus.png" _className="tab-panel--right__cust" mapCfg={
         [

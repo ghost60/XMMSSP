@@ -79,11 +79,11 @@
 
         }
         .tab-panel-info {
-            height: 278px;
+            min-height: 278px;
             color: #666;
             background-color: #fff;
             position: relative;
-            padding: 20px 0 20px 0
+            
         }
         
         .tab-panel-info::after {
@@ -144,7 +144,6 @@
             padding: 13px 10px;
             box-sizing: border-box;
             margin-top: 20px;width: 100%;
-            position: absolute;bottom: 0px;
         }
         .tab-panel--tips div{
            display: table-cell;box-sizing: border-box;font-size: 14px;height: 100%
