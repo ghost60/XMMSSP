@@ -11,18 +11,18 @@ const hx=['厦门-金门','泉州-金门','马尾-马祖','基隆-马祖','台�
 class hxyb extends React.Component{
   constructor(props) {
       super(props);
-      this.state={data:{}, name:'厦门-金门',tpkey:0,pic:[],list:[]};
+      this.state={data:{}, name:'厦门-金门',tpkey:2,pic:[],list:[]};
   }
   componentDidMount(){
     this.querylatlng('厦门-金门');
     this.querylist();
-    this.querypic(0,'厦门-金门');
+    this.querypic(2,'厦门-金门');
   }
   selectChange(e){
     var name = e.target.innerText;
     this.querylatlng(name);
     this.querylist();
-    this.querypic(0,name);
+    this.querypic(2,name);
   }
   querylatlng(name){
     $.ajax({
@@ -146,9 +146,9 @@ class hxyb extends React.Component{
                       </div>
                       <div>
                         <div className="hxyb-tp-xz">
-                            <span className={this.tpactive(0)} data-key={0} onClick={this.tpselect.bind(this)}>浪周期</span>
+                            <span className={this.tpactive(2)} data-key={2} onClick={this.tpselect.bind(this)}>浪周期</span>
                             <span className={this.tpactive(1)} data-key={1} onClick={this.tpselect.bind(this)}>浪高</span>
-                            <span className={this.tpactive(2)} data-key={2} onClick={this.tpselect.bind(this)}>风速</span>
+                            <span className={this.tpactive(0)} data-key={0} onClick={this.tpselect.bind(this)}>风速</span>
                         </div>
                         <div className="hxyb-tp-tp">
                              <img style={{width:"544px",maxHeight:"178px"}} src={this.state.pic[this.state.tpkey]} alt="" />

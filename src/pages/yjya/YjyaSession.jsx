@@ -30,7 +30,7 @@ class yjyasession extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    this.addname(this.props);
+    this.addname(nextProps);
   }
   downloadlist(name){
     $.ajax({
@@ -50,7 +50,7 @@ class yjyasession extends React.Component {
   render() {  
     const list = this.state.data.map((li,i) => {
           return  <div className="yjya_show_li" key={i}>                        
-                      <Link to={`pdfshow/应急预案/yjya-queryUrl/${li}`}>
+                      <Link to={`pdfshow/应急预案/yjya-queryUrl/${li}-${this.state.src}`}>
                       <span className="yjya_show_name">{li}</span>
                       </Link>
                   </div>

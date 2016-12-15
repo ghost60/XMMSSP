@@ -40,7 +40,7 @@ class home extends React.Component {
       type: 'get',
       async: true,
       success: function (data) {
-        this.setState({ simgs: data.img });
+        this.setState({ simgs: data.img[0].path });
       }.bind(this),
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -94,16 +94,7 @@ class home extends React.Component {
       </Row>
       <Row>
         <Col>
-          <Slider
-            items={this.state.simgs}
-            speed={1.2}
-            delay={2.1}
-            pause={true}
-            autoplay={true}
-            dots={true}
-            arrows={false}
-            height={"170px"}
-            />
+          <div><a href="#"><img style={{height:"170px",width:"100%"}} src={this.state.simgs} alt="" /></a></div>
         </Col>
       </Row>
       <Row>

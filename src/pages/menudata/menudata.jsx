@@ -108,16 +108,19 @@ export const navlist = {
     children:
     {
       jctx: {
-        id: 0, name: "监测体系"
+        id: 0, name: "监测体系"   
       },
-      txwj: {
-        id: 0, name: "体系文件"
-      },
-      ktyj: {
-        id: 0, name: "课题研究"
+      zltx: {
+        id: 1, name: "质量体系", children: {
+              zltx_gzxsm: {name:"公正性声明"},
+              zltx_zzrdqk: {name:"厦门中心站资质认定情况"} 
+            }
       },
       jcrw: {
-        id: 0, name: "监测任务"
+        id: 2, name: "监测任务", children: {
+              jcrw_zlxrw: {name:"指令性任务"},
+              jcrw_jsfw: {name:"技术服务与应急监测"}, 
+            }
       },
       jcfc: { id: 0, name: "监测风采"},
     }

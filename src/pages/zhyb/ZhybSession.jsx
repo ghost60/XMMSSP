@@ -3,6 +3,8 @@ import Session from '../../components/session/Session';
 import * as menudata from '../../pages/menudata/menudata';
 import {Link} from 'react-router';
 import './ZhybSession.scss';
+import Pagination from 'rc-pagination';
+import 'rc-pagination/assets/index.css';
 
 class zhybsession extends React.Component {
     constructor(props) {
@@ -48,24 +50,31 @@ export default zhybsession;
 class YJBDList extends React.Component{
     constructor(props) {
         super(props);
-        this.state={yjbdlist:[]};
+        this.state={yjbdlist:[],current: 1, total: 1};
     }
     componentDidMount(){
         $.ajax({
-            url: ctx+'/yjbd/getFourYJBD',
+            url: ctx+'/yjbd/getAllYJBD',
             dataType: 'json',
             type: 'get',
             async: true,
             success: function(data) {
-              this.setState({yjbdlist:data.data});
+               var total = Math.ceil(data.data.length / 8) * 10;
+              this.setState({yjbdlist:data.data,total:total});
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
     }
-    render() {
-        const list = this.state.yjbdlist.map((li,i) => {
+    onChange(page) {
+        this.setState({
+            current: page,
+        });
+    }
+    render() {  
+        var sdata = this.state.yjbdlist.slice((this.state.current - 1) * 8, (this.state.current) * 8);
+        const list = sdata.map((li,i) => {
             return  <div className="zhyb_yjbd_li" key={i}>
                         <Link to={`pdfshow/预警报单/yjbd/${li.url}`}>
                         <span className="zhyb_yjbd_name">{li.name}</span>
@@ -76,6 +85,7 @@ class YJBDList extends React.Component{
         );
         return  <div className="zhyb_yjbd_body">
                     {list}
+                    <Pagination onChange={this.onChange.bind(this)} current={this.state.current} total={this.state.total} />;
                 </div>
         }
 };

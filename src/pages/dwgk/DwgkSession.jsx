@@ -27,7 +27,7 @@ class dwgksession extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    this.addname(this.props);
+    this.addname(nextProps);
   }
   setIframe() {
     var iframeWin = this.refs.iframe.contentWindow || this.refs.iframe.contentDocument.parentWindow;

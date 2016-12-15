@@ -17,12 +17,16 @@ class PdfShow extends React.Component{
       };
   }
   componentWillMount(){
+    var postdata = {filename:this.state.filename};
+    if (this.state.filename.indexOf('-')!=-1) {
+      postdata = {filename:this.state.filename.split('-')[0],type:this.state.filename.split('-')[1]};
+    }
     $.ajax({
           url: ctx+'/'+this.state.method.replace('-','/'),
           dataType: 'json',
           type: 'post',
           async: true,
-          data:{filename:this.state.filename},
+          data:postdata,
           success: function(data) {
             this.setState({file:data.fullUrl});
           }.bind(this),

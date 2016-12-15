@@ -9,12 +9,13 @@ class WordShow extends React.Component{
       this.state={name:this.props.params.name,method:this.props.params.method,filename:this.props.params.filename,file:''};
   }
   componentWillMount(){
+    var postdata = {filename:this.state.filename.split('--')[0],type:this.state.filename.split('--')[1]};
     $.ajax({
           url: ctx+'/'+this.state.method,
           dataType: 'html',
           type: 'post',
           async: true,
-          data:{filename:this.state.filename},
+          data:postdata,
           success: function(data) {
             this.setState({file:data});
           }.bind(this),

@@ -58,21 +58,7 @@ export default class Hykp extends React.Component {
                                 <div className={this.imgListClass(3)}><span className="hykp-img--span">海洋科普知识-防灾常识</span></div>
                             </div>
                         </div>
-                    </div>
-                    <div className="hykp-class--container">
-                        <div className="hykp-class">
-                            <img src="./images/title-icon.png" alt="" />
-                            <span>海浪灾害应急响应标准等级划分</span>
-                        </div>
-                        <div className="hykp-class">
-                            <img src="./images/title-icon.png" alt="" />
-                            <span>风暴潮应急响应标准等级划分</span>
-                        </div>
-                        <div className="hykp-class">
-                            <img src="./images/title-icon.png" alt="" />
-                            <span>风暴潮预警启动标准等级划分</span>
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
 
             </div>)
