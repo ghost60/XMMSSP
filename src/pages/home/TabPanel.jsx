@@ -14,31 +14,31 @@ export class TabsPanel1 extends React.Component {
         this.state = {
             title: "-",
             pubTime: "-",
-            data:null,
-            currentIndex:0
+            data: null,
+            currentIndex: 0
         }
         this.mapCfg = this.props.mapCfg || [
-                { x: 60, y: 236, title: "漳州沿海" },
-                { x: 99, y: 199, title: "厦门沿海" },
-                { x: 139, y: 165, title: "泉州沿海" },
-                { x: 188, y: 111, title: "莆田沿海" },
-                { x: 237, y: 161, title: "台湾海峡北部" },
-                { x: 179, y: 253, title: "台湾海峡南部" },
-            ]
+            { x: 60, y: 236, title: "漳州沿海" },
+            { x: 99, y: 199, title: "厦门沿海" },
+            { x: 139, y: 165, title: "泉州沿海" },
+            { x: 188, y: 111, title: "莆田沿海" },
+            { x: 237, y: 161, title: "台湾海峡北部" },
+            { x: 179, y: 253, title: "台湾海峡南部" },
+        ]
     }
-      componentDidMount(){
+    componentDidMount() {
         $.ajax({
             type: "post",
             url: ctx + "/forcast", //添加自己的接口链接
             timeOut: 5000,
-            data: { type: "haiqu"},
+            data: { type: "haiqu" },
             before: function () {
             },
             success: function (data) {
                 this.setState({
                     title: "海浪预报",
                     pubTime: data.pubTime,
-                    data:data.data
+                    data: data.data
                 })
             }.bind(this),
             error: function () {
@@ -46,7 +46,7 @@ export class TabsPanel1 extends React.Component {
         });
     }
     handlerMapCilck(i) {
-       this.setState({currentIndex:i})
+        this.setState({ currentIndex: i })
     }
     render() {
 
@@ -66,7 +66,7 @@ export class TabsPanel1 extends React.Component {
                                 <span className="tab-panel-info--span2">{this.state.waterTemp}</span>
                             </div>
                         </div>*/}
-                        <Table data={this.state.data} col={["预报海域", "浪高", "浪级","水温"]} currentIndex={this.state.currentIndex}/>
+                        <Table data={this.state.data} col={["预报海域", "浪高", "浪级", "水温"]} currentIndex={this.state.currentIndex} />
                         <div className="tab-panel--tips">
                             <div dangerouslySetInnerHTML={{ __html: "微浪&lt0.1m<br />4=&lt巨浪&lt6m" }}></div>
                             <div dangerouslySetInnerHTML={{ __html: "0.1=&lt小浪&lt0.5m<br />6=&lt狂狼&lt9m" }}></div>
@@ -87,10 +87,10 @@ export class TabsPanel2 extends React.Component {
         super(props)
         _this = this;
         this.mapCfg = this.props.mapCfg || [
-          { x: 25, y: 307, title: "东山" },
-          { x: 107, y: 233, title: "厦门" },
-          { x: 197, y: 181, title: "崇武" },
-          { x: 308, y: 100, title: "平潭" },
+            { x: 25, y: 307, title: "东山" },
+            { x: 107, y: 233, title: "厦门" },
+            { x: 197, y: 181, title: "崇武" },
+            { x: 308, y: 100, title: "平潭" },
         ]
         this.state = {
             title: this.mapCfg[0]['title'],
@@ -118,8 +118,10 @@ export class TabsPanel2 extends React.Component {
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     forcastTime: forcastTime,
-                    data: [data[0]["data"], data[1]["data"]],
+                    data: [data[0]["data"], data[1]["data"]]
                 })
+
+
                 this.handlerDatePickerClick(0)
             }.bind(this),
             error: function () {
@@ -133,7 +135,7 @@ export class TabsPanel2 extends React.Component {
             chartData: [
                 {
                     name: _this.state.title,
-                    data: _this.state.data[i],
+                     data: _this.state.data[i],
                 }
             ],
             currentDateIndex: i
@@ -162,14 +164,28 @@ export class TabsPanel2 extends React.Component {
                             }
                         </div>
                         <LineChart config={{
-                            "series": this.state.chartData, xAxis: {
-                                categories: ['01:30', '07:39', '13:51', '20:30']
+                            "series": this.state.chartData,
+                            "xAxis": {
+                                type: 'datetime',
+                                dateTimeLabelFormats: { // don't display the dummy year
+                                    hour: '%H时',
+                                    day: '%m月%e日'
+                                },
+                                title: {
+                                    text: '时间'
+                                },
+                            },
+                            tooltip: {
+                                formatter: function () {
+                                    return '<b>' + this.series.name + '</b><br/><b>时间：' + Highcharts.dateFormat('%Y-%m月%d日 %H时%M分', this.x) +
+                                        ' </b><b><br/>潮高：' + this.y / 100 + ' m</b>';
+                                }
                             }
                         }} />
                     </div>
 
                 </div>
-                
+
             </div>
         )
     }
@@ -182,26 +198,26 @@ export class TabsPanel3 extends React.Component {
         super(props)
         this.state = {
             pubTime: '-',
-            data:null,
-            currentIndex:0
+            data: null,
+            currentIndex: 0
         }
-        this.mapCfg = this.props.mapCfg ||  [
-          { x: 204, y: 157, title: "厦门大嶝海域" },
-          { x: 243, y: 113, title: "厦门小嶝海域" },
-          { x: 118, y: 81, title: "厦门同安湾" },
-          { x: 36, y: 123, title: "厦门西海域" },
-          { x: 146, y: 211, title: "厦门东部海域" },
-          { x: 9, y: 240, title: "厦门九龙江口" },
-          { x: 95, y: 271, title: "厦门南部海域" },
+        this.mapCfg = this.props.mapCfg || [
+            { x: 204, y: 157, title: "厦门大嶝海域" },
+            { x: 243, y: 113, title: "厦门小嶝海域" },
+            { x: 118, y: 81, title: "厦门同安湾" },
+            { x: 36, y: 123, title: "厦门西海域" },
+            { x: 146, y: 211, title: "厦门东部海域" },
+            { x: 9, y: 240, title: "厦门九龙江口" },
+            { x: 95, y: 271, title: "厦门南部海域" },
         ]
     }
-      componentDidMount(){
+    componentDidMount() {
         // this.handlerMapCilck(0)
-         $.ajax({
+        $.ajax({
             type: "post",
             url: ctx + "/forcast", //添加自己的接口链接
             timeOut: 5000,
-            data: { type: "xmhaiyu"},
+            data: { type: "xmhaiyu" },
             before: function () {
             },
             success: function (data) {
@@ -209,7 +225,7 @@ export class TabsPanel3 extends React.Component {
                 this.setState({
                     title: "海浪预报",
                     pubTime: data.pubTime,
-                    data:data.data
+                    data: data.data
                 })
             }.bind(this),
             error: function () {
@@ -217,7 +233,7 @@ export class TabsPanel3 extends React.Component {
         });
     }
     handlerMapCilck(i) {
-         this.setState({currentIndex:i})
+        this.setState({ currentIndex: i })
     }
     render() {
 
@@ -232,7 +248,7 @@ export class TabsPanel3 extends React.Component {
                                 <span className="tab-panel-info--span1"><img src="./images/lg_icon.png"/>浪高</span>
                                 <span className="tab-panel-info--span2">{this.state.lgInfo}</span>
                             </div>*/}
-                            <Table data={this.state.data} currentIndex={this.state.currentIndex}/>
+                            <Table data={this.state.data} currentIndex={this.state.currentIndex} />
                         </div>
                         <div className="tab-panel--tips">
                             <div dangerouslySetInnerHTML={{ __html: "微浪&lt0.1m<br />4=&lt巨浪&lt6m" }}></div>
@@ -273,9 +289,9 @@ export class TabsPanel4 extends React.Component {
             { x: 186, y: 234, title: "太阳湾" },
 
         ]
-        
+
     }
-    componentDidMount(){
+    componentDidMount() {
         this.handlerMapCilck(0)
     }
     handlerMapCilck(i) {
@@ -437,7 +453,7 @@ export class TabsPanel6 extends React.Component {
         this.state = {
             title: "-",
             pubTime: '-',
-           currentIndex:0
+            currentIndex: 0
         }
         this.mapCfg = this.props.mapCfg || [
             { x: 107, y: 191, title: "泉州湾" },
@@ -448,19 +464,19 @@ export class TabsPanel6 extends React.Component {
             { x: 207, y: 52, title: "湄洲湾北部" },
         ]
     }
-    componentDidMount(){
-         $.ajax({
+    componentDidMount() {
+        $.ajax({
             type: "post",
             url: ctx + "/forcast", //添加自己的接口链接
             timeOut: 5000,
-            data: { type: "qzhyyb"},
+            data: { type: "qzhyyb" },
             before: function () {
             },
             success: function (data) {
                 this.setState({
                     title: "海浪预报",
                     pubTime: data.pubTime,
-                    data:data.data
+                    data: data.data
                 })
             }.bind(this),
             error: function () {
@@ -468,7 +484,7 @@ export class TabsPanel6 extends React.Component {
         });
     }
     handlerMapCilck(i) {
-        this.setState({currentIndex:i})
+        this.setState({ currentIndex: i })
     }
     render() {
 
@@ -483,7 +499,7 @@ export class TabsPanel6 extends React.Component {
                                 <span className="tab-panel-info--span1"><img src="./images/lg_icon.png"/>浪高</span>
                                 <span className="tab-panel-info--span2">{this.state.lgInfo}</span>
                             </div>*/}
-                            <Table data={this.state.data} currentIndex={this.state.currentIndex}/>
+                            <Table data={this.state.data} currentIndex={this.state.currentIndex} />
                         </div>
                         <div className="tab-panel--tips">
                             <div dangerouslySetInnerHTML={{ __html: "微浪&lt0.1m<br />4=&lt巨浪&lt6m" }}></div>
