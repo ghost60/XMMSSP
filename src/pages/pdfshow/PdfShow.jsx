@@ -46,7 +46,7 @@ class PdfShow extends React.Component{
     this.setState({page:this.state.page-1});
   }
   aft(){
-    if (this.state.page-1===this.state.pages) return;
+    if (this.state.page===this.state.pages) return;
     this.setState({page:this.state.page+1});
   }
   render() {

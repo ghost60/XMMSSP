@@ -36,7 +36,7 @@ class hykpsession extends React.Component {
     }
   }
   render() {  
-    var src=`data/HYJC/${this.state.src}.html`;
+    var src=`data/HYKP/${this.state.src}.html`;
     return  <Session lastname={this.state.name} name={"/海洋科普"}>
               <iframe ref="iframe" src={src} className="iframe" onLoad={this.setIframe.bind(this)}>
               </iframe>

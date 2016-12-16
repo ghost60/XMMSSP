@@ -144,6 +144,14 @@ export const navlist = {
     }
   },
   hykp: {
-    name: "海洋科普"
+    name: "海洋科普",
+    children: {
+      hygt: { id: 0, name: "海洋国土" },
+      yl: { id: 0, name: "洋流" },
+      cx: { id: 0, name: "地球的呼吸“潮汐”" },
+      hx: { id: 0, name: "可怕的海啸" },
+      hygcjs: { id: 0, name: "海洋观测技术" },
+      hyjdzg: { id: 0, name: "海洋如何改变近代中国" }
+    }
   }
 }
