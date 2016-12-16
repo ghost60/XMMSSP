@@ -4,6 +4,9 @@ import ReactHighcharts from 'react-highcharts';
 import './LineChart.scss';
 
 let defaultCfg = {
+    global:{
+        useUTC:false
+    },
     chart: {
         type: 'spline',
         reflow: true,
@@ -61,6 +64,12 @@ class LineChart extends React.Component {
             defaultCfg: defaultCfg
         }
     }
+    componentDidMount() {
+        //  var s = this.refs.chart.getChart()
+        //  debugger
+        //  s.options.global.useUTC = false
+    }
+
     componentWillReceiveProps(nextProps) {
         for (var key in nextProps.config) {
             defaultCfg[key] = nextProps.config[key];
@@ -70,7 +79,7 @@ class LineChart extends React.Component {
         })
     }
     render() {
-        return <ReactHighcharts config={this.state.defaultCfg} ref="chart"></ReactHighcharts>
+        return <ReactHighcharts ref="chart" config={this.state.defaultCfg} ref="chart"></ReactHighcharts>
     }
 };
 

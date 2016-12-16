@@ -115,10 +115,18 @@ export class TabsPanel2 extends React.Component {
             },
             success: function (data) {
                 var forcastTime = [data[0]["month"] + "/" + data[0]["day"], data[1]["month"] + "/" + data[1]["day"]]
+                var temp_par=[]
+                for (var i = 0; i < data.length; ++i) {
+                    var temp_child = [];
+                    for(var j = 0 ;j<data[i]["data"].length;++j){
+                      temp_child.push([data[i]["data"][j][0]+8*3600*1000,data[i]["data"][j][1]]);  
+                    }
+                    temp_par.push(temp_child)
+                }
                 this.setState({
                     title: this.mapCfg[i]['title'],
                     forcastTime: forcastTime,
-                    data: [data[0]["data"], data[1]["data"]]
+                    data: temp_par
                 })
 
 
@@ -135,7 +143,7 @@ export class TabsPanel2 extends React.Component {
             chartData: [
                 {
                     name: _this.state.title,
-                     data: _this.state.data[i],
+                    data: _this.state.data[i],
                 }
             ],
             currentDateIndex: i
@@ -174,10 +182,12 @@ export class TabsPanel2 extends React.Component {
                                 title: {
                                     text: '时间'
                                 },
+                                // categories: [1,2,3,4]
                             },
                             tooltip: {
                                 formatter: function () {
-                                    return '<b>' + this.series.name + '</b><br/><b>时间：' + Highcharts.dateFormat('%Y-%m月%d日 %H时%M分', this.x) +
+                                    var time = new Date(parseInt(this.x-8*3600*1000)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+                                    return '<b>' + this.series.name + '</b><br/><b>时间：' + time +
                                         ' </b><b><br/>潮高：' + this.y / 100 + ' m</b>';
                                 }
                             }
