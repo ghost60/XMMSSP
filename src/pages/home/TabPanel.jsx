@@ -294,8 +294,8 @@ export class TabsPanel4 extends React.Component {
             { x: 250, y: 148, title: "观音山" },
             { x: 222, y: 210, title: "黄厝" },
             { x: 108, y: 253, title: "曾厝垵" },
-            { x: 56, y: 228, title: "港仔后" },
-            { x: 53, y: 194, title: "大德记" },
+            { x: 75, y: 226, title: "港仔后" },
+            { x: 78, y: 201, title: "大德记" },
             { x: 186, y: 234, title: "太阳湾" },
 
         ]
