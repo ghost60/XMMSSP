@@ -8,17 +8,39 @@ class Footer extends React.Component{
   constructor(props) {
       super(props);
   }
-  render() {
-	return  <div className="footer_div">
+  goto(e){
+  	console.log(e.target.value);
+  	window.open(e.target.value);
+  }
+  render() {  	
+	return  <div className="footer_div">				
 				<div className="footer_link">
-					<div style={{background:'url(./images/dyhys.png)'}}></div>
-					<div style={{background:'url(./images/dyhys.png)'}}></div>
-					<div style={{background:'url(./images/dyhys.png)'}}></div>
-					<div style={{background:'url(./images/dyhys.png)'}}></div>
-					<div style={{background:'url(./images/dyhys.png)'}}></div>
-					<div style={{background:'url(./images/dyhys.png)'}}></div>
-					<div style={{background:'url(./images/dyhys.png)'}}></div>
-					<div style={{background:'url(./images/dyhys.png)'}}></div>
+					<div className="footer_link_name">网站推荐</div>
+					{/*
+					<div className="footer_link_items">
+						<span><a href="http://www.soa.gov.cn">国家海洋局</a></span>
+						<span><a href="http://www.eastsea.gov.cn">国家海洋局东海分局</a></span>
+						<span><a href="http://www.dhjczx.org/displayIndex.do">东海监测中心</a></span>
+						<span><a href="http://www.dhybzx.org/OceanPortal/pages/index.html">东海预报中心</a></span>
+						<span><a href="http://www.nmemc.org.cn">国家海洋环境监测中心</a></span>
+						<span><a href="http://www.nmefc.gov.cn">国家海洋预报中心</a></span>
+						<span><a href="http://www.coi.gov.cn">国家海洋信息中心</a></span>
+						<span><a href="http://www.notcsoa.org.cn/cn/">国家海洋技术中心</a></span>
+						<span><a href="http://www.tio.org.cn">国家海洋局第三海洋研究所</a></span>
+					</div>
+					<div className="footer_link_select">--选择连接--<span><img src="./images/poo.png"/></span></div>
+					*/}
+					<select className="footer_link_select" onChange={this.goto.bind(this)}>
+						<option value="http://www.soa.gov.cn" select="selected"><a href="http://www.soa.gov.cn">国家海洋局</a></option>
+						<option value="http://www.eastsea.gov.cn"><a href="http://www.eastsea.gov.cn">国家海洋局东海分局</a></option>
+						<option value="http://www.dhjczx.org/displayIndex.do"><a href="http://www.dhjczx.org/displayIndex.do">东海监测中心</a></option>
+						<option value="http://www.dhybzx.org/OceanPortal/pages/index.html"><a href="http://www.dhybzx.org/OceanPortal/pages/index.html">东海预报中心</a></option>
+						<option value="http://www.nmemc.org.cn"><a href="http://www.nmemc.org.cn">国家海洋环境监测中心</a></option>
+						<option value="http://www.nmefc.gov.cn"><a href="http://www.nmefc.gov.cn">国家海洋预报中心</a></option>
+						<option value="http://www.coi.gov.cn"><a href="http://www.coi.gov.cn">国家海洋信息中心</a></option>
+						<option value="http://www.notcsoa.org.cn/cn/"><a href="http://www.notcsoa.org.cn/cn/">国家海洋技术中心</a></option>
+						<option value="http://www.tio.org.cn"><a href="http://www.tio.org.cn">国家海洋局第三海洋研究所</a></option>
+					</select>
 				</div>
 				<div className="footer_content">					
 					<p>&copy;版权所有 2005-2016 国家海洋局厦门预报台 <br/> 电话：0592-2065005 地址：厦门市思明区环岛东路3909号 邮编：361008</p>
