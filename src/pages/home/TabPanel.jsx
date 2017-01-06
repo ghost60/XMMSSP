@@ -105,12 +105,12 @@ export class TabsPanel2 extends React.Component {
     componentDidMount() {
         this.handlerMapCilck(0);
     }
-    handlerMapCilck(i) {
+    handlerMapCilck(k) {
         $.ajax({
             type: "post",
             url: ctx + "/forcast", //添加自己的接口链接
             timeOut: 5000,
-            data: { type: "chaoxi", name: this.mapCfg[i]['title'] },
+            data: { type: "chaoxi", name: this.mapCfg[k]['title'] },
             before: function () {
             },
             success: function (data) {
@@ -124,7 +124,7 @@ export class TabsPanel2 extends React.Component {
                     temp_par.push(temp_child)
                 }
                 this.setState({
-                    title: this.mapCfg[i]['title'],
+                    title: this.mapCfg[k]['title'],
                     forcastTime: forcastTime,
                     data: temp_par
                 })
@@ -138,8 +138,7 @@ export class TabsPanel2 extends React.Component {
         });
     }
     handlerDatePickerClick(i) {
-
-        _this.setState({
+        _this.setState({            
             chartData: [
                 {
                     name: _this.state.title,
@@ -212,12 +211,12 @@ export class TabsPanel3 extends React.Component {
             currentIndex: 0
         }
         this.mapCfg = this.props.mapCfg || [
-            { x: 204, y: 157, title: "厦门大嶝海域" },
-            { x: 243, y: 113, title: "厦门小嶝海域" },
+            { x: 226, y: 130, title: "厦门大嶝海域" },
+            { x: 312, y: 120, title: "厦门小嶝海域" },
             { x: 118, y: 81, title: "厦门同安湾" },
             { x: 36, y: 123, title: "厦门西海域" },
-            { x: 146, y: 211, title: "厦门东部海域" },
-            { x: 9, y: 240, title: "厦门九龙江口" },
+            { x: 190, y: 186, title: "厦门东部海域" },
+            { x: 9, y: 240, title: "九龙江口海域" },
             { x: 95, y: 271, title: "厦门南部海域" },
         ]
     }
@@ -356,8 +355,8 @@ export class TabsPanel4 extends React.Component {
                                             <td>礁石淹没时段</td>
                                         </tr>
                                         <tr className="tab-panel-info--tbody">
-                                            <td>{this.state.lgInfo}</td>
-                                            <td>{this.state.waterTemp}</td>
+                                            <td>{this.state.lgInfo+'m'}</td>
+                                            <td>{this.state.waterTemp+'℃'}</td>
                                             <td>
                                                 {
                                                     this.state.jsymsd.map(function (item, index) {

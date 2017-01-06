@@ -55,6 +55,7 @@ import * as menudata from '../pages/menudata/menudata';
 
 import pdfshow from '../pages/pdfshow/PdfShow';
 import wordshow from '../pages/wordshow/WordShow';
+import "babel-polyfill";
 
 class App extends React.Component {
   render() {

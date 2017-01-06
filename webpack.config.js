@@ -4,8 +4,8 @@ var node_modules = path.resolve(__dirname, 'node_modules');
 var ExtractTextPlugin = require('extract-text-webpack-plugin'); //将你的行内样式提取到单独的css文件里，
 var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
 
-// var isProduction = function () {
-//   return process.env.NODE_ENV === 'production';
+// var isProduction = function() {
+// 	return process.env.NODE_ENV === 'production';
 // };
 
 module.exports = {
@@ -71,20 +71,30 @@ module.exports = {
 		plugins: ["transform-runtime", "transform-class-properties"]
 	},
 	plugins: [
-		// new CleanPlugin(['dist']),// 清空dist文件夹
-	// new webpack.optimize.CommonsChunkPlugin({
-	// 	name: 'common', // 将公共模块提取，生成名为`vendors`的chunk
-	// 	minChunks: 2 // 提取至少2个模块共有的部分
-	// }),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'common', // 将公共模块提取，生成名为`vendors`的chunk
+			minChunks: 2 // 提取至少3个模块共有的部分
+		}),
 		new ExtractTextPlugin("css/[name].css"), //提取CSS行内样式，转化为link引入
 		// new webpack.optimize.UglifyJsPlugin({
-		//      test: /(\.jsx|\.js)$/,
-		//      compress: {
-		//        warnings: false
-		//      },
-		//    }),
+		// 	test: /(\.jsx|\.js)$/,
+		// 	compress: {
+		// 		warnings: false
+		// 	},
+		// }),
+		// new webpack.DefinePlugin({
+		// 	'process.env': {
+		// 		NODE_ENV: JSON.stringify('production')
+		// 	}
+		// }),
+		// new webpack.optimize.UglifyJsPlugin({
+		// 	compress: {
+		// 		warnings: false
+		// 	}
+		// }),
+		// new webpack.optimize.OccurenceOrderPlugin(),
 	],
-	// devtool: isProduction()?null:'source-map',
+	// devtool: isProduction() ? null : 'source-map',
 	devServer: {
 		contentBase: './dist',
 		host: '0.0.0.0',
