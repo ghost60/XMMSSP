@@ -31,15 +31,15 @@ class Footer extends React.Component{
 					<div className="footer_link_select">--选择连接--<span><img src="./images/poo.png"/></span></div>
 					*/}
 					<select className="footer_link_select" onChange={this.goto.bind(this)}>
-						<option value="http://www.soa.gov.cn" select="selected"><a href="http://www.soa.gov.cn">国家海洋局</a></option>
-						<option value="http://www.eastsea.gov.cn"><a href="http://www.eastsea.gov.cn">国家海洋局东海分局</a></option>
-						<option value="http://www.dhjczx.org/displayIndex.do"><a href="http://www.dhjczx.org/displayIndex.do">东海监测中心</a></option>
-						<option value="http://www.dhybzx.org/OceanPortal/pages/index.html"><a href="http://www.dhybzx.org/OceanPortal/pages/index.html">东海预报中心</a></option>
-						<option value="http://www.nmemc.org.cn"><a href="http://www.nmemc.org.cn">国家海洋环境监测中心</a></option>
-						<option value="http://www.nmefc.gov.cn"><a href="http://www.nmefc.gov.cn">国家海洋预报中心</a></option>
-						<option value="http://www.coi.gov.cn"><a href="http://www.coi.gov.cn">国家海洋信息中心</a></option>
-						<option value="http://www.notcsoa.org.cn/cn/"><a href="http://www.notcsoa.org.cn/cn/">国家海洋技术中心</a></option>
-						<option value="http://www.tio.org.cn"><a href="http://www.tio.org.cn">国家海洋局第三海洋研究所</a></option>
+						<option value="http://www.soa.gov.cn" select="selected">国家海洋局</option>
+						<option value="http://www.eastsea.gov.cn">国家海洋局东海分局</option>
+						<option value="http://www.dhjczx.org/displayIndex.do">东海监测中心</option>
+						<option value="http://www.dhybzx.org/OceanPortal/pages/index.html">东海预报中心</option>
+						<option value="http://www.nmemc.org.cn">国家海洋环境监测中心</option>
+						<option value="http://www.nmefc.gov.cn">国家海洋预报中心</option>
+						<option value="http://www.coi.gov.cn">国家海洋信息中心</option>
+						<option value="http://www.notcsoa.org.cn/cn/">国家海洋技术中心</option>
+						<option value="http://www.tio.org.cn">国家海洋局第三海洋研究所</option>
 					</select>
 				</div>
 				<div className="footer_content">					
