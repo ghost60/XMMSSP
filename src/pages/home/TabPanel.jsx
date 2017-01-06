@@ -115,11 +115,11 @@ export class TabsPanel2 extends React.Component {
             },
             success: function (data) {
                 var forcastTime = [data[0]["month"] + "/" + data[0]["day"], data[1]["month"] + "/" + data[1]["day"]]
-                var temp_par=[]
+                var temp_par = []
                 for (var i = 0; i < data.length; ++i) {
                     var temp_child = [];
-                    for(var j = 0 ;j<data[i]["data"].length;++j){
-                      temp_child.push([data[i]["data"][j][0]+8*3600*1000,data[i]["data"][j][1]]);  
+                    for (var j = 0; j < data[i]["data"].length; ++j) {
+                        temp_child.push([data[i]["data"][j][0] + 8 * 3600 * 1000, data[i]["data"][j][1]]);
                     }
                     temp_par.push(temp_child)
                 }
@@ -186,7 +186,7 @@ export class TabsPanel2 extends React.Component {
                             },
                             tooltip: {
                                 formatter: function () {
-                                    var time = new Date(parseInt(this.x-8*3600*1000)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+                                    var time = new Date(parseInt(this.x - 8 * 3600 * 1000)).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
                                     return '<b>' + this.series.name + '</b><br/><b>时间：' + time +
                                         ' </b><b><br/>潮高：' + this.y / 100 + ' m</b>';
                                 }
@@ -231,7 +231,6 @@ export class TabsPanel3 extends React.Component {
             before: function () {
             },
             success: function (data) {
-                debugger
                 this.setState({
                     title: "海浪预报",
                     pubTime: data.pubTime,
@@ -521,6 +520,32 @@ export class TabsPanel6 extends React.Component {
                     </div>
                 </div>
             </div>
+        )
+    }
+}
+export class TabsPanel7 extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            hlybSrc: ''
+        }
+        this.getImgUrl();
+    }
+    getImgUrl() {
+        $.ajax({
+            url: ctx + '/forcast?type=hlyb',
+            type: 'post',
+            async: true,
+            success: function (data) {
+                this.setState({ "hlybSrc": ctx + "/" + data })
+            }.bind(this),
+            error: function (xhr, status, err) {
+            }.bind(this)
+        });
+    }
+    render() {
+        return (
+            <img src={this.state.hlybSrc} alt="正在加载..." style={{ width: "100%" }} />
         )
     }
 }
