@@ -31,9 +31,10 @@ class szybsession extends React.Component {
   }
   querydata(name) {
     $.ajax({
-      url: ctx+'/szyb?name='+name,
+      url: ctx+'/szyb',
       dataType: 'json',
-      type: 'get',
+      type: 'post',
+      data:{name:name},
       async: true,
       success: function (data) {
           this.setState({ name: name, data: data });
@@ -53,7 +54,7 @@ class szybsession extends React.Component {
   }
   render() {
     var img = '';
-    if (this.state.data !== '') img = <Imgplayer data={this.state.data} />
+    if (this.state.data !== "") img = <Imgplayer data={this.state.data} />
     return <Session lastname={this.state.name} name={"/海洋预报/数值预报"}>
       {img}
     </Session>

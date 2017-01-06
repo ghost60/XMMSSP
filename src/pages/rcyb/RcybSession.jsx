@@ -22,29 +22,29 @@ class rcybsession extends React.Component {
       }
     }
   }
-  querydata(name) {
-    $.ajax({
-      url: 'name',
-      dataType: 'json',
-      type: 'get',
-      async: true,
-      success: function (data) {
-        return data;
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  }
+  // querydata(name) {
+  //   $.ajax({
+  //     url: 'name',
+  //     dataType: 'json',
+  //     type: 'get',
+  //     async: true,
+  //     success: function (data) {
+  //       return data;
+  //     }.bind(this),
+  //     error: function (xhr, status, err) {
+  //       console.error(this.props.url, status, err.toString());
+  //     }.bind(this)
+  //   });
+  // }
   componentDidMount() {
     let route = this.addmenu(this.props);
-    let data = this.querydata(route);
-    this.setState({ name: route, data: data });
+    // let data = this.querydata(route);
+    this.setState({ name: route});
   }
   componentWillReceiveProps(nextProps) {
     let route = this.addmenu(nextProps);
-    let data = this.querydata(route);
-    this.setState({ name: route, data: data });
+    // let data = this.querydata(route);
+    this.setState({ name: route});
   }
   renderContent(type) {
     if (type === "hlswyb") {

@@ -133,7 +133,7 @@ class hxyb extends React.Component{
               <Session lastname={'航线预报'}>
                 <Row>
                   <Col width={[1,2]}>
-                    <Lmap data={this.state.data} routecallback={this.routeclick.bind(this)}/>
+                    {this.state.data.length>0?<Lmap data={this.state.data} routecallback={this.routeclick.bind(this)}/>:[]}
                   </Col>
                   <Col  width={[1,2]}>
                     <div className="hxyb-xz">
