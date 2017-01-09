@@ -4,41 +4,64 @@ import './leaflet.css';
 // import ExWMSTileLayer from './ExWMSTileLayer';
 // import MarkerLayer from './MarkerLayer';
 import './leaflet.ChineseTmsProviders';
-import './leaflet.MarkerLayer';
+import './leaflet.iconlabel';
+import './leaflet.iconlabel.css';
+// import './leaflet.LabelTextCollision';
 
-class ExampleMarkerComponent extends React.Component {
-  render() {
-    const style = {
-      fontSize: '14px',
-      fontWeight: 'bold',
-      marginTop: '-12px',
-      marginLeft: '-16px',
-      width: '24px',
-      height: '24px'
-    };
-    return (
-      <div style={Object.assign({}, this.props.style, style)}>{this.props.text}</div>
-    );
-  }
-}
+// class ExampleMarkerComponent extends React.Component {
+//   render() {
+//     const style = {
+//       fontSize: '14px',
+//       fontWeight: 'bold',
+//       marginTop: '-12px',
+//       marginLeft: '-16px',
+//       width: '24px',
+//       height: '24px'
+//     };
+//     return (
+//       <div style={Object.assign({}, this.props.style, style)}>{this.props.text}</div>
+//     );
+//   }
+// }
 
 class Lmap extends React.Component{
   constructor(props) {
       super(props);
   }
   componentDidMount(){
+    // var labelTextCollision = new L.LabelTextCollision({
+    //             collisionFlg : true
+    // });
     this.map = L.map('map').setView([24.5364,118.1872], 13);
+    // this.map = new L.Map('map', {
+    //         center : new L.LatLng(24.5364,118.1872),
+    //         zoom : 13,
+    //         renderer : labelTextCollision
+    //     });
     
     L.tileLayer.chinaProvider('GaoDe.Normal.Map', {
         maxZoom: 18,
         minZoom: 5
     }).addTo(this.map);
 
-    // L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    //     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    // }).addTo(this.map);
-
     this.addToMap(this.props.data);
+
+    // debugger
+    var data=[[30.67,104.06]];
+    // let labels = [];
+    // var layers = L.featureGroup().addTo(this.map);
+    // for ( var index in data) {
+    //     var d = data[index];
+    //     var latlng = L.latLng(d[0], d[1]);
+    //     var c = L.circleMarker(latlng, {
+    //         radius : 5,
+    //         text : "555"
+    //     });
+    //     layers.addLayer(c);
+    //     // labels.push(c);
+    // }
+    // if (this.labelGroup!=undefined) {this.labelGroup.clearLayers()}
+    // this.labelGroup = L.layerGroup(labels).addTo(this.map);        
   }
   componentWillReceiveProps (prevProps) {
     this.addToMap(prevProps.data);
@@ -47,28 +70,35 @@ class Lmap extends React.Component{
     let data = mapdata||[];
     let polyline = [];
     let marker = [];
-    let labels = [];
+    // let labels = [];
     let color = '#FF0033';  
-       
+    if(this.markerlabels!=undefined) {this.map.removeLayer(this.markerlabels)}  
+    this.markerlabels = new L.FeatureGroup().addTo(this.map);   
     for (var i = 0; i < data.length; i++) {      
       if(i%2==1){
         color='#68BBB5';
       }else{
         color = '#398BFA';
       }
-      if (data.length>1) {
+      // if (data.length>1) {
         var mlatlon = data[i].latlon[Math.ceil((data[i].latlon.length-1)/2)];
         var position={};
         position.lng=mlatlon[1];
         position.lat=mlatlon[0];
-        var label = {};
-        label.position=position;
-        label.text=i+1;
-        labels.push(label);
-      }
+        // var label = {};
+        // label.position=position;
+        // label.text=position;
+        // labels.push(label);
+        this.markerlabels.addLayer(
+        new L.Marker(
+          position,
+          { icon: new L.Icon.Label.Default({ labelText: (i+1).toString()}) }
+          )
+        ); 
+        this.map.addLayer(this.markerlabels);
+      // }
       // polyline.push(<Polyline key={i} getCenter={this.getlinebound} onClick={this.props.routecallback.bind(this,data[i].name)} color={color} weight={5} positions={data[i].latlon}/>);       
-      polyline.push(L.polyline(data[i].latlon, {color: color}).addTo(this.map).on('click',this.props.routecallback.bind(this,data[i].name)));
-      
+      polyline.push(L.polyline(data[i].latlon, {color: color}).addTo(this.map).on('click',this.props.routecallback.bind(this,data[i].name)));           
     } 
     if (this.lineGroup!=undefined) {this.lineGroup.clearLayers()}
     this.lineGroup = L.layerGroup(polyline).addTo(this.map);
