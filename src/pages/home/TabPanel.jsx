@@ -87,10 +87,10 @@ export class TabsPanel2 extends React.Component {
         super(props)
         _this = this;
         this.mapCfg = this.props.mapCfg || [
-            { x: 25, y: 307, title: "东山" },
-            { x: 107, y: 233, title: "厦门" },
-            { x: 197, y: 181, title: "崇武" },
-            { x: 308, y: 100, title: "平潭" },
+            { x: 20, y: 316, title: "东山" },
+            { x: 101, y: 214, title: "厦门" },
+            { x: 197, y: 156, title: "崇武" },
+            { x: 308, y: 85, title: "平潭" },
         ]
         this.state = {
             title: this.mapCfg[0]['title'],
