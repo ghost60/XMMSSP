@@ -17,15 +17,19 @@ class Footer extends React.Component{
 				<div className="footer_link">
 					<div className="footer_link_name">网站推荐</div>
 					<select className="footer_link_select" onChange={this.goto.bind(this)}>
+						<option value="#">选择跳转链接</option>
 						<option value="http://www.soa.gov.cn">国家海洋局</option>
-						<option value="http://www.eastsea.gov.cn">国家海洋局东海分局</option>
-						<option value="http://www.dhjczx.org/displayIndex.do">东海监测中心</option>
-						<option value="http://www.dhybzx.org/OceanPortal/pages/index.html">东海预报中心</option>
 						<option value="http://www.nmemc.org.cn">国家海洋环境监测中心</option>
 						<option value="http://www.nmefc.gov.cn">国家海洋预报中心</option>
 						<option value="http://www.coi.gov.cn">国家海洋信息中心</option>
 						<option value="http://www.notcsoa.org.cn/cn/">国家海洋技术中心</option>
-						<option value="http://www.tio.org.cn">国家海洋局第三海洋研究所</option>
+						<option value="http://www.eastsea.gov.cn">国家海洋局东海分局</option>
+						<option value="http://www.dhjczx.org/displayIndex.do">东海监测中心</option>
+						<option value="http://www.dhybzx.org/OceanPortal/pages/index.html">东海预报中心</option>
+						<option value="http://www.ntjczxz.com/Default.aspx">南通海洋环境监测中心站</option>
+						<option value="http://www.nbhyjc.cn">宁波海洋环境监测中心站</option>
+						<option value="http://www.ntjczxz.com/Default.aspx">温州海洋环境监测中心站</option>
+						<option value="http://www.mdocean.cn">宁德海洋环境监测中心站</option>
 					</select>
 				</div>
 				<div className="footer_content">					
