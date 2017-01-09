@@ -26,7 +26,6 @@ class PdfShow extends React.Component {
       async: true,
       data: postdata,
       success: function (data) {
-        debugger
         this.setState({ file: data.fullUrl })
       }.bind(this),
       error: function (xhr, status, err) {
