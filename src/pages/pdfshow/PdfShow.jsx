@@ -43,7 +43,7 @@ class PdfShow extends React.Component {
         <span className="pdfshow-name">{this.state.name}</span>
         <span className="pdfshow-back" onClick={this.back.bind(this)}>返回</span>
       </div>
-      <iframe ref="iframe" src={"./js/pdf/viewer.html?file=/" + this.state.file} className="iframe" height="1300">
+      <iframe ref="iframe" src={"./js/pdf/viewer.html?file=" + this.state.file} className="iframe" height="1300">
       </iframe>
     </Col>
   }
