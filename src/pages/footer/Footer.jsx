@@ -33,7 +33,7 @@ class Footer extends React.Component{
 					</select>
 				</div>
 				<div className="footer_content">					
-					<p>&copy;版权所有 2005-2016 国家海洋局厦门预报台 <br/> 
+					<p>&copy;版权所有 2005-2016 国家海洋局厦门海洋预报台 <br/> 
 					技术支持：北京超图软件股份有限公司<br/>
 					闽ICP备11014332号-1<br/>
 					电话：0592-2065005 地址：厦门市思明区环岛东路3909号 邮编：361008

@@ -88,6 +88,8 @@ ReactDOM.render((
       <Redirect from="/hyyb" to="/hyyb/rcyb/rcybsession/hlswyb" />
       <Redirect from="/hyyb/rcyb" to="/hyyb/rcyb/rcybsession/hlswyb" />
       <Redirect from="/hyyb/szyb" to="/hyyb/szyb/szybsession/hmf_xtpy" />
+      <Redirect from="/hyjc/hyjcSession/jcrw" to="/hyjc/hyjcSession/jcrw_zlxrw" />
+      <Redirect from="/hyjc/hyjcSession/zltx" to="/hyjc/hyjcSession/zltx_gzxsm" />
 
       <Route path="pdfshow/:name/:method/:filename" component={pdfshow} />
       <Route path="wordshow/:name/:method/:filename" component={wordshow} />

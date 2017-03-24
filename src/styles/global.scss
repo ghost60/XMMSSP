@@ -16,3 +16,16 @@ a, a:active, a:hover, a:link, a:visited {
     text-align: center
 }
 img{border:none}
+
+*:before{
+    content: "";
+    display: table;
+ }
+ *:after {
+    content: "";
+    display: table;
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+}

@@ -146,7 +146,13 @@
             margin-top: 20px;width: 100%;
         }
         .tab-panel--tips div{
-           display: table-cell;box-sizing: border-box;font-size: 14px;height: 100%
+            /* display: table-cell; */
+            box-sizing: border-box;
+            font-size: 14px;
+            /* height: 100%; */
+            width: 115px;
+            display: inline-block;
+            margin-right: 40px;
         }
 
         .tab-panel--map {

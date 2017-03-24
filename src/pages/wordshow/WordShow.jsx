@@ -9,9 +9,14 @@ class WordShow extends React.Component{
       this.state={name:this.props.params.name,method:this.props.params.method,filename:this.props.params.filename,file:''};
   }
   componentWillMount(){
+    debugger
     var postdata = {filename:this.state.filename.split('--')[0],type:this.state.filename.split('--')[1]};
+    var url = this.state.method;
+    if (this.state.method=="hykpword") {
+      url = "hykp/queryHYKPWord";
+    }
     $.ajax({
-          url: ctx+'/'+this.state.method,
+          url: ctx+'/'+url,
           dataType: 'html',
           type: 'post',
           async: true,

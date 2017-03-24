@@ -85,9 +85,10 @@
     }
 }
 .hxyb-excel-body{
-     display: inline-block;
-     width: 62%;
-     span{
+    vertical-align: top;
+    display: inline-block;
+    width: 62%;
+    span{
         display: inline-block;
         margin: 10px 18px;
         &:hover{
