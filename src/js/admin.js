@@ -105,6 +105,7 @@ class Dtjs extends React.Component {
     target.innerHTML = '已上传(' + per + '%)'
   }
   upload (e) {
+    debugger
     e.preventDefault()
     var file = document.getElementById('file')
     var title = document.getElementById('title')
@@ -298,6 +299,7 @@ class Gzdt extends React.Component {
     target.innerHTML = '已上传(' + per + '%)'
   }
   upload (e) {
+    debugger
     e.preventDefault()
             // var file = document.getElementById("file");
             // var title = document.getElementById("title");
@@ -307,6 +309,7 @@ class Gzdt extends React.Component {
             //   }
     var form = document.getElementById('gzdt-upload')
     var formdata = new FormData(form)
+    var title = document.getElementById('istop')
     $.ajax({
       url: ctx + '/admin/formupload',
       dataType: 'json',
@@ -342,6 +345,7 @@ class Gzdt extends React.Component {
     })
   }
   querydata () {
+    debugger
     $.ajax({
       url: ctx + '/admin/GZDTList',
       dataType: 'json',
@@ -368,13 +372,15 @@ class Gzdt extends React.Component {
     })
   }
   onDelete (record, e) {
+    debugger
     $.ajax({
       url: ctx + '/admin/deleteFile',
       dataType: 'json',
       type: 'post',
       async: true,
       data: {
-        filename: record.name.split('.')[0]
+        istop: record['istop'],
+        filename: record['fileName']
       },
       success: function (data) {
         if (data.state === '1') {
@@ -388,8 +394,8 @@ class Gzdt extends React.Component {
     })
   }
   changeTop (state, filename, e) {
-    /* $.ajax({
-      url: ctx + '/pubNews/changeTOP', // 更换接口
+    $.ajax({
+      url: ctx + '/admin/changeTOP',
       dataType: 'json',
       type: 'post',
       async: true,
@@ -406,13 +412,13 @@ class Gzdt extends React.Component {
       error: function (xhr, status, err) {
         alert('操作失败，请重试，若再次失败请联系管理员')
       }
-    }) */
+    })
   }
   render () {
     const columns = [{
       title: '文件名称',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'fileName',
+      key: 'fileName',
       width: 100
     }, {
       title: '文件标题',
